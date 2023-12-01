@@ -16,7 +16,7 @@ const Navbar = () => {
                         aribnb
                     </BrandName>
                     <CenterNav />
-                    <RightNav />
+                    <RightNav /> 
                 </Content>
             </div>
         </Navbar1>
@@ -26,6 +26,8 @@ const Navbar = () => {
 
 const Navbar1 = styled.section`
     border: 1px solid lightgray;
+
+    background-color: white;
 
 `
 

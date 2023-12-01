@@ -1,0 +1,302 @@
+[{
+    "place": "Bengaluru, India",
+    "distance": "2 km to Lalbagh Botanical Garden",
+    "dates": "8-13 Jan",
+    "price": 6700,
+    "ratings": 4.6  
+},
+  {
+    "place": "Chandigarh, India",
+    "distance": "3 km to Rock Garden",
+    "dates": "15-20 Feb",
+    "price": 7200,
+    "ratings": 4.5  
+},
+  {
+    "place": "Nainital, India",
+    "distance": "5 km to Naina Devi Temple",
+    "dates": "10-18 Mar",
+    "price": 8000,
+    "ratings": 4.3  
+},
+  {
+    "place": "Ahmedabad, India",
+    "distance": "4 km to Sabarmati Ashram",
+    "dates": "5-12 Apr",
+    "price": 6200,
+    "ratings": 4.7  
+},
+  {
+    "place": "Jaipur, India",
+    "distance": "2 km to Jal Mahal",
+    "dates": "20-25 May",
+    "price": 5600,
+    "ratings": 4.2
+  },
+  {
+    "place": "Thiruvananthapuram, India",
+    "distance": "3 km to Shanghumukham Beach",
+    "dates": "12-17 Jun",
+    "price": 6900,
+    "ratings": 4.8
+  },
+  {
+    "place": "Puri, India",
+    "distance": "2 km to Jagannath Temple",
+    "dates": "8-14 Jul",
+    "price": 6000,
+    "ratings": 4.4
+  },
+  {
+    "place": "Rann of Kutch, India",
+    "distance": "3 km to White Rann",
+    "dates": "22-28 Aug",
+    "price": 5800,
+    "ratings": 4.9
+  },
+  {
+    "place": "Kanpur, India",
+    "distance": "2 km to Phool Bagh",
+    "dates": "10-16 Sep",
+    "price": 7500,
+    "ratings": 4.6
+  },
+  {
+    "place": "Kodaikanal, India",
+    "distance": "4 km to Coaker's Walk",
+    "dates": "18-24 Oct",
+    "price": 7000,
+    "ratings": 4.3
+  },
+  {
+    "place": "Leh-Ladakh, India",
+    "distance": "2 km to Shanti Stupa",
+    "dates": "5-11 Nov",
+    "price": 8400,
+    "ratings": 4.7
+  },
+  {
+    "place": "Gangtok, India",
+    "distance": "1 km to Nathula Pass",
+    "dates": "15-20 Dec",
+    "price": 6500,
+    "ratings": 4.5
+  },
+  {
+    "place": "Ranchi, India",
+    "distance": "3 km to Tagore Hill",
+    "dates": "8-13 Jan",
+    "price": 6800,
+    "ratings": 4.2
+  },
+  {
+    "place": "Shillong, India",
+    "distance": "2 km to Elephant Falls",
+    "dates": "15-20 Feb",
+    "price": 7100,
+    "ratings": 4.6
+  },
+  {
+    "place": "Bhubaneswar, India",
+    "distance": "4 km to Lingaraja Temple",
+    "dates": "10-18 Mar",
+    "price": 7300,
+    "ratings": 4.4
+  },
+  {
+    "place": "Ajmer, India",
+    "distance": "1 km to Dargah Sharif",
+    "dates": "5-12 Apr",
+    "price": 6000,
+    "ratings": 4.8
+  },
+  {
+    "place": "Surat, India",
+    "distance": "3 km to Dumas Beach",
+    "dates": "20-25 May",
+    "price": 5900,
+    "ratings": 4.3
+  },
+  {
+    "place": "Aurangabad, India",
+    "distance": "2 km to Ellora Caves",
+    "dates": "12-17 Jun",
+    "price": 7800,
+    "ratings": 4.7
+  },
+  {
+    "place": "Vizag, India",
+    "distance": "5 km to RK Beach",
+    "dates": "8-14 Jul",
+    "price": 6600,
+    "ratings": 4.5
+  },
+  {
+    "place": "Dehradun, India",
+    "distance": "2 km to Robber's Cave",
+    "dates": "22-28 Aug",
+    "price": 6400,
+    "ratings": 4.2
+  },
+  {
+    "place": "Siliguri, India",
+    "distance": "3 km to Mahananda Wildlife Sanctuary",
+    "dates": "10-16 Sep",
+    "price": 7000,
+    "ratings": 4.6
+  },
+  {
+    "place": "Kozhikode, India",
+    "distance": "4 km to Kappad Beach",
+    "dates": "18-24 Oct",
+    "price": 7600,
+    "ratings": 4.4
+  },
+  {
+    "place": "Nagpur, India",
+    "distance": "2 km to Deekshabhoomi",
+    "dates": "5-11 Nov",
+    "price": 6800,
+    "ratings": 4.8
+  },
+  {
+    "place": "Ahmednagar, India",
+    "distance": "2 km to Ahmednagar Fort",
+    "dates": "8-13 Jan",
+    "price": 6400,
+    "ratings": 4.2
+},
+{
+    "place": "Coimbatore, India",
+    "distance": "3 km to Marudamalai Temple",
+    "dates": "15-20 Feb",
+    "price": 6800,
+    "ratings": 4.5
+},
+{
+    "place": "Haridwar, India",
+    "distance": "5 km to Har Ki Pauri",
+    "dates": "10-18 Mar",
+    "price": 7600,
+    "ratings": 4.3
+},
+{
+    "place": "Bhopal, India",
+    "distance": "4 km to Van Vihar National Park",
+    "dates": "5-12 Apr",
+    "price": 7200,
+    "ratings": 4.6
+},
+{
+    "place": "Jaisalmer, India",
+    "distance": "2 km to Jaisalmer Fort",
+    "dates": "20-25 May",
+    "price": 7800,
+    "ratings": 4.7
+},
+{
+    "place": "Port Blair, India",
+    "distance": "3 km to Cellular Jail",
+    "dates": "12-17 Jun",
+    "price": 8500,
+    "ratings": 4.4
+},
+{
+    "place": "Hampi, India",
+    "distance": "2 km to Virupaksha Temple",
+    "dates": "8-14 Jul",
+    "price": 7100,
+    "ratings": 4.8
+},
+{
+    "place": "Thimphu, India",
+    "distance": "3 km to Buddha Dordenma",
+    "dates": "22-28 Aug",
+    "price": 9200,
+    "ratings": 4.5
+},
+{
+    "place": "Pune, India",
+    "distance": "2 km to Shaniwar Wada",
+    "dates": "10-16 Sep",
+    "price": 7000,
+    "ratings": 4.6
+},
+{
+    "place": "Mount Abu, India",
+    "distance": "4 km to Nakki Lake",
+    "dates": "18-24 Oct",
+    "price": 7900,
+    "ratings": 4.2
+},
+{
+    "place": "Madurai, India",
+    "distance": "2 km to Meenakshi Amman Temple",
+    "dates": "5-11 Nov",
+    "price": 6700,
+    "ratings": 4.7
+},
+{
+    "place": "Gulmarg, India",
+    "distance": "1 km to Gulmarg Gondola",
+    "dates": "15-20 Dec",
+    "price": 8100,
+    "ratings": 4.4
+},
+{
+    "place": "Aurangabad, India",
+    "distance": "3 km to Bibi Ka Maqbara",
+    "dates": "8-13 Jan",
+    "price": 6800,
+    "ratings": 4.5
+},
+{
+    "place": "Visakhapatnam, India",
+    "distance": "2 km to Kailasagiri",
+    "dates": "15-20 Feb",
+    "price": 7200,
+    "ratings": 4.3
+},
+{
+    "place": "Pushkar, India",
+    "distance": "5 km to Pushkar Lake",
+    "dates": "10-18 Mar",
+    "price": 7800,
+    "ratings": 4.7
+},
+{
+    "place": "Jodhpur, India",
+    "distance": "4 km to Mehrangarh Fort",
+    "dates": "5-12 Apr",
+    "price": 7500,
+    "ratings": 4.6
+},
+{
+    "place": "Kochi, India",
+    "distance": "2 km to Chinese Fishing Nets",
+    "dates": "20-25 May",
+    "price": 6900,
+    "ratings": 4.2
+},
+{
+    "place": "Rameswaram, India",
+    "distance": "3 km to Ramanathaswamy Temple",
+    "dates": "12-17 Jun",
+    "price": 7100,
+    "ratings": 4.8
+},
+{
+    "place": "Srinagar, India",
+    "distance": "2 km to Dal Lake",
+    "dates": "8-14 Jul",
+    "price": 8000,
+    "ratings": 4.5
+},
+{
+    "place": "Manali, India",
+    "distance": "1 km to Solang Valley",
+    "dates": "22-28 Aug",
+    "price": 7700,
+    "ratings": 4.4
+}
+]

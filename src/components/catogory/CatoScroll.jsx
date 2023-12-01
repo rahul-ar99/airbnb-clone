@@ -1,5 +1,5 @@
 import React, {useEffect,useState}from 'react';
-import CatoData from '../../assets/json/example.json'
+import CatoData from '../../assets/json/catogery.json'
 import styled from 'styled-components';
 
 
@@ -39,7 +39,9 @@ export default CatoScroll;
 const Div1 = styled.div`
     display: flex;
     position: relative;
-    `
+    width: min-content;
+
+`;
 
 const ListItem = styled.ul`
     display: flex;
@@ -59,7 +61,10 @@ const LeftBtn = styled.div`
     position: absolute;
     left: 0;
 `
-const RightBtn = styled.div``
+const RightBtn = styled.div`
+    position: absolute;
+    right: 0;
+`
 
 
 const SingleItems = styled.li`

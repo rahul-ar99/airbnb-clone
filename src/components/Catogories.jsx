@@ -2,19 +2,22 @@ import React from 'react';
 import CatoScroll from './catogory/CatoScroll';
 import Filter from './catogory/Filter';
 import styled from 'styled-components';
+import TaxBtn from './catogory/TaxBtn';
 
 const Catogories = () => {
     return (
-        <Catogory>
-            <div className="wrapper">
-                <CatoScroll />
-                <Filter />
-
-            </div>
-        </Catogory>
+        <div className="wrapper">
+            <Catogory>
+                    <CatoScroll />
+                    <Filter />
+                    <TaxBtn />
+            </Catogory>
+        </div>
     );
 };
 const Catogory = styled.section`
+    display: flex;
+    align-items: center;
 `
 
 export default Catogories;
