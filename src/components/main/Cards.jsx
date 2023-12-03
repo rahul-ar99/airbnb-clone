@@ -362,7 +362,6 @@ const SingleCard = styled.li`
 const Images = styled.div`
     width: 272px;
     height: 255px;
-    background-color: aqua;
     border-radius: 15px;
     overflow: hidden;
 `;

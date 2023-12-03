@@ -55,14 +55,21 @@ const ListItem = styled.ul`
 `
 
 const BtnImg = styled.img`
-    width: 52px;
+    width: 18px;
+    box-sizing: content-box;
+    border: 1px solid #cdcdcd;
+    padding: 2px;
+    border-radius: 50%;
+    box-shadow: 0 60px 80px rgb(0, 0, 0), 0px 5px 26px rgb(0, 0, 0);
 `
 const LeftBtn = styled.div`
     position: absolute;
+    top: 30px;
     left: 0;
-`
+    `
 const RightBtn = styled.div`
     position: absolute;
+    top: 30px;
     right: 0;
 `
 

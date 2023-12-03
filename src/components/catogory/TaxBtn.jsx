@@ -6,7 +6,7 @@ const TaxBtn = () => {
         <TaxDiv>
             <TaxP>Display total before taxes</TaxP>
             <ToggleLabel>
-                <ToggleInput />
+                <ToggleInput></ToggleInput>
                 <ToggleSpan></ToggleSpan>
             </ToggleLabel>
         </TaxDiv>
@@ -18,14 +18,31 @@ const TaxDiv = styled.div`
     display: flex;
     align-items: center;
     white-space: nowrap;
+    border: 1px solid #c6c6c6;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 15px;
 `
-const TaxP = styled.p``
+const TaxP = styled.p`
+    font-size: 13px;
+    font-weight: 500;
+`
 const ToggleLabel = styled.label`
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 50px;
+    height: 28px;
+    
 `
+
+
+const ToggleInput = styled.input`
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    `
+
 const ToggleSpan = styled.span`
     position: absolute;
     cursor: pointer;
@@ -41,8 +58,8 @@ const ToggleSpan = styled.span`
     &:before{
         position: absolute;
         content: "";
-        height: 26px;
-        width: 26px;
+        height: 20px;
+        width: 20px;
         left: 4px;
         bottom: 4px;
         background-color: white;
@@ -50,30 +67,18 @@ const ToggleSpan = styled.span`
         transition: .4s;
         border-radius: 50%;
     }
-`
-
-const ToggleInput = styled.input`
-    opacity: 0;
-    width: 0;
-    height: 0;
-    
-    &:checked + ${ToggleSpan} {
-        background-color: #2196f3;
-
+    &:hover::before{
+        -webkit-transform: translateX(21px);
+        -ms-transform: translateX(21px);
+        transform: translateX(21px);
+    }
+    ${ToggleInput}:checked + & {
+        background-color: red;
         &:before{
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
+            background-color: blue;
         }
-
-    }
-
-    &:focus + ${ToggleSpan} {
-        box-shadow: 0 0 1px #2196F3;
-
     }
 
 `
-
 
 export default TaxBtn;

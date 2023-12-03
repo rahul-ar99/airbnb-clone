@@ -1,8 +1,16 @@
-import React from 'react';
+import React ,{useEffect} from 'react';
 import styled from 'styled-components';
 
 
 const ExploreModal = ({close}) => {
+
+    useEffect(()=>{
+        document.body.style.overflow = "hidden"
+        return ()=>(
+            document.body.style.overflow = "auto"
+        )
+    })
+
     return (
         <Screen 
             onClick={(e) => {
@@ -36,6 +44,7 @@ const Screen = styled.div`
     overflow: hidden;
     height: 100vh;
     top: 0;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
