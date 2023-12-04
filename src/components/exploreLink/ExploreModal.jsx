@@ -15,8 +15,11 @@ const ExploreModal = ({close}) => {
         <Screen 
             onClick={(e) => {
                 if (!e.target.closest(Modal)) {
-                close(false);
-            }}}
+                    close(false);
+                    setUserModal= false
+
+                }
+            }}
         >
             <Modal>
 

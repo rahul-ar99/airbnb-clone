@@ -1,4 +1,4 @@
-import React, {useEffect,useState}from 'react';
+import React, {useEffect,useState , useRef}from 'react';
 import CatoData from '../../assets/json/catogery.json'
 import styled from 'styled-components';
 
@@ -13,13 +13,17 @@ const CatoScroll = () => {
     
     const [resourse, setResouse] = useState("fisrt")
 
+    const ref = useRef(null);
 
+    const scroll = (scrollOffset) =>{
+        ref.current.scrollLeft += scrollOffset;
+    }
 
 
     return (
         <Div1>
-            <LeftBtn><BtnImg src={require("../../assets/icons/angle-left.png")}></BtnImg></LeftBtn>
-            <ListItem>
+            <LeftBtn onClick={()=>scroll(-1000)}><BtnImg src={require("../../assets/icons/angle-left.png")}></BtnImg></LeftBtn>
+            <ListItem ref={ref}>
                 {categoryOption.map((items,index) => (
                     <SingleItems key={index}>
                         <Img1 key={items.image} src={require(`../../assets/icons/${items.image}.jpg`)} alt="" />
@@ -27,7 +31,7 @@ const CatoScroll = () => {
                 ))}
 
             </ListItem>
-            <RightBtn><BtnImg src={require("../../assets/icons/next.png")}></BtnImg></RightBtn>
+            <RightBtn  onClick={()=>scroll(1000)}><BtnImg src={require("../../assets/icons/next.png")}></BtnImg></RightBtn>
         </Div1>
         
     );
