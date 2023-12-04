@@ -16,6 +16,7 @@ const Catogories = () => {
     );
 };
 const Catogory = styled.section`
+    padding-top: 80px;
     display: flex;
     align-items: center;
 `

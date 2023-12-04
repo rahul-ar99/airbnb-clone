@@ -17,16 +17,14 @@ const UserModal = ({userClose}) => {
     return (
         <>
             <UserItems>
-                <Items>
+                <Items onClick={()=>{
+                    let statement = setFeaturesModal === true?false:true
+                    setFeaturesModal(statement)
+                }}>
                     <P1 >Winter Release Features</P1>
                 </Items>
                 <hr/>
-                <Items onClick={()=>{
-                    let statement = setFeaturesModal==true?false:true
-                    console.log(statement)
-                    setFeaturesModal(statement)
-                    console.log("sdfsdf")
-                }}>
+                <Items>
                     <P1>Login</P1></Items>
                 <Items onClick={()=>{
                         setLoginModal(true)

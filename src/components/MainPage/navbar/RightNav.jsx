@@ -15,7 +15,7 @@ const RightNav = () => {
         <>
             <Right>
                 <YourHome >
-                    <p>Airbnb your home</p> 
+                    <a>Airbnb your home</a> 
                 </YourHome>
                 <Language onClick={()=>{
                     setLangModal(true)?setLangModal(false):setLangModal(true)
@@ -46,6 +46,7 @@ const Right = styled.div`
     display: flex;
     align-items: center;
     gap: 25px;
+    height: min-content;
 `
 const YourHome = styled.div`
     cursor: pointer;

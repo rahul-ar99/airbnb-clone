@@ -22,16 +22,16 @@ const CatoScroll = () => {
 
     return (
         <Div1>
-            <LeftBtn onClick={()=>scroll(-1000)}><BtnImg src={require("../../assets/icons/angle-left.png")}></BtnImg></LeftBtn>
+            {/* <LeftBtn onClick={()=>scroll(-1000)}><BtnImg src={require("../../assets/icons/angle-left.png")}></BtnImg></LeftBtn> */}
             <ListItem ref={ref}>
                 {categoryOption.map((items,index) => (
                     <SingleItems key={index}>
-                        <Img1 key={items.image} src={require(`../../assets/icons/${items.image}.jpg`)} alt="" />
+                        {/* <Img1 key={items.image} src={require(`../../assets/icons/${items.image}.jpg`)} alt="CatogoryIcon" /> */}
                         <ItemName>{items.name}</ItemName></SingleItems>
                 ))}
 
             </ListItem>
-            <RightBtn  onClick={()=>scroll(1000)}><BtnImg src={require("../../assets/icons/next.png")}></BtnImg></RightBtn>
+            {/* <RightBtn  onClick={()=>scroll(1000)}><BtnImg src={require("../../assets/icons/next.png")}></BtnImg></RightBtn> */}
         </Div1>
         
     );
@@ -56,6 +56,7 @@ const ListItem = styled.ul`
     overflow-x: scroll;
     overflow-y: hidden;
     padding: 20px 0;
+    scroll-behavior: smooth;
 `
 
 const BtnImg = styled.img`

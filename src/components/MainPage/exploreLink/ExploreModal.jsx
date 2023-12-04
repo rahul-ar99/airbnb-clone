@@ -2,7 +2,7 @@ import React ,{useEffect} from 'react';
 import styled from 'styled-components';
 
 
-const ExploreModal = ({close}) => {
+const ExploreModal = ({close}) => {   //close is props function
 
     useEffect(()=>{
         document.body.style.overflow = "hidden"
@@ -16,10 +16,9 @@ const ExploreModal = ({close}) => {
             onClick={(e) => {
                 if (!e.target.closest(Modal)) {
                     close(false);
-                    setUserModal= false
 
                 }
-            }}
+            }}   //close modal when click outside
         >
             <Modal>
 
@@ -31,7 +30,7 @@ const ExploreModal = ({close}) => {
             <ImgDiv>
                 <Img1 src={require("../../assets/images/phone.webp")} />
             </ImgDiv>
-            <CloseBtn onClick={()=>close(false)}>
+             <CloseBtn onClick={()=>close(false)} >  {/* close modal when click 'x' icon */}
                 <CloseImg src={require("../../assets/icons/close.png")}></CloseImg>
             </CloseBtn>
             </Modal>
@@ -112,6 +111,7 @@ const CloseBtn = styled.div`
 const CloseImg = styled.img`
     filter:grayscale(100%);
 `
+
 
 
 export default ExploreModal;
