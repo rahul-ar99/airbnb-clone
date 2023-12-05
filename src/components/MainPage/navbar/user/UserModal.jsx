@@ -33,8 +33,8 @@ const UserModal = ({userClose}) => {
                 <Items>Airbnb your home</Items>
                 <Items onClick={()=>userClose(false)}>Help centre</Items>
             </UserItems>
-        {featureModal && <ExploreModal close={setFeaturesModal} />}
-        {loginModal && <Login loginClose={setLoginModal} />}
+            {featureModal && <ExploreModal close={setFeaturesModal} />}
+            {loginModal && <Login loginClose={setLoginModal} />}
 
         </>
     );

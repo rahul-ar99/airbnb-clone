@@ -33,6 +33,7 @@ const LogInDiv =styled.div`
 display:flex;`
 const LoginLeft = styled.div``
 const LoginBtn = styled.button``
+const Guides = styled.div``
 
 
 export default HelpMain;
