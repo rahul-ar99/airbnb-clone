@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import FuturePlaces from './FuturePlaces/FuturePlaces';
 
 
 const FutureGateway = () => {
@@ -16,80 +17,8 @@ const FutureGateway = () => {
                 <Button>popular</Button>
                 <Button>popular</Button>
             </Buttons>
-            <Detail>
-                <Places>
-                    <Place>Canmore</Place>
-                    <Department>Apartment rentals</Department>
-                </Places>
-                <Places>
-                    <Place>Canmore</Place>
-                    <Department>Apartment rentals</Department>
-                </Places>
-                <Places>
-                    <Place>Canmore</Place>
-                    <Department>Apartment rentals</Department>
-                </Places>
-                <Places>
-                    <Place>Canmore</Place>
-                    <Department>Apartment rentals</Department>
-                </Places>
-                <Places>
-                    <Place>Canmore</Place>
-                    <Department>Apartment rentals</Department>
-                </Places>
-                <Places>
-                    <Place>Canmore</Place>
-                    <Department>Apartment rentals</Department>
-                </Places>
-                <Places>
-                    <Place>Canmore</Place>
-                    <Department>Apartment rentals</Department>
-                </Places>
-                <Places>
-                    <Place>Canmore</Place>
-                    <Department>Apartment rentals</Department>
-                </Places>
-                <Places>
-                    <Place>Canmore</Place>
-                    <Department>Apartment rentals</Department>
-                </Places>
-                <Places>
-                    <Place>Canmore</Place>
-                    <Department>Apartment rentals</Department>
-                </Places>
-                <Places>
-                    <Place>Canmore</Place>
-                    <Department>Apartment rentals</Department>
-                </Places>
-                <Places>
-                    <Place>Canmore</Place>
-                    <Department>Apartment rentals</Department>
-                </Places>
-                <Places>
-                    <Place>Canmore</Place>
-                    <Department>Apartment rentals</Department>
-                </Places>
-                <Places>
-                    <Place>Canmore</Place>
-                    <Department>Apartment rentals</Department>
-                </Places>
-                <Places>
-                    <Place>Canmore</Place>
-                    <Department>Apartment rentals</Department>
-                </Places>
-                <Places>
-                    <Place>Canmore</Place>
-                    <Department>Apartment rentals</Department>
-                </Places>
-                <Places>
-                    <Place>Canmore</Place>
-                    <Department>Apartment rentals</Department>
-                </Places>
-                <Places>
-                    <Place>Canmore</Place>
-                    <Department>Apartment rentals</Department>
-                </Places>
-            </Detail>
+            <FuturePlaces />
+            
         </Div1>
     );
 };

@@ -11,27 +11,32 @@ const CatoScroll = () => {
         setCategeryOption(CatoData,categoryOption)
     },[])
     
-    const [resourse, setResouse] = useState("fisrt")
+    // const [resourse, setResouse] = useState()
 
     const ref = useRef(null);
 
+    // scroll function 
+    // click on
     const scroll = (scrollOffset) =>{
         ref.current.scrollLeft += scrollOffset;
     }
 
 
+
+
     return (
         <Div1>
-            {/* <LeftBtn onClick={()=>scroll(-1000)}><BtnImg src={require("../../assets/icons/angle-left.png")}></BtnImg></LeftBtn> */}
+            <LeftBtn onClick={()=>scroll(-1000)}><BtnImg src={require("../../assets/icons/angle-left.png")}></BtnImg></LeftBtn>
             <ListItem ref={ref}>
                 {categoryOption.map((items,index) => (
-                    <SingleItems key={index}>
-                        {/* <Img1 key={items.image} src={require(`../../assets/icons/${items.image}.jpg`)} alt="CatogoryIcon" /> */}
-                        <ItemName>{items.name}</ItemName></SingleItems>
+                    <SingleItems key={items.name}>
+                        <Img1 key={items.image} src={`../../assets/icons/catogary1.jpg`} alt="Icon" />
+                        <ItemName key={index}>{items.image}</ItemName>
+                    </SingleItems>
                 ))}
 
             </ListItem>
-            {/* <RightBtn  onClick={()=>scroll(1000)}><BtnImg src={require("../../assets/icons/next.png")}></BtnImg></RightBtn> */}
+            <RightBtn  onClick={()=>scroll(1000)}><BtnImg src={require(`../../assets/icons/next.png`)}></BtnImg></RightBtn>
         </Div1>
         
     );

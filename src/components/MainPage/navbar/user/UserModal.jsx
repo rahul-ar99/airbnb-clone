@@ -2,6 +2,8 @@ import React,{useState, useEffect} from 'react';
 import styled from 'styled-components';
 import ExploreModal from '../../exploreLink/ExploreModal';
 import Login from './Login';
+import { Link } from 'react-router-dom';
+
 
 const UserModal = ({userClose}) => {
     const [featureModal, setFeaturesModal] = useState(false);
@@ -31,11 +33,10 @@ const UserModal = ({userClose}) => {
                     }}>Sign up</Items>
                 <hr/>
                 <Items>Airbnb your home</Items>
-                <Items onClick={()=>userClose(false)}>Help centre</Items>
+                <Items><Link to="/help"> Help centre</Link></Items>
             </UserItems>
             {featureModal && <ExploreModal close={setFeaturesModal} />}
             {loginModal && <Login loginClose={setLoginModal} />}
-
         </>
     );
 };

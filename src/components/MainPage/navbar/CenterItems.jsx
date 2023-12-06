@@ -24,7 +24,7 @@ const CenterNav = () => {
                     <img src={require("../../assets/icons/magnifying-glass.png")} alt="searchIcon" className='invert'/>
                 </SearchBtn>
             </CenterDiv>
-            {isModal && <CenterContent />}
+            {/* {isModal && <CenterContent />} */}
         </Nav>
     );
 }
@@ -41,7 +41,7 @@ const CenterDiv = styled.div`
 
 const Nav = styled.div`
     margin-left: 170px;
-    margin-top: 100px;
+    /* margin-top: 100px; */
     display: flex;
     flex-direction: column;
     align-items: center;

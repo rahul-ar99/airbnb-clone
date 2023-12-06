@@ -9,6 +9,16 @@ const Cards = () => {
                 <SingleCard>
                     <Images>
                         <Img1 src={require("../../assets/images/photos1.webp")} alt="" />
+                        <Img1 src={require("../../assets/images/photos2.webp")} alt="" />
+                        <Img1 src={require("../../assets/images/photos3.webp")} alt="" />
+                        <Img1 src={require("../../assets/images/photos4.webp")} alt="" />
+                        <Img1 src={require("../../assets/images/photos5.webp")} alt="" />
+                        <Img1 src={require("../../assets/images/photos6.webp")} alt="" />
+                        <Img1 src={require("../../assets/images/photos7.webp")} alt="" />
+                        <Img1 src={require("../../assets/images/photos8.webp")} alt="" />
+                        <Img1 src={require("../../assets/images/photos9.webp")} alt="" />
+                        <Img1 src={require("../../assets/images/photos10.webp")} alt="" />
+                        <Img1 src={require("../../assets/images/photos11.webp")} alt="" />
                     </Images>
                     <LikeIcon>
                         <HeartIcon src={require("../../assets/icons/heart.png")} alt="" />
@@ -363,10 +373,10 @@ const Images = styled.div`
     width: 272px;
     height: 255px;
     border-radius: 15px;
-    overflow: hidden;
+    overflow: scroll;
+    display: flex;
 `;
 const Img1 = styled.img`
-    width: 100%;
     height: 100%;
 `
 const LikeIcon = styled.div`

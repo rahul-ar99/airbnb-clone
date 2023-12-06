@@ -7,7 +7,6 @@ const Navbar = () => {
     return (
         <Div>
             <div>
-
             <CompanyIcon></CompanyIcon>
             <PageHead>Help Centre</PageHead>
             </div>
