@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import UserModal from './user/UserModal';
 import LangRegion from './LangRegion';
+import { Link } from 'react-router-dom';
 // import Asdf from './user/Asdf';
 
 const RightNav = () => {
@@ -15,7 +16,7 @@ const RightNav = () => {
         <>
             <Right>
                 <YourHome >
-                    <a>Airbnb your home</a> 
+                    <Link to="/help">Airbnb your home</Link> 
                 </YourHome>
                 <Language onClick={()=>{
                     setLangModal(true)?setLangModal(false):setLangModal(true)

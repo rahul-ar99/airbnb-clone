@@ -32,7 +32,7 @@ const UserModal = ({userClose}) => {
                         setLoginModal(true)
                     }}>Sign up</Items>
                 <hr/>
-                <Items>Airbnb your home</Items>
+                <Items><Link to="/help">Airbnb your home</Link></Items>
                 <Items><Link to="/help"> Help centre</Link></Items>
             </UserItems>
             {featureModal && <ExploreModal close={setFeaturesModal} />}

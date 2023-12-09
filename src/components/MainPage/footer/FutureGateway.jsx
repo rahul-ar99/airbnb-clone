@@ -41,17 +41,6 @@ const Buttons = styled.div`
 const Button = styled.button`
 
 `;
-const Detail = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    row-gap: 20px;
-    padding-top: 10px;
-`;
-const Places = styled.div`
-    width: 16%;
-`;
-const Place = styled.p``;
-const Department = styled.p``;
+
 
 export default FutureGateway;
