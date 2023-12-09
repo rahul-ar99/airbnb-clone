@@ -104,6 +104,7 @@ const GuidNav = styled.div``
 const GuidHead = styled.h5`
     font-size: 25px;
     font-weight: 500;
+    
 `
 const GuidA = styled.a``
 const GuidUl = styled.ul`
