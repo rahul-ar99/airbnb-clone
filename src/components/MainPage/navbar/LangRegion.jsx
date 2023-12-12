@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import styled from 'styled-components';
+import './LangRegion.css'
 
 
 const LangRegion = ({close}) => {
@@ -25,9 +26,9 @@ const LangRegion = ({close}) => {
             <CloseBtn onClick={()=>close(false)}>
                 <CloseImg src={require("../../assets/icons/close.png")}></CloseImg>
             </CloseBtn>
-            <Tabs>
-                <TabBtn>Language and region</TabBtn>
-                <TabBtn>Currency</TabBtn>
+            <Tabs className='asdf'>
+                <TabBtn className='tabs active-tabs'>Language and region</TabBtn>
+                <TabBtn className='tabs'>Currency</TabBtn>
             </Tabs>
             <Hr1 />
             <LangContent>
@@ -179,6 +180,8 @@ const Lang = styled.p``
 const CloseImg = styled.img`
     filter:grayscale(100%);
 `
+
+
 
 
 export default LangRegion;
