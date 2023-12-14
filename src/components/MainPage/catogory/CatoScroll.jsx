@@ -30,8 +30,8 @@ const CatoScroll = () => {
             <ListItem ref={ref}>
                 {categoryOption.map((items,index) => (
                     <SingleItems key={items.name}>
-                        <Img1 key={items.image} src={`../../assets/icons/catogary1.jpg`} alt="Icon" />
-                        <ItemName key={index}>{items.image}</ItemName>
+                        <Img1 key={items.image} src={require(`../../../assets/icons/${items.image}.jpg`)} alt="Icon" />
+                        <ItemName key={index}>{items.name}</ItemName>
                     </SingleItems>
                 ))}
 

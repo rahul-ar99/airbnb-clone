@@ -1,9 +1,37 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import './LangRegion.css'
 
 
 const LangRegion = ({close}) => {
+
+
+    //set hooks for the main heads language and currency
+    const [mainTabs, setMainTabs] = useState(1)
+    
+
+    //change active section clicking language and currency
+    //first index is language and second is currency
+    const toggleTab = (index) => {
+        setMainTabs(index)
+    }
+
+    const LangLoop = []
+    const currencyLoop = []
+    for(let i=0;i<20;i++){
+        currencyLoop.push(
+        <CurrencyLi>
+            <CurrencyName>Indian rupee</CurrencyName>
+            <CurrencySymbol>INR - $</CurrencySymbol>
+        </CurrencyLi>)
+        LangLoop.push(
+            <Content>
+                <Lang>English</Lang>
+                <Country>India</Country>
+            </Content>
+        )
+    }
+
     useEffect(()=>{
         document.body.style.overflow= "hidden"
         return () => {
@@ -26,12 +54,12 @@ const LangRegion = ({close}) => {
             <CloseBtn onClick={()=>close(false)}>
                 <CloseImg src={require("../../assets/icons/close.png")}></CloseImg>
             </CloseBtn>
-            <Tabs className='asdf'>
-                <TabBtn className='tabs active-tabs'>Language and region</TabBtn>
-                <TabBtn className='tabs'>Currency</TabBtn>
+            <Tabs>
+                <TabBtn className={mainTabs===1? 'tabs active-tabs':'tabs'} onClick={()=>toggleTab(1)}>Language and region</TabBtn>
+                <TabBtn className={mainTabs===2? 'tabs active-tabs':'tabs'}  onClick={()=>toggleTab(2)}>Currency</TabBtn>
             </Tabs>
             <Hr1 />
-            <LangContent>
+            <LangContent className={mainTabs===1?'acitve-content':'content'}>
                 <Translation>
                     <Head>Translation</Head>
                     <SubHead>Automatically translate desctiption and reviews to English</SubHead>
@@ -49,52 +77,15 @@ const LangRegion = ({close}) => {
                 </ContentUl>
                 <MainHead>Choose a language and region</MainHead>
                 <ContentUl>
-                    <Content>
-                        <Lang>English</Lang>
-                        <Country>India</Country>
-                    </Content>
-                    <Content>
-                        <Lang>English</Lang>
-                        <Country>India</Country>
-                    </Content>
-                    <Content>
-                        <Lang>English</Lang>
-                        <Country>India</Country>
-                    </Content>
-                    <Content>
-                        <Lang>English</Lang>
-                        <Country>India</Country>
-                    </Content>
-                    <Content>
-                        <Lang>English</Lang>
-                        <Country>India</Country>
-                    </Content>
-                    <Content>
-                        <Lang>English</Lang>
-                        <Country>India</Country>
-                    </Content>
-                    <Content>
-                        <Lang>English</Lang>
-                        <Country>India</Country>
-                    </Content>
-                    <Content>
-                        <Lang>English</Lang>
-                        <Country>India</Country>
-                    </Content>
-                    <Content>
-                        <Lang>English</Lang>
-                        <Country>India</Country>
-                    </Content>
-                    <Content>
-                        <Lang>English</Lang>
-                        <Country>India</Country>
-                    </Content>
-                    <Content>
-                        <Lang>English</Lang>
-                        <Country>India</Country>
-                    </Content>
+                    {LangLoop}
                 </ContentUl>
             </LangContent>
+            <CurrencyContent className={mainTabs===2? 'active-content':'content'}>
+                <CurrencyHead>Choose a currency</CurrencyHead>
+                <CurrencyUl>
+                    {currencyLoop}
+                </CurrencyUl>
+            </CurrencyContent>
             </Modal>
         </Screen>
     );
@@ -120,11 +111,11 @@ const Modal = styled.div`
     display: flex;
     padding: 50px 0 0 20px;
     flex-direction: column;
-    width: 76rem;
-    height: 50rem;
+    width: 65rem;
+    height: 56rem;
     position: relative;
     border-radius: 13px;
-    overflow: hidden;
+    overflow: scroll;
 
 `;
 
@@ -138,12 +129,32 @@ const CloseBtn = styled.div`
     cursor: pointer;
     `
 
-const Tabs = styled.div``
+const Tabs = styled.div`
+    padding-top: 10px;
+`
 const TabBtn = styled.button`
     padding: 10px;
 `
 const LangContent = styled.div`
 `
+const CurrencyContent = styled.div``
+const CurrencyHead = styled.h4`
+    font-size: 21px;
+    font-weight: 500;
+    padding: 30px 0;
+`
+const CurrencyUl = styled.ul`
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    `
+const CurrencyLi = styled.li`
+    width: 20%;
+`
+const CurrencyName = styled.p``
+const CurrencySymbol = styled.p``
+
 const Translation = styled.p`
     padding:60px 0;
 

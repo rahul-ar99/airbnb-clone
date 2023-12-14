@@ -1,8 +1,11 @@
-import React ,{useEffect} from 'react';
+import React ,{useEffect, useState} from 'react';
 import styled from 'styled-components';
 
 
 const Login = ({loginClose}) => {
+    
+    // change log in and signup with using of hooks
+    const [login, setLogin] = useState(false)
 
     useEffect(()=>{
         document.body.style.overflow = "hidden"
@@ -20,19 +23,38 @@ const Login = ({loginClose}) => {
             }}}
         >
             <Modal>
-                <LoginNav><LoginHead>Log in or sign up</LoginHead></LoginNav>
+                {/* if login is true show login as head otherwise signup is head */}
+                <LoginNav><LoginHead>{login=== true?"login": "signup"}</LoginHead></LoginNav>
                 <MainDiv>
 
                 <LoginContent>
+
                     <ContentHead>Welcome to Airbnb</ContentHead>
                     <LoginForm>
                         <InputDiv>
-                            <CountryInput></CountryInput>
-                            <NumberInput></NumberInput>
+                            <CountryInput placeholder='Phone no'></CountryInput>
+                            {/* if signup page is true */}
+                            {login && 
+                            <>
+                                <NumberInput type='text' placeholder='Username'></NumberInput>
+                                <NumberInput type='email' placeholder='Email'></NumberInput>
+                                <NumberInput placeholder='password'></NumberInput>
+                                <NumberInput placeholder=' password'></NumberInput>
+                            </>
+
+
+                            }
+                            <NumberInput placeholder='password'></NumberInput>
                         </InputDiv>
                         <Text>We'll call or text you to confirm your number Standard message and data rates apply<Privacy> Privacy Policy</Privacy></Text>
                         <ContinueBtn>Countinue</ContinueBtn>
+                        <ContinueBtn onClick={()=>{
+                            const loginhead = login ===true?false:true
+                            setLogin(loginhead)
+
+                            }}>{login=== true? "signup":"login"}</ContinueBtn>
                     </LoginForm>
+
                 </LoginContent>
                 <Or><hr />or<hr /></Or>
                 <LoginLinks>
@@ -113,21 +135,29 @@ const InputDiv = styled.div`
     border-radius: 10px;
     border: 1px solid black;
     overflow: hidden;
+    &:last-child{
+        outline: 1px solid black;
+    }
 
 `
 
 const LoginForm = styled.form`
+
 `;
 
 
 const CountryInput = styled.input`
     border-bottom: 1px solid black;
     width: 100%;
-    padding: 14px 0;
+    padding: 14px;
     `;
 const NumberInput = styled.input`
-width: 100%;
-padding: 14px;
+    width: 100%;
+    padding: 14px;
+    &:not(:last-child){
+        border-bottom: 1px solid black;
+
+    }
 
 `;
 const Text = styled.p`

@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import CenterContent from './CenterContent';
 
 
 const CenterNav = () => {
@@ -8,7 +7,7 @@ const CenterNav = () => {
 
     return (
         <Nav>
-            <CenterDiv >
+            {/* <CenterDiv >
                 <Heads>
                     <P1>Anywhere</P1>
                 </Heads>
@@ -23,8 +22,19 @@ const CenterNav = () => {
                 <SearchBtn>
                     <img src={require("../../assets/icons/magnifying-glass.png")} alt="searchIcon" className='invert'/>
                 </SearchBtn>
-            </CenterDiv>
+            </CenterDiv> */}
             {/* {isModal && <CenterContent />} */}
+            <MainCenter>
+                <TopSection>
+                    <TopBtns>Stays</TopBtns>
+                    <TopBtns>Experience</TopBtns>
+                    <TopBtns>Online Experience</TopBtns>
+                </TopSection>
+                <BottomSection>
+
+
+                </BottomSection>
+            </MainCenter>
         </Nav>
     );
 }
@@ -72,5 +82,11 @@ const SearchBtn = styled.div`
     background-color: #FF385C;
     border-radius: 50%;
 `
+
+
+const MainCenter = styled.div``
+const TopSection =styled.div``
+const TopBtns =styled.button``
+const BottomSection = styled.div``
 
 export default CenterNav;
