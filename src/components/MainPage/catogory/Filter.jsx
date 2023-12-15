@@ -7,7 +7,7 @@ const Filter = () => {
     return (
         <>
         <FilterBtn>
-            <FilterIcon src={require("../../assets/icons/filter.png")} />
+            <FilterIcon src={require("../../../assets/icons/filter.png")} />
             <FilterName>Filter</FilterName>
         </FilterBtn>
         </>

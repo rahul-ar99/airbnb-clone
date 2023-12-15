@@ -1,5 +1,5 @@
 import React, {useEffect,useState , useRef}from 'react';
-import CatoData from '../../assets/json/catogery.json'
+import CatoData from '../../../assets/json/catogery.json'
 import styled from 'styled-components';
 
 
@@ -26,7 +26,7 @@ const CatoScroll = () => {
 
     return (
         <Div1>
-            <LeftBtn onClick={()=>scroll(-1000)}><BtnImg src={require("../../assets/icons/angle-left.png")}></BtnImg></LeftBtn>
+            <LeftBtn onClick={()=>scroll(-1000)}><BtnImg src={require("../../../assets/icons/angle-left.png")}></BtnImg></LeftBtn>
             <ListItem ref={ref}>
                 {categoryOption.map((items,index) => (
                     <SingleItems key={items.name}>
@@ -36,7 +36,7 @@ const CatoScroll = () => {
                 ))}
 
             </ListItem>
-            <RightBtn  onClick={()=>scroll(1000)}><BtnImg src={require(`../../assets/icons/next.png`)}></BtnImg></RightBtn>
+            <RightBtn  onClick={()=>scroll(1000)}><BtnImg src={require(`../../../assets/icons/next.png`)}></BtnImg></RightBtn>
         </Div1>
         
     );

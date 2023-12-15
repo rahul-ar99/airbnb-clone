@@ -28,10 +28,10 @@ const ExploreModal = ({close}) => {   //close is props function
                 <Button>Start exploring</Button>
             </Content>
             <ImgDiv>
-                <Img1 src={require("../../assets/images/phone.webp")} />
+                <Img1 src={require("../../../assets/images/phone.webp")} />
             </ImgDiv>
              <CloseBtn onClick={()=>close(false)} >  {/* close modal when click 'x' icon */}
-                <CloseImg src={require("../../assets/icons/close.png")}></CloseImg>
+                <CloseImg src={require("../../../assets/icons/close.png")}></CloseImg>
             </CloseBtn>
             </Modal>
         </Screen>

@@ -74,7 +74,7 @@ const Login = ({loginClose}) => {
 
                 </MainDiv>
                 <CloseBtn onClick={()=>loginClose(false)}>
-                    <CloseImg src={require("../../../assets/icons/close.png")}></CloseImg>
+                    <CloseImg src={require("../../../../assets/icons/close.png")}></CloseImg>
                 </CloseBtn>
             </Modal>
         </Screen>

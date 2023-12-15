@@ -52,7 +52,7 @@ const LangRegion = ({close}) => {
             <Modal>
 
             <CloseBtn onClick={()=>close(false)}>
-                <CloseImg src={require("../../assets/icons/close.png")}></CloseImg>
+                <CloseImg src={require("../../../assets/icons/close.png")}></CloseImg>
             </CloseBtn>
             <Tabs>
                 <TabBtn className={mainTabs===1? 'tabs active-tabs':'tabs'} onClick={()=>toggleTab(1)}>Language and region</TabBtn>

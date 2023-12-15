@@ -21,16 +21,16 @@ const RightNav = () => {
                 <Language onClick={()=>{
                     setLangModal(true)?setLangModal(false):setLangModal(true)
                 }}>
-                    <img src={require('../../assets/icons/world-icon-png-3008.png')}  alt="globe" />
+                    <img src={require('../../../assets/icons/world-icon-png-3008.png')}  alt="globe" />
                 </Language>
                 <User onClick={()=>{
                         setUserModal(userModal?false:true)
                     }}>
                     <Hamburger>
-                        <img src={require("../../assets/icons/menu.png")} alt="Hamsburger" />
+                        <img src={require("../../../assets/icons/menu.png")} alt="Hamsburger" />
                     </Hamburger>
                     <UserImg>
-                        <img src={require("../../assets/icons/user.png")} alt="userIcon" className='invert-[.4]' />
+                        <img src={require("../../../assets/icons/user.png")} alt="userIcon" className='invert-[.4]' />
                     </UserImg>
                 </User>
             </Right>       
