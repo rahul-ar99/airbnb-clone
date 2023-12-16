@@ -1,19 +1,76 @@
-import React ,{useEffect, useState} from 'react';
+import React ,{useEffect, useState, useRef} from 'react';
 import styled from 'styled-components';
 
 
 const Login = ({loginClose}) => {
     
-    // change log in and signup with using of hooks
-    const [login, setLogin] = useState(false)
 
+    //import user data from user
+    const userName = useRef()
+    const email = useRef()
+    const password = useRef()
+    const phone = useRef()
+    const confirmPassword = useRef()
+
+
+    // change log in and signup with using of hooks
+    const [login, setLogin] = useState(true)
+
+
+
+    //on login and signup submit
+    function submit() {
+
+
+        //if user click on create an account this if statement will work
+        if(login==false){
+
+
+            // assign user data to variables
+            const getUserName = userName.current.value
+            const getMail = email.current.value
+            const getPassword = password.current.value
+            const getPhone = phone.current.value
+            const getConfirmPassword = confirmPassword.current.value
+
+            const userDetails = [{"name":getUserName, "mail":getMail,"password": getPassword,"number": getPhone}]
+
+            localStorage.setItem("user",userDetails)
+
+
+            if(getUserName, getMail, getPassword, getPhone, getConfirmPassword)
+                console.log(getUserName, getMail, getPassword, getPhone, getConfirmPassword)
+
+
+            
+            setLogin(true)
+        }
+
+
+        //else user want to login, this else statement will work
+        else if(phone.current.value && password.current.value ){
+
+            const user = localStorage.getItem("user")
+            let jsonData;
+            if (user) {
+            try {
+                jsonData = JSON.parse(user);
+                console.log()
+            } catch (error) {
+                console.error('Error parsing JSON data:', error);
+            }
+            }
+        }
+
+
+    }
     useEffect(()=>{
         document.body.style.overflow = "hidden"
         return ()=>(
             document.body.style.overflow = "auto"
         )
     })
-    console.log(loginClose)
+    // console.log(loginClose)
 
     return (
         <Screen 
@@ -32,22 +89,21 @@ const Login = ({loginClose}) => {
                     <ContentHead>Welcome to Airbnb</ContentHead>
                     <LoginForm>
                         <InputDiv>
-                            <CountryInput placeholder='Phone no'></CountryInput>
                             {/* if signup page is true */}
-                            {login && 
+                            <CountryInput ref={phone} type='text' placeholder='Phone no'></CountryInput>
+                            {login===false && 
                             <>
-                                <NumberInput type='text' placeholder='Username'></NumberInput>
-                                <NumberInput type='email' placeholder='Email'></NumberInput>
-                                <NumberInput placeholder='password'></NumberInput>
-                                <NumberInput placeholder=' password'></NumberInput>
+                                <NumberInput ref={userName} type='text' placeholder='Username'></NumberInput>
+                                <NumberInput ref={email} type='email' placeholder='Email'></NumberInput>
+                                <NumberInput ref={password} type='password' placeholder='password'></NumberInput>
+                                <NumberInput ref={confirmPassword} type='password' placeholder='password'></NumberInput>
                             </>
-
-
                             }
-                            <NumberInput placeholder='password'></NumberInput>
+                            {login &&  <NumberInput ref={password} placeholder='password'></NumberInput>}
+                           
                         </InputDiv>
                         <Text>We'll call or text you to confirm your number Standard message and data rates apply<Privacy> Privacy Policy</Privacy></Text>
-                        <ContinueBtn>Countinue</ContinueBtn>
+                        <ContinueBtn onClick={submit}>Countinue</ContinueBtn>
                         <ContinueBtn onClick={()=>{
                             const loginhead = login ===true?false:true
                             setLogin(loginhead)
@@ -188,6 +244,7 @@ const ContinueBtn = styled.div`
     color: white;
     font-weight: 600;
     margin-top: 10px;
+    cursor: pointer;
 
 `;
 const Or = styled.div`

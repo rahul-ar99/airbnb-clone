@@ -1,30 +1,53 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import Data from "../../../assets/json/mainContent.json"
+import Login from '../navbar/user/Login';
+import { useNavigate } from 'react-router-dom';
 
 const Cards = () => {
-    
-    // 
+
+    // if click on fav or booking then show the login page
+    // create state variables
+    const [loginModal, setLoginModal] = useState(false);
+
+
+    // create all data into array cards
     const [cards, setCards] = useState([])
 
+    const [naigat , setNavigat] = useState(true)
+    
     useEffect(()=>{
         setCards(Data,cards)
     },[])
 
 
-    const ref = useRef(null);
+    const ref1 = useRef(null);
 
     const scroll = (scrollOffset) =>{
-        // ref.current.scroll
-        ref.current.scrollLeft += scrollOffset;
+        ref1.current.scrollLeft += scrollOffset;
+        console.log(ref1.current.scrollLeft)
+    }
+
+
+    const navigate = useNavigate()
+
+    const handleClick = (cardId) =>{
+        // setClickCard(cardId)
+        navigate('/singleitem',{id:cardId})
+        
     }
 
     return (
         <div className='wrapper'>
             <AllCards>
                 {cards.map((each, index)=>(
-                    <SingleCard>
-                            <Images ref={ref}>
+                    <SingleCard key={each.id} onClick={(e)=>{
+                        console.log(each.id)
+                        handleClick(each.id)
+
+                    }}>
+                        <ImageBorder>
+                            <Images ref={ref1}>
                                 <Img1 src={require(`../../../assets/images/${each.image}.webp`)} alt="" />
                                 <Img1 src={require("../../../assets/images/photos2.webp")} alt="" />
                                 <Img1 src={require("../../../assets/images/photos3.webp")} alt="" />
@@ -36,8 +59,11 @@ const Cards = () => {
                                 <Img1 src={require("../../../assets/images/photos9.webp")} alt="" />
                                 <Img1 src={require("../../../assets/images/photos10.webp")} alt="" />
                                 <Img1 src={require("../../../assets/images/photos11.webp")} alt="" />
-                        </Images>
-                        <LikeIcon>
+                            </Images>
+                        </ImageBorder>
+                        <LikeIcon onClick={()=>setLoginModal(true)}>
+                            <HeartInput type="checkbox" id='check-box'/>
+                            <HeartLabel htmlFor='check-box' className='heart'/>
                             <HeartIcon src={require("../../../assets/icons/heart.png")} alt="" />
                         </LikeIcon>
                         <Details>
@@ -49,12 +75,13 @@ const Cards = () => {
                             <Date>{each.dates}</Date>
                             <Money><Price>${each.price} night</Price></Money>
                         </Details>
-                        <LeftBtn onClick={()=>scroll(100)}><ArrowIcon  src={require("../../../assets/icons/angle-left.png")}/></LeftBtn>
-                        <RightBtn onClick={()=>scroll(-100)}><ArrowIcon  src={require("../../../assets/icons/next.png")}/></RightBtn>
+                        <LeftBtn onClick={()=>scroll(-100)}><ArrowIcon  src={require("../../../assets/icons/angle-left.png")}/></LeftBtn>
+                        <RightBtn onClick={()=>scroll(100)}><ArrowIcon  src={require("../../../assets/icons/next.png")}/></RightBtn>
                     </SingleCard>
                 ))}
                 
             </AllCards>
+            {loginModal && <Login loginClose={setLoginModal} />}
         </div>
     );
 };
@@ -67,14 +94,18 @@ const AllCards = styled.ul`
     row-gap: 40px;
 `;
 
+const ImageBorder = styled.div`
+    width: 272px;
+    /* overflow: hidden; */
 
+`
 
 const Images = styled.div`
-    width:272px;
+    width:fit-content;
     height: 255px;
     border-radius: 15px;
-    overflow: scroll;
     display: flex;
+    overflow: scroll;
 `;
 
 const Img1 = styled.img`
@@ -91,6 +122,9 @@ const LikeIcon = styled.div`
 `;
 const HeartIcon = styled.img`
 `
+
+const HeartInput = styled.input``
+const HeartLabel = styled.label``
 const Details = styled.div``;
 const FirstLine = styled.div`
     display:flex;
@@ -129,7 +163,7 @@ const Price = styled.span`
 `;
 
 const LeftBtn = styled.button`
-    width: 14px;
+    width: 18px;
     position: absolute;
     z-index: 19;
     top: 30%;
@@ -145,7 +179,7 @@ const LeftBtn = styled.button`
 `
 const RightBtn = styled.button`
     display: none;
-    width: 14px;
+    width: 18px;
     position: absolute;
     z-index: 19;
     top: 30%;
@@ -163,6 +197,7 @@ const SingleCard = styled.li`
     position: relative;
     width:fit-content;
     cursor: pointer;
+    overflow: hidden;
      
     &:hover ${RightBtn}{
         display: block;

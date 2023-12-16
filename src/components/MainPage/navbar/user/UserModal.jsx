@@ -9,6 +9,7 @@ const UserModal = ({userClose}) => {
     const [featureModal, setFeaturesModal] = useState(false);
     const [loginModal, setLoginModal] = useState(false)
     // const [mainModal, setMainModal] = useState(true)
+    const [signOrLog, setSignOrLog] = useState(false);
 
     // useEffect(()=>{
     //     setMainModal(false)
@@ -26,8 +27,11 @@ const UserModal = ({userClose}) => {
                     <P1 >Winter Release Features</P1>
                 </Items>
                 <hr/>
-                <Items>
-                    <P1>Login</P1></Items>
+                <Items onClick={()=>{
+                        setLoginModal(true)
+
+                    }}>
+                    <P1 >Login</P1></Items>
                 <Items onClick={()=>{
                         setLoginModal(true)
                     }}>Sign up</Items>
@@ -35,7 +39,7 @@ const UserModal = ({userClose}) => {
                 <Items><Link to="/help">Airbnb your home</Link></Items>
                 <Items><Link to="/help"> Help centre</Link></Items>
             </UserItems>
-            {featureModal && <ExploreModal close={setFeaturesModal} />}
+            {featureModal && <ExploreModal close={setFeaturesModal}/>}
             {loginModal && <Login loginClose={setLoginModal} />}
         </>
     );
@@ -59,6 +63,7 @@ const Items = styled.p`
     white-space: nowrap;
     padding: 13px 0 13px 10px;
     cursor: pointer;
+    width: 100%;
 `;
 const P1 = styled.span``;
 

@@ -1,42 +1,48 @@
-[{
+[
+  {
     "place": "Bengaluru, India",
     "distance": "2 km to Lalbagh Botanical Garden",
     "dates": "8-13 Jan",
     "price": 6700,
     "ratings": 4.6,
-    "image":"photos1"
-},
+    "image": "photos1",
+    "id": 1
+  },
   {
     "place": "Chandigarh, India",
     "distance": "3 km to Rock Garden",
     "dates": "15-20 Feb",
     "price": 7200,
     "ratings": 4.5,
-    "image":"photos2"
-},
+    "image": "photos2",
+    "id": 2
+  },
   {
     "place": "Nainital, India",
     "distance": "5 km to Naina Devi Temple",
     "dates": "10-18 Mar",
     "price": 8000,
     "ratings": 4.3,
-    "image":"photos4"
-},
+    "image": "photos4",
+    "id": 3
+  },
   {
     "place": "Ahmedabad, India",
     "distance": "4 km to Sabarmati Ashram",
     "dates": "5-12 Apr",
     "price": 6200,
     "ratings": 4.7,
-    "image":"photos4"
-},
+    "image": "photos4",
+    "id": 4
+  },
   {
     "place": "Jaipur, India",
     "distance": "2 km to Jal Mahal",
     "dates": "20-25 May",
     "price": 5600,
     "ratings": 4.2,
-    "image":"photos6"
+    "image": "photos6",
+    "id": 5
   },
   {
     "place": "Thiruvananthapuram, India",
@@ -44,7 +50,8 @@
     "dates": "12-17 Jun",
     "price": 6900,
     "ratings": 4.8,
-    "image":"photos5"
+    "image": "photos5",
+    "id": 6
   },
   {
     "place": "Puri, India",
@@ -52,7 +59,8 @@
     "dates": "8-14 Jul",
     "price": 6000,
     "ratings": 4.4,
-    "image":"photos9"
+    "image": "photos9",
+    "id": 7
   },
   {
     "place": "Rann of Kutch, India",
@@ -60,7 +68,8 @@
     "dates": "22-28 Aug",
     "price": 5800,
     "ratings": 4.9,
-    "image":"photos10"
+    "image": "photos10",
+    "id": 8
   },
   {
     "place": "Kanpur, India",
@@ -68,7 +77,8 @@
     "dates": "10-16 Sep",
     "price": 7500,
     "ratings": 4.6,
-    "image":"photos9"
+    "image": "photos9",
+    "id": 9
   },
   {
     "place": "Kodaikanal, India",
@@ -76,7 +86,8 @@
     "dates": "18-24 Oct",
     "price": 7000,
     "ratings": 4.3,
-    "image":"photos1"
+    "image": "photos1",
+    "id": 10
   },
   {
     "place": "Leh-Ladakh, India",
@@ -84,7 +95,8 @@
     "dates": "5-11 Nov",
     "price": 8400,
     "ratings": 4.7,
-    "image":"photos2"
+    "image": "photos2",
+    "id": 11
   },
   {
     "place": "Gangtok, India",
@@ -92,7 +104,8 @@
     "dates": "15-20 Dec",
     "price": 6500,
     "ratings": 4.5,
-    "image":"photos3"
+    "image": "photos3",
+    "id": 12
   },
   {
     "place": "Ranchi, India",
@@ -100,7 +113,8 @@
     "dates": "8-13 Jan",
     "price": 6800,
     "ratings": 4.2,
-    "image":"photos4"
+    "image": "photos4",
+    "id": 13
   },
   {
     "place": "Shillong, India",
@@ -108,7 +122,8 @@
     "dates": "15-20 Feb",
     "price": 7100,
     "ratings": 4.6,
-    "image":"photos5"
+    "image": "photos5",
+    "id": 14
   },
   {
     "place": "Bhubaneswar, India",
@@ -116,7 +131,8 @@
     "dates": "10-18 Mar",
     "price": 7300,
     "ratings": 4.4,
-    "image":"photos6"
+    "image": "photos6",
+    "id": 15
   },
   {
     "place": "Ajmer, India",
@@ -124,7 +140,8 @@
     "dates": "5-12 Apr",
     "price": 6000,
     "ratings": 4.8,
-    "image":"photos7"
+    "image": "photos7",
+    "id": 16
   },
   {
     "place": "Surat, India",
@@ -132,7 +149,8 @@
     "dates": "20-25 May",
     "price": 5900,
     "ratings": 4.3,
-    "image":"photos8"
+    "image": "photos8",
+    "id": 17
   },
   {
     "place": "Aurangabad, India",
@@ -140,7 +158,8 @@
     "dates": "12-17 Jun",
     "price": 7800,
     "ratings": 4.7,
-    "image":"photos9"
+    "image": "photos9",
+    "id": 18
   },
   {
     "place": "Vizag, India",
@@ -148,7 +167,8 @@
     "dates": "8-14 Jul",
     "price": 6600,
     "ratings": 4.5,
-    "image":"photos10"
+    "image": "photos10",
+    "id": 19
   },
   {
     "place": "Dehradun, India",
@@ -156,7 +176,8 @@
     "dates": "22-28 Aug",
     "price": 6400,
     "ratings": 4.2,
-    "image":"photos11"
+    "image": "photos11",
+    "id": 20
   },
   {
     "place": "Siliguri, India",
@@ -164,7 +185,8 @@
     "dates": "10-16 Sep",
     "price": 7000,
     "ratings": 4.6,
-    "image":"photos4"
+    "image": "photos4",
+    "id": 21
   },
   {
     "place": "Kozhikode, India",
@@ -172,7 +194,8 @@
     "dates": "18-24 Oct",
     "price": 7600,
     "ratings": 4.4,
-    "image":"photos12"
+    "image": "photos12",
+    "id": 22
   },
   {
     "place": "Nagpur, India",
@@ -180,7 +203,8 @@
     "dates": "5-11 Nov",
     "price": 6800,
     "ratings": 4.8,
-    "image":"photos13"
+    "image": "photos13",
+    "id": 23
   },
   {
     "place": "Ahmednagar, India",
@@ -188,158 +212,178 @@
     "dates": "8-13 Jan",
     "price": 6400,
     "ratings": 4.2,
-    "image":"photos14"
-},
-{
+    "image": "photos14",
+    "id": 24
+  },
+  {
     "place": "Coimbatore, India",
     "distance": "3 km to Marudamalai Temple",
     "dates": "15-20 Feb",
     "price": 6800,
     "ratings": 4.5,
-    "image":"photos15"
-},
-{
+    "image": "photos15",
+    "id": 25
+  },
+  {
     "place": "Haridwar, India",
     "distance": "5 km to Har Ki Pauri",
     "dates": "10-18 Mar",
     "price": 7600,
     "ratings": 4.3,
-    "image":"photos16"
-},
-{
+    "image": "photos16",
+    "id": 26
+  },
+  {
     "place": "Bhopal, India",
     "distance": "4 km to Van Vihar National Park",
     "dates": "5-12 Apr",
     "price": 7200,
     "ratings": 4.6,
-    "image":"photos17"
-},
-{
+    "image": "photos17",
+    "id": 27
+  },
+  {
     "place": "Jaisalmer, India",
     "distance": "2 km to Jaisalmer Fort",
     "dates": "20-25 May",
     "price": 7800,
     "ratings": 4.7,
-    "image":"photos18"
-},
-{
+    "image": "photos18",
+    "id": 28
+  },
+  {
     "place": "Port Blair, India",
     "distance": "3 km to Cellular Jail",
     "dates": "12-17 Jun",
     "price": 8500,
     "ratings": 4.4,
-    "image":"photos19"
-},
-{
+    "image": "photos19",
+    "id": 29
+  },
+  {
     "place": "Hampi, India",
     "distance": "2 km to Virupaksha Temple",
     "dates": "8-14 Jul",
     "price": 7100,
     "ratings": 4.8,
-    "image":"photos20"
-},
-{
+    "image": "photos20",
+    "id": 30
+  },
+  {
     "place": "Thimphu, India",
     "distance": "3 km to Buddha Dordenma",
     "dates": "22-28 Aug",
     "price": 9200,
     "ratings": 4.5,
-    "image":"photos1"
-},
-{
+    "image": "photos1",
+    "id": 31
+  },
+  {
     "place": "Pune, India",
     "distance": "2 km to Shaniwar Wada",
     "dates": "10-16 Sep",
     "price": 7000,
     "ratings": 4.6,
-    "image":"photos2"
-},
-{
+    "image": "photos2",
+    "id": 32
+  },
+  {
     "place": "Mount Abu, India",
     "distance": "4 km to Nakki Lake",
     "dates": "18-24 Oct",
     "price": 7900,
     "ratings": 4.2,
-    "image":"photos3"
-},
-{
+    "image": "photos3",
+    "id": 33
+  },
+  {
     "place": "Madurai, India",
     "distance": "2 km to Meenakshi Amman Temple",
     "dates": "5-11 Nov",
     "price": 6700,
     "ratings": 4.7,
-    "image":"photos4"
-},
-{
+    "image": "photos4",
+    "id": 34
+  },
+  {
     "place": "Gulmarg, India",
     "distance": "1 km to Gulmarg Gondola",
     "dates": "15-20 Dec",
     "price": 8100,
     "ratings": 4.4,
-    "image":"photos5"
-},
-{
+    "image": "photos5",
+    "id": 35
+  },
+  {
     "place": "Aurangabad, India",
     "distance": "3 km to Bibi Ka Maqbara",
     "dates": "8-13 Jan",
     "price": 6800,
     "ratings": 4.5,
-    "image":"photos6"
-},
-{
+    "image": "photos6",
+    "id": 36
+  },
+  {
     "place": "Visakhapatnam, India",
     "distance": "2 km to Kailasagiri",
     "dates": "15-20 Feb",
     "price": 7200,
     "ratings": 4.3,
-    "image":"photos7"
-},
-{
+    "image": "photos7",
+    "id": 37
+  },
+  {
     "place": "Pushkar, India",
     "distance": "5 km to Pushkar Lake",
     "dates": "10-18 Mar",
     "price": 7800,
     "ratings": 4.7,
-    "image":"photos8"
-},
-{
+    "image": "photos8",
+    "id": 38
+  },
+  {
     "place": "Jodhpur, India",
     "distance": "4 km to Mehrangarh Fort",
     "dates": "5-12 Apr",
     "price": 7500,
     "ratings": 4.6,
-    "image":"photos9"
-},
-{
+    "image": "photos9",
+    "id": 39
+  },
+  {
     "place": "Kochi, India",
     "distance": "2 km to Chinese Fishing Nets",
     "dates": "20-25 May",
     "price": 6900,
     "ratings": 4.2,
-    "image":"photos10"
-},
-{
+    "image": "photos10",
+    "id": 40
+  },
+  {
     "place": "Rameswaram, India",
     "distance": "3 km to Ramanathaswamy Temple",
     "dates": "12-17 Jun",
     "price": 7100,
     "ratings": 4.8,
-    "image":"photos11"
-},
-{
+    "image": "photos11",
+    "id": 41
+  },
+  {
     "place": "Srinagar, India",
     "distance": "2 km to Dal Lake",
     "dates": "8-14 Jul",
     "price": 8000,
     "ratings": 4.5,
-    "image":"photos12"
-},
-{
+    "image": "photos12",
+    "id": 42
+  },
+  {
     "place": "Manali, India",
     "distance": "1 km to Solang Valley",
     "dates": "22-28 Aug",
     "price": 7700,
     "ratings": 4.4,
-    "image":"photos13"
-}
+    "image": "photos13",
+    "id": 43
+  }
 ]
