@@ -3,9 +3,18 @@ import styled from 'styled-components';
 import ExploreModal from '../../exploreLink/ExploreModal';
 import Login from './Login';
 import { Link } from 'react-router-dom';
+// import { authenticated } from './Login';
 
 
 const UserModal = ({userClose}) => {
+
+
+
+    const [authenticated , setAuthenticated] = useState(false)
+
+
+
+
     const [featureModal, setFeaturesModal] = useState(false);
     const [loginModal, setLoginModal] = useState(false)
     // const [mainModal, setMainModal] = useState(true)
@@ -27,20 +36,25 @@ const UserModal = ({userClose}) => {
                     <P1 >Winter Release Features</P1>
                 </Items>
                 <hr/>
-                <Items onClick={()=>{
+                {authenticated===false && 
+                <>
+                    <Items onClick={()=>{
                         setLoginModal(true)
-
+                        
                     }}>
-                    <P1 >Login</P1></Items>
-                <Items onClick={()=>{
+                        <P1 >Login</P1></Items>
+                    <Items onClick={()=>{
                         setLoginModal(true)
                     }}>Sign up</Items>
+                    </>
+                }
                 <hr/>
+                {authenticated && <Items><Link onClick={()=>setAuthenticated(false)}>Logout</Link></Items> }
                 <Items><Link to="/help">Airbnb your home</Link></Items>
                 <Items><Link to="/help"> Help centre</Link></Items>
             </UserItems>
             {featureModal && <ExploreModal close={setFeaturesModal}/>}
-            {loginModal && <Login loginClose={setLoginModal} />}
+            {loginModal && <Login loginClose={setLoginModal} authenticated ={setAuthenticated}/>}
         </>
     );
 };

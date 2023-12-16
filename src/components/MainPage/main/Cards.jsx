@@ -33,7 +33,7 @@ const Cards = () => {
 
     const handleClick = (cardId) =>{
         // setClickCard(cardId)
-        navigate('/singleitem',{id:cardId})
+        navigate(`/singleitem/${cardId}`)
         
     }
 
@@ -60,7 +60,7 @@ const Cards = () => {
                                 <Img1 src={require("../../../assets/images/photos10.webp")} alt="" />
                                 <Img1 src={require("../../../assets/images/photos11.webp")} alt="" />
                             </Images>
-                        </ImageBorder>
+                        </ImageBorder>  
                         <LikeIcon onClick={()=>setLoginModal(true)}>
                             <HeartInput type="checkbox" id='check-box'/>
                             <HeartLabel htmlFor='check-box' className='heart'/>

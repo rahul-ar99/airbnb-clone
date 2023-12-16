@@ -2,7 +2,7 @@ import React ,{useEffect, useState, useRef} from 'react';
 import styled from 'styled-components';
 
 
-const Login = ({loginClose}) => {
+const Login = ({loginClose, authenticated}) => {
     
 
     //import user data from user
@@ -21,9 +21,9 @@ const Login = ({loginClose}) => {
     //on login and signup submit
     function submit() {
 
-
+        authenticated(true)
         //if user click on create an account this if statement will work
-        if(login==false){
+        if(login===false){
 
 
             // assign user data to variables
@@ -38,7 +38,7 @@ const Login = ({loginClose}) => {
             localStorage.setItem("user",userDetails)
 
 
-            if(getUserName, getMail, getPassword, getPhone, getConfirmPassword)
+            if(getUserName && getMail && getPassword && getPhone && getConfirmPassword)
                 console.log(getUserName, getMail, getPassword, getPhone, getConfirmPassword)
 
 
