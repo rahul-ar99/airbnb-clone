@@ -21,7 +21,11 @@ const Login = ({loginClose, authenticated}) => {
     //on login and signup submit
     function submit() {
 
+
+        // its just a trail for autheticated working
         authenticated(true)
+
+
         //if user click on create an account this if statement will work
         if(login===false){
 
@@ -33,13 +37,18 @@ const Login = ({loginClose, authenticated}) => {
             const getPhone = phone.current.value
             const getConfirmPassword = confirmPassword.current.value
 
+            // create an list with user details object
             const userDetails = [{"name":getUserName, "mail":getMail,"password": getPassword,"number": getPhone}]
 
+
+            // add userDetails into localstorage
             localStorage.setItem("user",userDetails)
 
 
-            if(getUserName && getMail && getPassword && getPhone && getConfirmPassword)
+            // just a trail 
+            if(getUserName && getMail && getPassword && getPhone && getConfirmPassword){
                 console.log(getUserName, getMail, getPassword, getPhone, getConfirmPassword)
+            }
 
 
             
@@ -64,13 +73,14 @@ const Login = ({loginClose, authenticated}) => {
 
 
     }
+
+    //when open this modal, then window scroll is stop
     useEffect(()=>{
         document.body.style.overflow = "hidden"
         return ()=>(
             document.body.style.overflow = "auto"
         )
     })
-    // console.log(loginClose)
 
     return (
         <Screen 
@@ -104,11 +114,13 @@ const Login = ({loginClose, authenticated}) => {
                         </InputDiv>
                         <Text>We'll call or text you to confirm your number Standard message and data rates apply<Privacy> Privacy Policy</Privacy></Text>
                         <ContinueBtn onClick={submit}>Countinue</ContinueBtn>
-                        <ContinueBtn onClick={()=>{
-                            const loginhead = login ===true?false:true
-                            setLogin(loginhead)
-
-                            }}>{login=== true? "signup":"login"}</ContinueBtn>
+                        <ChangeSentence>{login=== true? "if you're new, then ":"you already a member, then ."}
+                            <ChangeLogin onClick={()=>{
+                                const loginhead = login ===true?false:true
+                                setLogin(loginhead)
+                                
+                            }}>{login=== true? " signup":"login"}</ChangeLogin>
+                            </ChangeSentence>
                     </LoginForm>
 
                 </LoginContent>
@@ -247,6 +259,13 @@ const ContinueBtn = styled.div`
     cursor: pointer;
 
 `;
+
+const ChangeSentence = styled.p`
+    display: flex;
+`
+const ChangeLogin = styled.p`
+    color: #FF385C;
+`
 const Or = styled.div`
     display: flex;
     justify-content: center;

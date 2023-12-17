@@ -8,11 +8,7 @@ import { Link } from 'react-router-dom';
 
 const UserModal = ({userClose}) => {
 
-
-
     const [authenticated , setAuthenticated] = useState(false)
-
-
 
 
     const [featureModal, setFeaturesModal] = useState(false);
@@ -20,12 +16,16 @@ const UserModal = ({userClose}) => {
     // const [mainModal, setMainModal] = useState(true)
     const [signOrLog, setSignOrLog] = useState(false);
 
+
+
     // useEffect(()=>{
     //     setMainModal(false)
     //     return()=>{
     //         setMainModal(true)
     //     }
     // })
+
+
     return (
         <>
             <UserItems>

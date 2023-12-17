@@ -35,7 +35,7 @@ const Navbar = () => {
 const Navbar1 = styled.section`
     border: 1px solid #e2e2e2;
     background-color: white;
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
     z-index: 1;
 

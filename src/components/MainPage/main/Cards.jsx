@@ -14,32 +14,42 @@ const Cards = () => {
     // create all data into array cards
     const [cards, setCards] = useState([])
 
-    const [naigat , setNavigat] = useState(true)
     
+    // import data to cards state with useEffect method
     useEffect(()=>{
         setCards(Data,cards)
     },[])
 
 
+    // for scroll
     const ref1 = useRef(null);
 
+
+    //scroll image inside the card
+    // but it's doesn't work, you need to edit this code
     const scroll = (scrollOffset) =>{
         ref1.current.scrollLeft += scrollOffset;
         console.log(ref1.current.scrollLeft)
     }
 
 
+
+    // navigate to other 
     const navigate = useNavigate()
 
+
+    // navigate to open each card when click that modal
     const handleClick = (cardId) =>{
-        // setClickCard(cardId)
-        navigate(`/singleitem/${cardId}`)
+        navigate(`/singleitem`, {state:{id:cardId}})
         
     }
 
     return (
         <div className='wrapper'>
             <AllCards>
+
+
+                {/* map for each card */}
                 {cards.map((each, index)=>(
                     <SingleCard key={each.id} onClick={(e)=>{
                         console.log(each.id)
