@@ -24,22 +24,27 @@ const SingleItem = () => {
     console.log(dataCard)
 
     return (
+        <>
+        <Navbar />
         <Wrapper>
-            <Navbar />
             <SpotLIght>
                 <TopBar>
-                    <Heading></Heading>
+                    <Heading>Camp Footprint ,{dataCard[0].place}</Heading>
                     <TopRight>
                         <TopShare>Share</TopShare>
                         <TopSave>Save</TopSave>
                     </TopRight>
                 </TopBar>
                 <ImgDiv>
-                    <Img />
-                    <Img />
-                    <Img />
-                    <Img />
-                    <Img />
+                    <ImgLeft>
+                        <Img src={require(`../assets/images/${dataCard[0].image}.webp`)} alt="" />
+                    </ImgLeft>
+                    <ImgRight>
+                        <Imgs src={require(`../assets/images/${dataCard[0].image}.webp`)} alt="" />
+                        <Imgs src={require(`../assets/images/${dataCard[0].image}.webp`)} alt="" />
+                        <Imgs src={require(`../assets/images/${dataCard[0].image}.webp`)} alt="" />
+                        <Imgs src={require(`../assets/images/${dataCard[0].image}.webp`)} alt="" />
+                    </ImgRight>
                 </ImgDiv>
                 <MiddleSec>
                     <MiddleLeft>
@@ -60,8 +65,33 @@ const SingleItem = () => {
                     </MiddleLeft>
                     <MiddleRight>
                         <RightMain>
-
+                            <RightTopPrice>
+                                <Price>$182343</Price>
+                                <Tax>Total before taxes</Tax>
+                            </RightTopPrice>
+                            <Input>
+                                <DateInput>
+                                    <LeftDate>
+                                        <p>CHECK-IN</p>
+                                        <p>12/29/2023</p>
+                                    </LeftDate>
+                                    <RightDate>
+                                        <p>CHECK-IN</p>
+                                        <p>12/29/2023</p>
+                                    </RightDate>
+                                </DateInput>
+                                <Guest>
+                                    <GuestLeft>
+                                        <p>GUEST</p>
+                                        <p>1 guest</p>
+                                    </GuestLeft>
+                                    <ArrowIcon />
+                                </Guest>
+                                <Reserve />
+                            </Input>
+                            <p>you won't be charged yet</p>
                         </RightMain>
+                        <RightBottom>Report this listing</RightBottom>
                     </MiddleRight>
                 </MiddleSec>
             </SpotLIght>
@@ -70,22 +100,59 @@ const SingleItem = () => {
             <p>{dataCard[0].distance}</p>
             <h6>{id}</h6>
         </Wrapper>
+        </>
     );
 };
 
 
 const Wrapper = styled.div`
-
+    width: 100%;
+    padding: 10px 350px;
 `
 
 const SpotLIght = styled.div``
-const TopBar = styled.div``
-const Heading = styled.h3``
-const TopRight = styled.div``
+const TopBar = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`
+const Heading = styled.h3`
+    font-size: 30px;
+    padding: 30px 0;
+`
+const TopRight = styled.div`
+    display: flex;
+    gap: 40px;
+`
 const TopShare = styled.p``
-const TopSave = styled.p``
-const ImgDiv = styled.div``
-const Img = styled.img``
+const TopSave = styled.p`
+
+`
+const ImgDiv = styled.div`
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    height: 550px;
+`
+
+const ImgLeft = styled.div`
+    width: 50%;
+    height: 100%;
+`
+const ImgRight = styled.div`
+    display:flex;
+    width: 50%;
+    flex-wrap: wrap;
+    gap: 10px;
+`
+const Img = styled.img`
+    height: 100%;
+`
+const Imgs = styled.img`
+    justify-content: space-between;
+    width: 48%;
+`
 const MiddleSec = styled.div``
 const MiddleLeft = styled.div``
 const MiddleRight = styled.div``
@@ -100,6 +167,19 @@ const MainDetails = styled.p``
 const Reviews = styled.p``
 const RoomDetails = styled.div``
 const SeeMore = styled.button``
+const RightMain = styled.div``
+const RightTopPrice = styled.div``
+const Price = styled.p``
+const Tax = styled.p``
+const Input = styled.div``
+const DateInput = styled.div``
+const LeftDate = styled.div``
+const RightDate = styled.div``
+const Guest = styled.div``
+const GuestLeft = styled.div``
+const ArrowIcon = styled.img``
+const Reserve = styled.div``
+const RightBottom = styled.div``
 
 
 export default SingleItem;
