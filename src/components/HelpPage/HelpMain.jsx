@@ -2,23 +2,23 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const HelpMain = () => {
-
+    // 
     const [button, setButton] = useState(1)
 
 
     return (
         <Div>
             <Links>
-                <LinkLi onClick={()=>{
+                <LinkLi className={button===1?"active":""} onClick={()=>{
                     setButton(1)
                 }}><a>Guest</a></LinkLi>
-                <LinkLi onClick={()=>{
+                <LinkLi className={button===2?"active":""} onClick={()=>{
                     setButton(2)
                 }}><a>Host</a></LinkLi> 
-                <LinkLi onClick={()=>{
+                <LinkLi className={button===3?"active":""} onClick={()=>{
                     setButton(3)
                 }}><a>Experience Host</a></LinkLi>
-                <LinkLi onClick={()=>{
+                <LinkLi className={button===4?"active":""}  onClick={()=>{
                     setButton(4)
                 }}><a>Travel admin</a></LinkLi>
             </Links>
@@ -83,9 +83,14 @@ const Div = styled.div`
 const Links = styled.ul`
     display: flex;
     border-bottom: 1px solid black;
+    .active{
+        border-bottom: 2px solid black;
+    }
+    margin-bottom: 20px;
 `
 const LinkLi = styled.li`
     margin:0 10px;
+    cursor: pointer;
 `
 const LogInDiv =styled.div`
     display:flex;

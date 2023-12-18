@@ -8,19 +8,23 @@ import styled from 'styled-components';
 const SingleItem = () => {
 
 
+    // import id from parent folder in navigate format
     const location = useLocation();
     const {id} = location.state || {};
 
 
+    // this array for add details with the id recieve from parent component
     const dataCard = []
     
+
+    // find item with id & add add to dataCard array
     Data.map((item)=>{
         if(item.id==id){
             dataCard.push(item)
         }
     })
-    // const {cardId} = useParams()
-    
+
+    // testing
     console.log(dataCard)
 
     return (

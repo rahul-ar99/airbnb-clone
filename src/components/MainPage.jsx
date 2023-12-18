@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ExploreLink from './MainPage/ExploreLink';
 import Navbar from './MainPage/Navbar';
@@ -6,12 +6,42 @@ import Catogories from './MainPage/Catogories'
 import MainContent from './MainPage/MainContent';
 import Footer from './MainPage/Footer';
 
+
+
+
 function MainPage() {
+
+  const [scroll, setScroll] = useState(true)
+
+
+  useEffect(()=>{
+    const handleScroll = () =>{
+      setScroll(window.scrollY <= 0)
+    }
+
+    window.addEventListener("scroll",handleScroll)
+
+  })
+
+
+
+
+  // window.addEventListener("scroll",()=>{
+  //   if(window.scrollY > 1000){
+  //     setScroll(false)
+  //   }
+  //   else{
+  //     setScroll(true)
+  //   }
+  // })
+
   return (
     <div className="App">
-        {/* <ExploreLink /> */}
+        {scroll && <ExploreLink />}
         <TopBar>
-          <Navbar />
+        {scroll && <Navbar />}
+
+          
           <Catogories />
         </TopBar>
         <MainContent />

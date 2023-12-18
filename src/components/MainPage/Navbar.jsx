@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import CenterNav from './navbar/CenterItems';
 import RightNav from './navbar/RightNav';
 import styled from 'styled-components';
@@ -38,6 +38,7 @@ const Navbar1 = styled.section`
     /* position: absolute; */
     width: 100%;
     z-index: 1;
+    transition: 1s;
 
 
 `

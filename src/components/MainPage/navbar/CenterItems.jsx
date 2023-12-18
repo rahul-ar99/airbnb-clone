@@ -7,7 +7,7 @@ const CenterNav = () => {
 
     return (
         <Nav>
-            {/* <CenterDiv >
+            <CenterDiv >
                 <Heads>
                     <P1>Anywhere</P1>
                 </Heads>
@@ -20,11 +20,11 @@ const CenterNav = () => {
                     <P2>Add guest</P2>
                 </Heads>
                 <SearchBtn>
-                    <img src={require("../../assets/icons/magnifying-glass.png")} alt="searchIcon" className='invert'/>
+                    <img src={require("../../../assets/icons/magnifying-glass.png")} alt="searchIcon" className='invert'/>
                 </SearchBtn>
-            </CenterDiv> */}
+            </CenterDiv>
             {/* {isModal && <CenterContent />} */}
-            <MainCenter>
+            {/* <MainCenter>
                 <TopSection>
                     <TopBtns>Stays</TopBtns>
                     <TopBtns>Experience</TopBtns>
@@ -34,7 +34,7 @@ const CenterNav = () => {
 
 
                 </BottomSection>
-            </MainCenter>
+            </MainCenter> */}
         </Nav>
     );
 }
@@ -47,6 +47,7 @@ const CenterDiv = styled.div`
     align-items:center;
     gap: 10px;
     padding-left: 19px;
+    /* background-color: blue; */
     `
 
 const Nav = styled.div`

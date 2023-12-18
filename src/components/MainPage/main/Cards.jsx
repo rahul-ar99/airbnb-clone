@@ -23,14 +23,20 @@ const Cards = () => {
 
 
     // for scroll
-    const ref1 = useRef(null);
+    const ref = useRef(null);
 
 
     //scroll image inside the card
     // but it's doesn't work, you need to edit this code
-    const scroll = (scrollOffset) =>{
-        ref1.current.scrollLeft += scrollOffset;
-        console.log(ref1.current.scrollLeft)
+    const scroll = (scrollOffset,e) =>{
+
+
+        // scroll with ref elements
+        ref.current.scrollLeft += scrollOffset;
+
+
+        // stop the parent onclick function
+        e.stopPropagation()
     }
 
 
@@ -52,13 +58,13 @@ const Cards = () => {
 
                 {/* map for each card */}
                 {cards.map((each, index)=>(
-                    <SingleCard key={each.id} onClick={(e)=>{
-                        console.log(each.id)
+                    <SingleCard key={each.id} onClick={()=>{
+                        // console.log(each.id)
                         handleClick(each.id)
 
                     }}>
                         <ImageBorder>
-                            <Images ref={ref1}>
+                            <Images ref={ref}>
                                 <Img1 src={require(`../../../assets/images/${each.image}.webp`)} alt="" />
                                 <Img1 src={require("../../../assets/images/photos2.webp")} alt="" />
                                 <Img1 src={require("../../../assets/images/photos3.webp")} alt="" />
@@ -72,7 +78,10 @@ const Cards = () => {
                                 <Img1 src={require("../../../assets/images/photos11.webp")} alt="" />
                             </Images>
                         </ImageBorder>  
-                        <LikeIcon onClick={()=>setLoginModal(true)}>
+                        <LikeIcon onClick={(event)=>{
+                                event.stopPropagation()
+                                setLoginModal(true)}
+                            }>
                             <HeartInput type="checkbox" id='check-box'/>
                             <HeartLabel htmlFor='check-box' className='heart'/>
                             <HeartIcon src={require("../../../assets/icons/heart.png")} alt="" />
@@ -86,8 +95,13 @@ const Cards = () => {
                             <Date>{each.dates}</Date>
                             <Money><Price>${each.price} night</Price></Money>
                         </Details>
-                        <LeftBtn onClick={()=>scroll(-100)}><ArrowIcon  src={require("../../../assets/icons/angle-left.png")}/></LeftBtn>
-                        <RightBtn onClick={()=>scroll(100)}><ArrowIcon  src={require("../../../assets/icons/next.png")}/></RightBtn>
+                        <LeftBtn onClick={(event)=>{
+                            // e.stopPropagation();
+                            scroll(-100,event)}
+                        }><ArrowIcon  src={require("../../../assets/icons/angle-left.png")}/></LeftBtn>
+                        <RightBtn onClick={(event)=>{
+                            // e.stopPropagation()
+                            scroll(100,event)}}><ArrowIcon  src={require("../../../assets/icons/next.png")}/></RightBtn>
                     </SingleCard>
                 ))}
                 
