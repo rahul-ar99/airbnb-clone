@@ -139,58 +139,22 @@ const Img1 = styled.img`
     width:272px;
 `
 const LikeIcon = styled.div`
-    width: 25px;
+    /* width: 25px;
     filter: invert();
     position: absolute;
     top: 10px;
     right: 10px;
-    z-index: 1;
-
-    .heart {
-    color: red;
-    background-color: currentColor;
-    display: inline-block;
-    height: 50px;
-    margin: 0 10px;
-    position: relative;
-    top: 0;
-    transform: rotate(-45deg);
-    position: absolute;
-    left: 45%;
-    top: 45%;
-    width: 50px;
-    &::before,
-    &::after{
-        content: "";
-        background-color: currentColor;
-        border-radius: 50%;
-        height: 50px;
-        position: absolute;
-        width: 50px;
-    }
-
-    &::before{
-        top: -25px;
-        left: 0;
-    }
-    &::after{
-        top: -25px;
-        left: 0;
-    }
-
-
-    .heart-checkbox {
-    display: none;
-    }
-    }
+    z-index: 1; */
 
 
 `;
-const HeartIcon = styled.img`
-`
+// const HeartIcon = styled.img`
+// `
 
 const HeartInput = styled.input``
-const HeartLabel = styled.label``
+const HeartLabel = styled.label`
+
+`
 const Details = styled.div``;
 const FirstLine = styled.div`
     display:flex;

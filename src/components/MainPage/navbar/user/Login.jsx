@@ -3,17 +3,22 @@ import styled from 'styled-components';
 
 
 const Login = ({loginClose, authenticated}) => {
+
+
+    const [logReply, setLogReply] = useState("asdfsdf")
     
 
     //import user data from user
     const userName = useRef()
     const email = useRef()
-    const password = useRef()
     const phone = useRef()
+    const password = useRef()
     const confirmPassword = useRef()
 
 
-    // change log in and signup with using of hooks
+
+
+    // change login and signup with using of hooks
     const [login, setLogin] = useState(true)
 
 
@@ -25,6 +30,8 @@ const Login = ({loginClose, authenticated}) => {
         // its just a trail for autheticated working
         authenticated(true)
 
+        
+
 
         //if user click on create an account this if statement will work
         if(login===false){
@@ -33,16 +40,31 @@ const Login = ({loginClose, authenticated}) => {
             // assign user data to variables
             const getUserName = userName.current.value
             const getMail = email.current.value
-            const getPassword = password.current.value
             const getPhone = phone.current.value
+            const getPassword = password.current.value
             const getConfirmPassword = confirmPassword.current.value
 
             // create an list with user details object
-            const userDetails = [{"name":getUserName, "mail":getMail,"password": getPassword,"number": getPhone}]
+            const userDetails = [{name:getUserName,mail:getMail,password: getPassword,number: getPhone}]
+
+
+
+            // checking uset entered password and confirm password is same
+            if(getPassword===getConfirmPassword){
+                if(userName){
+                    console.log("asdf")
+                }
+            }
+            // password and confirm password is wrong then show this message
+            else{
+                setLogReply("password didn't match")
+
+            }
+
 
 
             // add userDetails into localstorage
-            localStorage.setItem("user",userDetails)
+            localStorage.setItem("user1",JSON.stringify(userDetails))
 
 
             // just a trail 
@@ -52,7 +74,7 @@ const Login = ({loginClose, authenticated}) => {
 
 
             
-            setLogin(true)
+            // setLogin(true)
         }
 
 
@@ -76,6 +98,8 @@ const Login = ({loginClose, authenticated}) => {
 
     //when open this modal, then window scroll is stop
     useEffect(()=>{
+
+
         document.body.style.overflow = "hidden"
         return ()=>(
             document.body.style.overflow = "auto"
@@ -91,13 +115,14 @@ const Login = ({loginClose, authenticated}) => {
         >
             <Modal>
                 {/* if login is true show login as head otherwise signup is head */}
-                <LoginNav><LoginHead>{login=== true?"login": "signup"}</LoginHead></LoginNav>
+                <LoginNav><LoginHead>{login === true?"login": "signup"}</LoginHead></LoginNav>
                 <MainDiv>
 
                 <LoginContent>
 
                     <ContentHead>Welcome to Airbnb</ContentHead>
                     <LoginForm>
+                        <UserReply>{logReply}</UserReply>
                         <InputDiv>
                             {/* if signup page is true */}
                             <CountryInput ref={phone} type='text' placeholder='Phone no'></CountryInput>
@@ -212,7 +237,9 @@ const InputDiv = styled.div`
 const LoginForm = styled.form`
 
 `;
-
+const UserReply = styled.p`
+    color: red;
+`
 
 const CountryInput = styled.input`
     border-bottom: 1px solid black;
@@ -265,6 +292,7 @@ const ChangeSentence = styled.p`
 `
 const ChangeLogin = styled.p`
     color: #FF385C;
+    cursor: pointer;
 `
 const Or = styled.div`
     display: flex;

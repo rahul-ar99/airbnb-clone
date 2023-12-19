@@ -1,22 +1,20 @@
-import React, {useState} from 'react';
+import React from 'react';
 import CenterNav from './navbar/CenterItems';
 import RightNav from './navbar/RightNav';
 import styled from 'styled-components';
-import ExploreModal from './exploreLink/ExploreModal';
-import { Route, Routes } from 'react-router-dom';
+// import ExploreModal from './exploreLink/ExploreModal';
+// import { Route, Routes } from 'react-router-dom';
 
 
 const Navbar = () => {
 
     // const [modal,setmodal] = useState(false)
 
-    
-
     return (
         <Navbar1>
-            <Routes>
-                {/* <Route path='/' element={<ExploreModal />} /> */}
-            </Routes>
+            {/* <Routes>
+                <Route path='/' element={<ExploreModal />} />
+            </Routes> */}
             <div className='wrapper'>
                 <Content>
                     <BrandName className='text text-[#FF385C]'>
@@ -59,7 +57,7 @@ const BrandName = styled.h1`
     cursor: pointer;
     height: 100%;
 `
-const CenterClick = styled.div``
+// const CenterClick = styled.div``
 
 
 

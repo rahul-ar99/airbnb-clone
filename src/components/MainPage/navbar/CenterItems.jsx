@@ -47,6 +47,7 @@ const CenterDiv = styled.div`
     align-items:center;
     gap: 10px;
     padding-left: 19px;
+    cursor: pointer;
     /* background-color: blue; */
     `
 
