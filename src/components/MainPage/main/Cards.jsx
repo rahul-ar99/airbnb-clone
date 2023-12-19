@@ -37,6 +37,7 @@ const Cards = () => {
 
         // stop the parent onclick function
         e.stopPropagation()
+
     }
 
 
@@ -82,9 +83,9 @@ const Cards = () => {
                                 event.stopPropagation()
                                 setLoginModal(true)}
                             }>
-                            <HeartInput type="checkbox" id='check-box'/>
-                            <HeartLabel htmlFor='check-box' className='heart'/>
-                            <HeartIcon src={require("../../../assets/icons/heart.png")} alt="" />
+                            <HeartInput type="checkbox" className='heart-checkbox' id='check-box'/>
+                            <HeartLabel className='heart' htmlFor='check-box'/>
+                            {/* <HeartIcon src={require("../../../assets/icons/heart.png")} alt="" /> */}
                         </LikeIcon>
                         <Details>
                             <FirstLine>
@@ -144,6 +145,46 @@ const LikeIcon = styled.div`
     top: 10px;
     right: 10px;
     z-index: 1;
+
+    .heart {
+    color: red;
+    background-color: currentColor;
+    display: inline-block;
+    height: 50px;
+    margin: 0 10px;
+    position: relative;
+    top: 0;
+    transform: rotate(-45deg);
+    position: absolute;
+    left: 45%;
+    top: 45%;
+    width: 50px;
+    &::before,
+    &::after{
+        content: "";
+        background-color: currentColor;
+        border-radius: 50%;
+        height: 50px;
+        position: absolute;
+        width: 50px;
+    }
+
+    &::before{
+        top: -25px;
+        left: 0;
+    }
+    &::after{
+        top: -25px;
+        left: 0;
+    }
+
+
+    .heart-checkbox {
+    display: none;
+    }
+    }
+
+
 `;
 const HeartIcon = styled.img`
 `
