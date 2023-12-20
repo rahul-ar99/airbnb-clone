@@ -52,6 +52,7 @@ const UserModal = ({userClose}) => {
                 {authenticated && <Items><Link onClick={()=>setAuthenticated(false)}>Logout</Link></Items> }
                 <Items><Link to="/help">Airbnb your home</Link></Items>
                 <Items><Link to="/help"> Help centre</Link></Items>
+                <Items><Link to="/favorites">Favorites</Link></Items>
             </UserItems>
             {featureModal && <ExploreModal close={setFeaturesModal}/>}
             {loginModal && <Login loginClose={setLoginModal} authenticated ={setAuthenticated}/>}
