@@ -1,12 +1,21 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useReducer } from 'react';
 import styled from 'styled-components';
 import Data from "../../../assets/json/mainContent.json"
 import Login from '../navbar/user/Login';
 import { useNavigate } from 'react-router-dom';
 
+
+
 const Cards = () => {
 
+
+    // add to favoriter
+
+
+
+
     
+
     // if click on fav or booking then show the login page
     // create state variables   
     const [loginModal, setLoginModal] = useState(false);
@@ -62,6 +71,7 @@ const Cards = () => {
                     <SingleCard key={each.id} onClick={()=>{
                         // console.log(each.id)
                         handleClick(each.id)
+                        handleLove()
 
                     }}>
                         <ImageBorder>
@@ -81,7 +91,10 @@ const Cards = () => {
                         </ImageBorder>  
                         <LikeIcon onClick={(event)=>{
                                 event.stopPropagation()
-                                setLoginModal(true)}
+                                // setLoginModal(true)
+                                setName(each.id)
+                                // console.log(name)
+                            }
                             }>
                             <HeartInput type="checkbox" className='heart-checkbox' id='check-box'/>
                             <HeartLabel className='heart' htmlFor='check-box'/>
