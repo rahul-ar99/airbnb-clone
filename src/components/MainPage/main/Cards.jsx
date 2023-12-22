@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Data from "../../../assets/json/mainContent.json"
 import Login from '../navbar/user/Login';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 
 
@@ -14,7 +15,7 @@ const Cards = () => {
 
 
 
-    
+
 
     // if click on fav or booking then show the login page
     // create state variables   
@@ -71,7 +72,7 @@ const Cards = () => {
                     <SingleCard key={each.id} onClick={()=>{
                         // console.log(each.id)
                         handleClick(each.id)
-                        handleLove()
+                        // handleLove()
 
                     }}>
                         <ImageBorder>
@@ -92,7 +93,7 @@ const Cards = () => {
                         <LikeIcon onClick={(event)=>{
                                 event.stopPropagation()
                                 // setLoginModal(true)
-                                setName(each.id)
+                                // setName(each.id)
                                 // console.log(name)
                             }
                             }>
