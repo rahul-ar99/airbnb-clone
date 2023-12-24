@@ -8,7 +8,9 @@ const CartSlice = () => {
         cartTotalQuantity:0,
         cartTotalAmount:0,
     };
+    // testing
 
+    
     const cartSlice = createSlice({
         name:"cart",
         initialState,
