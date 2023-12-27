@@ -10,11 +10,7 @@ import { useDispatch } from 'react-redux';
 const Cards = () => {
 
 
-    // add to favoriter
-
-
-
-
+    // add to favorite
 
 
     // if click on fav or booking then show the login page
