@@ -14,7 +14,7 @@ const Cards = () => {
 
 
     // if click on fav or booking then show the login page
-    // create state variables   
+    // create state variables    
     const [loginModal, setLoginModal] = useState(false);
 
 
