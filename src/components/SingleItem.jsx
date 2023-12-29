@@ -16,6 +16,7 @@ const SingleItem = () => {
     // this array for add details with the id recieve from parent component
     const dataCard = []
     
+    
 
     // find item with id & add add to dataCard array
     Data.map((item)=>{

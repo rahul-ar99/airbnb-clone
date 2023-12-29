@@ -9,7 +9,6 @@ import { useDispatch } from 'react-redux';
 
 const Cards = () => {
 
-
     // add to favorite
 
 
@@ -115,7 +114,6 @@ const Cards = () => {
                             scroll(100,event)}}><ArrowIcon  src={require("../../../assets/icons/next.png")}/></RightBtn>
                     </SingleCard>
                 ))}
-                
             </AllCards>
             {loginModal && <Login loginClose={setLoginModal} />}
         </div>
