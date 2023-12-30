@@ -1,15 +1,43 @@
-import React ,{useEffect} from 'react';
+import React ,{useEffect, useState} from 'react';
 import styled from 'styled-components';
 
 
 const FilterModal = ({close}) => {   //close is props function
 
+
+
+    // when this modal is open 
     useEffect(()=>{
         document.body.style.overflow = "hidden"
         return ()=>(
             document.body.style.overflow = "auto"
         )
     })
+ 
+
+
+    // create useState for changeing anytype , room , entire home
+    const [typePlace, setTypePlace] = useState("any")
+    const [placeContent, setPlaceContent] = useState("A room in a home, plus access to shared spaces.")
+
+
+
+    // if any changes in typePlace state, then this useEffect will work
+    useEffect(()=>{
+        switch(typePlace){
+            case "any":
+                setPlaceContent("Search rooms, entire homes or any type of place.")
+                break
+            case "room":
+                setPlaceContent("A room in a home, plus access to shared spaces.")
+                break
+            case "home":
+                setPlaceContent("A home all to yourself.")
+                break
+        }
+    },[typePlace])
+
+
 
     return (
         <Screen 
@@ -28,11 +56,11 @@ const FilterModal = ({close}) => {   //close is props function
                 </TopBar>
                 <TypeofPlace>
                     <MainHead>Type of place</MainHead>
-                    <HeadTag>A home all to yourself.</HeadTag>
+                    <HeadTag>{placeContent}</HeadTag>
                     <ButtonDiv>
-                        <Button className='active'>Any type</Button>
-                        <Button>Room</Button>
-                        <Button>Entire home</Button>
+                        <Button className={typePlace=="any"?"active":""} onClick={()=>setTypePlace("any")}>Any type</Button>
+                        <Button className={typePlace=="room"?"active":""} onClick={()=>setTypePlace("room")}>Room</Button>
+                        <Button className={typePlace=="home"?"active":""} onClick={()=>setTypePlace("home")}>Entire home</Button>
                     </ButtonDiv>
                 </TypeofPlace>
                 <PriceRange>
@@ -71,12 +99,14 @@ const Modal = styled.div`
     border-radius: 13px;
     overflow: hidden;
     padding: 0 20px;
+
 `;
 
 const TopBar = styled.div`
     height: 60px;
     width: 100%;
     border-bottom: 1px solid black;
+
 `;
 
 const CloseBtn = styled.div`
@@ -87,6 +117,7 @@ const CloseBtn = styled.div`
     padding: 5px;
     box-sizing: content-box;
     cursor: pointer;
+    
 `;
 
 const CloseImg = styled.img`
