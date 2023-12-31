@@ -5,6 +5,15 @@ import styled from 'styled-components';
 const FilterModal = ({close}) => {   //close is props function
 
 
+    // this is trial
+    useEffect(()=>{
+        document.body.style.overflow = "hidden"
+        return ()=>(
+            document.body.style.overflow = "auto"
+        )
+    })
+
+
 
     // when this modal is open 
     useEffect(()=>{
