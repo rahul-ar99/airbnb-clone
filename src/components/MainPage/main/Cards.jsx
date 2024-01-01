@@ -92,8 +92,8 @@ const Cards = () => {
                                 // console.log(name)
                             }
                             }>
-                            <HeartInput type="checkbox" className='heart-checkbox' id='check-box'/>
-                            <HeartLabel className='heart' htmlFor='check-box'/>
+                            <HeartInput type="checkbox" className='heart-checkbox' id={`checkbox${index}`}/>
+                            <HeartLabel className='heart' htmlFor={`checkbox${index}`}></HeartLabel>
                             {/* <HeartIcon src={require("../../../assets/icons/heart.png")} alt="" /> */}
                         </LikeIcon>
                         <Details>
@@ -147,22 +147,58 @@ const Img1 = styled.img`
     width:272px;
 `
 const LikeIcon = styled.div`
-    /* width: 25px;
-    filter: invert();
+    width: 50px;
     position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 1; */
-
+    top: 20px;
+    right: 20px;
+    z-index: 1;
 
 `;
-// const HeartIcon = styled.img`
-// `
 
-const HeartInput = styled.input``
+
+// Love icon with content 
 const HeartLabel = styled.label`
+    position: relative;
+    display: block;
+
+    &:before, &:after{
+        position: absolute;
+        left: 40px;
+        top:0;
+        width: 40px;
+        height: 25px;
+        background-color: #c7c6c6;
+        content: "";
+        color: red;
+        border-radius: 0px 50px 50px 0;
+        transform: rotate(-45deg);
+        transform-origin: 0 100%;
+    }
+    
+    &:after{
+        left:0;
+        transform: rotate(45deg);
+        border-radius: 50px 0px 0px 50px;
+        transform-origin: 100% 100%;
+    }
 
 `
+
+
+const HeartInput = styled.input`
+    display: none;
+
+
+    /* color change when click on love icon */
+    &:checked + ${HeartLabel}{
+        &:before, &:after{
+            background-color: red;
+
+        }
+    }
+`
+    
+
 const Details = styled.div``;
 const FirstLine = styled.div`
     display:flex;

@@ -10,7 +10,7 @@ const FilterModal = ({close}) => {   //close is props function
         document.body.style.overflow = "hidden"
         return ()=>(
             document.body.style.overflow = "auto"
-        )
+        ) 
     })
  
 

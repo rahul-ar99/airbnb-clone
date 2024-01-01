@@ -49,7 +49,12 @@ const UserModal = ({userClose}) => {
                     </>
                 }
                 <hr/>
-                {authenticated && <Items><Link onClick={()=>setAuthenticated(false)}>Logout</Link></Items> }
+                {authenticated && <>
+                    <Items><Link onClick={()=>setAuthenticated(false)}>Logout</Link></Items> 
+                    <Items><Link >Favorites</Link></Items> 
+                    <Items><Link >User</Link></Items> 
+                </>
+                }
                 <Items><Link to="/help">Airbnb your home</Link></Items>
                 <Items><Link to="/help"> Help centre</Link></Items>
                 <Items><Link to="/favorites">Favorites</Link></Items>
