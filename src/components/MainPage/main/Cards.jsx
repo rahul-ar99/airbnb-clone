@@ -35,6 +35,7 @@ const Cards = () => {
             setLoginLike(false)
         }
         console.log(authenticated,loginLike)
+        
     }
 
 
@@ -116,8 +117,8 @@ const Cards = () => {
                                 likeFunction()
                             }
                         }>
-                            <HeartInput type="checkbox" className='heart-checkbox' id={`checkbox${index}`} disabled={`${loginLike}`}/>
-                            <HeartLabel className='heart' htmlFor={`checkbox${index}`}></HeartLabel>
+                            <HeartInput type="checkbox" className='heart-checkbox' id={`checkbox${index}`} disabled={()=>authenticated?true:false}/>
+                            <HeartLabel className='heart active' htmlFor={`checkbox${index}`}></HeartLabel>
                             {/* <HeartIcon src={require("../../../assets/icons/heart.png")} alt="" /> */}
                         </LikeIcon>
                         <Details>
@@ -186,7 +187,7 @@ const LikeIcon = styled.div`
     width: 50px;
     position: absolute;
     top: 20px;
-    right: 20px;
+    right: 10px;
     z-index: 1;
 
 `;
@@ -197,16 +198,16 @@ const LikeIcon = styled.div`
 const HeartLabel = styled.label`
     position: relative;
     display: block;
+    background-color: red;
 
     &:before, &:after{
         position: absolute;
-        left: 40px;
+        left: 30px;
         top:0;
-        width: 40px;
-        height: 25px;
+        width: 30px;
+        height: 20px;
         background-color: #c7c6c6;
         content: "";
-        color: red;
         border-radius: 0px 50px 50px 0;
         transform: rotate(-45deg);
         transform-origin: 0 100%;
@@ -217,6 +218,9 @@ const HeartLabel = styled.label`
         transform: rotate(45deg);
         border-radius: 50px 0px 0px 50px;
         transform-origin: 100% 100%;
+    }
+    &.active{
+        background-color: red;
     }
 
 `
@@ -303,6 +307,9 @@ const RightBtn = styled.button`
 const ArrowIcon = styled.img`
 
 `
+
+
+
 const SingleCard = styled.li`
     width:250px;
     position: relative;
