@@ -26,22 +26,21 @@ const Cards = () => {
         setCards(Data,cards)
     },[])
 
-
     // for scroll
-    const ref = useRef(null);
+    const ref1 = useRef(null);
 
 
     //scroll image inside the card
     // but it's doesn't work, you need to edit this code
-    const scroll = (scrollOffset,e) =>{
+    const scroll = (scrollOffset) =>{
 
 
         // scroll with ref elements
-        ref.current.scrollLeft += scrollOffset;
+        ref1.current.scrollLeft += scrollOffset;
 
-
+        console.log(ref1.current.scrollLeft)
         // stop the parent onclick function
-        e.stopPropagation()
+        // e.stopPropagation()
 
     }
 
@@ -51,10 +50,10 @@ const Cards = () => {
     const navigate = useNavigate()
 
 
+
     // navigate to open each card when click that modal
     const handleClick = (cardId) =>{
         navigate(`/singleitem`, {state:{id:cardId}})
-        
     }
 
     return (
@@ -68,31 +67,30 @@ const Cards = () => {
                         // console.log(each.id)
                         handleClick(each.id)
                         // handleLove()
-
+                        
                     }}>
-                        <ImageBorder>
-                            <Images ref={ref}>
-                                <Img1 src={require(`../../../assets/images/${each.image}.webp`)} alt="" />
-                                <Img1 src={require("../../../assets/images/photos2.webp")} alt="" />
-                                <Img1 src={require("../../../assets/images/photos3.webp")} alt="" />
-                                <Img1 src={require("../../../assets/images/photos4.webp")} alt="" />
-                                <Img1 src={require("../../../assets/images/photos5.webp")} alt="" />
-                                <Img1 src={require("../../../assets/images/photos6.webp")} alt="" />
-                                <Img1 src={require("../../../assets/images/photos7.webp")} alt="" />
-                                <Img1 src={require("../../../assets/images/photos8.webp")} alt="" />
-                                <Img1 src={require("../../../assets/images/photos9.webp")} alt="" />
-                                <Img1 src={require("../../../assets/images/photos10.webp")} alt="" />
+                        <ImageBorder ref={ref1}>
+                            <Images> 
+                                    <Img1 src={require(`../../../assets/images/${each.image}.webp`)} alt="" />
+                                    <Img1 src={require("../../../assets/images/photos2.webp")} alt="" />
+                                    <Img1 src={require("../../../assets/images/photos3.webp")} alt="" />
+                                    <Img1 src={require("../../../assets/images/photos4.webp")} alt="" />
+                                    <Img1 src={require("../../../assets/images/photos5.webp")} alt="" />
+                                    <Img1 src={require("../../../assets/images/photos6.webp")} alt="" />
+                                    <Img1 src={require("../../../assets/images/photos7.webp")} alt="" />
+                                    <Img1 src={require("../../../assets/images/photos8.webp")} alt="" />
+                                    <Img1 src={require("../../../assets/images/photos9.webp")} alt="" />
+                                    <Img1 src={require("../../../assets/images/photos10.webp")} alt="" />
                                 <Img1 src={require("../../../assets/images/photos11.webp")} alt="" />
                             </Images>
                         </ImageBorder>  
                         <LikeIcon onClick={(event)=>{
                                 event.stopPropagation()
-                                // setLoginModal(true)
+                                setLoginModal(true)
                                 // setName(each.id)
-                                // console.log(name)
                             }
-                            }>
-                            <HeartInput type="checkbox" className='heart-checkbox' id={`checkbox${index}`}/>
+                        }>
+                            <HeartInput type="checkbox" className='heart-checkbox' id={`checkbox${index}`} disabled={false}/>
                             <HeartLabel className='heart' htmlFor={`checkbox${index}`}></HeartLabel>
                             {/* <HeartIcon src={require("../../../assets/icons/heart.png")} alt="" /> */}
                         </LikeIcon>
@@ -106,17 +104,17 @@ const Cards = () => {
                             <Money><Price>${each.price} night</Price></Money>
                         </Details>
                         <LeftBtn onClick={(event)=>{
-                            // e.stopPropagation();
-                            scroll(-100,event)}
+                            event.stopPropagation();
+                            scroll(-100)}
                         }><ArrowIcon  src={require("../../../assets/icons/angle-left.png")}/></LeftBtn>
                         <RightBtn onClick={(event)=>{
-                            // e.stopPropagation()
-                            scroll(100,event)}}><ArrowIcon  src={require("../../../assets/icons/next.png")}/></RightBtn>
+                            event.stopPropagation()
+                            scroll(-100)}}><ArrowIcon  src={require("../../../assets/icons/next.png")}/></RightBtn>
                     </SingleCard>
                 ))}
             </AllCards>
             {loginModal && <Login loginClose={setLoginModal} />}
-        </div>
+            </div>
     );
 };
 
@@ -130,18 +128,30 @@ const AllCards = styled.ul`
 
 const ImageBorder = styled.div`
     width: 272px;
-    /* overflow: hidden; */
+    overflow-x: scroll;
+    border-radius: 15px;
 
 `
 
 const Images = styled.div`
-    width:fit-content;
+    width:1254px;
     height: 255px;
-    border-radius: 15px;
     display: flex;
-    overflow: scroll;
 `;
 
+const ImgDiv = styled.div`
+    width: 632px;
+    display: flex;
+    overflow: scroll;
+`
+
+const P1 = styled.p`
+    display: flex;
+    flex-wrap: wrap;
+    width: max-content;
+    color: blue;
+    background-color: grey;
+`
 const Img1 = styled.img`
     height: 100%;
     width:272px;
@@ -154,6 +164,7 @@ const LikeIcon = styled.div`
     z-index: 1;
 
 `;
+
 
 
 // Love icon with content 

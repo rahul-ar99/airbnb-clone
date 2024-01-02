@@ -11,12 +11,17 @@ const CatoScroll = () => {
         setCategeryOption(CatoData,categoryOption)
     },[])
     
+
     // const [resourse, setResouse] = useState()
 
+
+    //add ref to scroll div in html 
     const ref = useRef(null);
 
+
+
     // scroll function 
-    // click on
+    // click on button and the ref will direct to the div and scroll.
     const scroll = (scrollOffset) =>{
         ref.current.scrollLeft += scrollOffset;
     }
