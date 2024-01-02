@@ -1,15 +1,41 @@
-import React, { useEffect, useState, useRef, useReducer } from 'react';
+import React, { useEffect, useState, useRef, useReducer, useContext } from 'react';
 import styled from 'styled-components';
 import Data from "../../../assets/json/mainContent.json"
 import Login from '../navbar/user/Login';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { MyAuthenticated } from '../../Authentication';
 
 
 
 const Cards = () => {
 
-    // add to favorite
+    // import user login authentication import for like button 
+    // user is signup then like button will work otherwise login modal will show
+    const {authenticated} = useContext(MyAuthenticated) ;
+
+
+
+
+    const [loginLike, setLoginLike] = useState(true )
+    
+    // useEffect(()=>{
+    //     if(authenticated){
+    //         setLoginLike(true)
+    //     }else{
+    //         setLoginLike(false)
+    //     }
+    // },[authenticated])
+
+
+    function likeFunction(){
+        if(authenticated==true){
+            setLoginLike(true)
+        }else{
+            setLoginLike(false)
+        }
+        console.log(authenticated,loginLike)
+    }
 
 
     // if click on fav or booking then show the login page
@@ -86,11 +112,11 @@ const Cards = () => {
                         </ImageBorder>  
                         <LikeIcon onClick={(event)=>{
                                 event.stopPropagation()
-                                setLoginModal(true)
-                                // setName(each.id)
+                                // setLoginModal(true)
+                                likeFunction()
                             }
                         }>
-                            <HeartInput type="checkbox" className='heart-checkbox' id={`checkbox${index}`} disabled={false}/>
+                            <HeartInput type="checkbox" className='heart-checkbox' id={`checkbox${index}`} disabled={`${loginLike}`}/>
                             <HeartLabel className='heart' htmlFor={`checkbox${index}`}></HeartLabel>
                             {/* <HeartIcon src={require("../../../assets/icons/heart.png")} alt="" /> */}
                         </LikeIcon>

@@ -1,20 +1,30 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState, useEffect, createContext, useContext} from 'react';
 import styled from 'styled-components';
 import ExploreModal from '../../exploreLink/ExploreModal';
 import Login from './Login';
 import { Link } from 'react-router-dom';
-// import { authenticated } from './Login';
+import { MyAuthenticated } from '../../../Authentication';
+
+
+
+
+
+
+
 
 
 const UserModal = ({userClose}) => {
 
-    const [authenticated , setAuthenticated] = useState(false)
+    // const [authenticated , setAuthenticated] = useState(false)
 
+    const {authenticated , updateState} = useContext(MyAuthenticated) ;
 
     const [featureModal, setFeaturesModal] = useState(false);
     const [loginModal, setLoginModal] = useState(false)
     // const [mainModal, setMainModal] = useState(true)
     const [signOrLog, setSignOrLog] = useState(false);
+
+    
 
 
 
@@ -50,7 +60,7 @@ const UserModal = ({userClose}) => {
                 }
                 <hr/>
                 {authenticated && <>
-                    <Items><Link onClick={()=>setAuthenticated(false)}>Logout</Link></Items> 
+                    <Items><Link onClick={()=>updateState(false)}>Logout</Link></Items> 
                     <Items><Link >Favorites</Link></Items> 
                     <Items><Link >User</Link></Items> 
                 </>
@@ -60,10 +70,13 @@ const UserModal = ({userClose}) => {
                 <Items><Link to="/favorites">Favorites</Link></Items>
             </UserItems>
             {featureModal && <ExploreModal close={setFeaturesModal}/>}
-            {loginModal && <Login loginClose={setLoginModal} authenticated ={setAuthenticated}/>}
+            {loginModal && <Login loginClose={setLoginModal} authenticated ={updateState}/>}
         </>
     );
 };
+
+
+
 
 const UserItems = styled.div`
     display: flex;

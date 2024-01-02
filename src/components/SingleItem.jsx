@@ -1,13 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Data from "../assets/json/mainContent.json"
 import { useLocation, useParams} from 'react-router-dom';
 import Navbar from './MainPage/Navbar'
 import { data } from 'jquery';
 import styled from 'styled-components';
+// import {MyContext} from './Authentication'
+
 
 const SingleItem = () => {
 
-
+    // const { count, increment } = useContext(MyContext);
     // import id from parent folder in navigate format
     const location = useLocation();
     const {id} = location.state || {};
@@ -34,7 +36,7 @@ const SingleItem = () => {
         <Wrapper>
             <SpotLIght>
                 <TopBar>
-                    <Heading>Camp Footprint ,{dataCard[0].place}</Heading>
+                    <Heading>Camp  Footprint ,{dataCard[0].place}</Heading>
                     <TopRight>
                         <TopShare>Share</TopShare>
                         <TopSave>Save</TopSave>
