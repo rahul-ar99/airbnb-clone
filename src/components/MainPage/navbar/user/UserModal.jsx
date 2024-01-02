@@ -19,6 +19,8 @@ const UserModal = ({userClose}) => {
 
     const userModalRef = useRef(null)
 
+    const [userModalMain, setUserModalMain] = useState(true);
+
     // const [authenticated , setAuthenticated] = useState(false)
 
     const {authenticated , updateState} = useContext(MyAuthenticated) ;
@@ -33,10 +35,10 @@ const UserModal = ({userClose}) => {
         document.addEventListener("click",handleClickOutside, true)
     },[userModalRef])
 
-    const handleClickOutside = (e) =>{
-        if(userModalRef.current && !userModalRef.current.contains(e.target)){
+    const handleClickOutside = () =>{
+        if(userModalRef.current && !userModalRef.current.contains){
+            setUserModalMain(false)
 
-            userClose(false)
         }
     }
 
@@ -51,6 +53,7 @@ const UserModal = ({userClose}) => {
 
     return (
         <>
+        {userModalMain && 
             <UserItems ref={userModalRef}>
                 <Items onClick={()=>{
                     let statement = setFeaturesModal === true?false:true
@@ -68,6 +71,7 @@ const UserModal = ({userClose}) => {
                     }}>
                         <P1 >Login</P1></Items>
                     <Items onClick={()=>{
+                        // setUserModalMain(false)
                         setLoginModal(true)
                     }}>Sign up</Items>
                     <hr/>
@@ -96,6 +100,7 @@ const UserModal = ({userClose}) => {
                     </>
                 }
             </UserItems>
+}
             {featureModal && <ExploreModal close={setFeaturesModal}/>}
             {loginModal && <Login loginClose={setLoginModal} authenticated ={updateState}/>}
         </>
