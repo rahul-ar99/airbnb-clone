@@ -19,18 +19,34 @@ const UserModal = ({userClose}) => {
 
     const userModalRef = useRef(null)
 
+    // 
     const [userModalMain, setUserModalMain] = useState(true);
 
+    
+    // firstly authenticated by state then import from usecontext
     // const [authenticated , setAuthenticated] = useState(false)
 
-    const {authenticated , updateState} = useContext(MyAuthenticated) ;
 
+    // import from authenticated page with usecontext
+    const {authenticated , updateState} = useContext(MyAuthenticated);
+
+
+    // this is for feature modal open and close
     const [featureModal, setFeaturesModal] = useState(false);
+
+
+    // this is for login modal open and close
     const [loginModal, setLoginModal] = useState(false)
+
+
+
+
     // const [mainModal, setMainModal] = useState(true)
     const [signOrLog, setSignOrLog] = useState(false);
 
-    
+
+    // this is for, some error show when click on usericon more than one time that will be an error
+    // 
     useEffect(()=> {
         document.addEventListener("click",handleClickOutside, true)
     },[userModalRef])
