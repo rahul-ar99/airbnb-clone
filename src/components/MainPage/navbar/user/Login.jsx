@@ -43,14 +43,16 @@ const Login = ({loginClose, authenticated}) => {
 
 
             // assign user data to variables
-            const getUserName = userName.current.value
-            const getMail = email.current.value
-            const getPhone = phone.current.value
-            const getPassword = password.current.value
-            const getConfirmPassword = confirmPassword.current.value
+
+            const getUserName = "asd"
+            const getMail = "sadf"
+            const getPhone = "sadf"
+            const getPassword = "asdf"
+            const getConfirmPassword = "asdf"
 
             // create an list with user details object
-            const userDetails = [{name:getUserName,mail:getMail,password: getPassword,number: getPhone}]
+
+            // const userDetails = [{name:getUserName,mail:getMail,password: getPassword,number: getPhone}]
 
 
 
@@ -69,7 +71,7 @@ const Login = ({loginClose, authenticated}) => {
 
 
             // add userDetails into localstorage
-            localStorage.setItem("user1",JSON.stringify(userDetails))
+            // localStorage.setItem("user1",JSON.stringify(userDetails))
 
 
             // just a trail 
@@ -84,19 +86,19 @@ const Login = ({loginClose, authenticated}) => {
 
 
         //else user want to login, this else statement will work
-        else if(phone.current.value && password.current.value ){
+        // else if(phone.current.value && password.current.value ){
 
-            const user = localStorage.getItem("user")
-            let jsonData;
-            if (user) {
-            try {
-                jsonData = JSON.parse(user);
-                console.log()
-            } catch (error) {
-                console.error('Error parsing JSON data:', error);
-            }
-            }
-        }
+        //     const user = localStorage.getItem("user")
+        //     let jsonData;
+        //     if (user) {
+        //     try {
+        //         jsonData = JSON.parse(user);
+        //         console.log()
+        //     } catch (error) {
+        //         console.error('Error parsing JSON data:', error);
+        //     }
+        //     }
+        // }
 
 
     }
@@ -130,7 +132,9 @@ const Login = ({loginClose, authenticated}) => {
                         <UserReply>{logReply}</UserReply>
                         <InputDiv>
                             {/* if signup page is true */}
-                            <CountryInput ref={phone} type='text' placeholder='Phone no'></CountryInput>
+                            <CountryInput onChange={(e)=>{setusername1(e.target.value)
+                                console.log(username1)
+                            }} type='email' placeholder='email'></CountryInput>
                             {login===false && 
                             <>
                                 <NumberInput ref={userName} type='text' placeholder='Username'></NumberInput>
@@ -139,7 +143,9 @@ const Login = ({loginClose, authenticated}) => {
                                 <NumberInput ref={confirmPassword} type='password' placeholder='password'></NumberInput>
                             </>
                             }
-                            {login &&  <NumberInput ref={password} placeholder='password'></NumberInput>}
+                            {login &&  <NumberInput onChange={(e)=>{setpassoword1(e.target.value)
+                                console.log(passoword1)
+                            }} type='password' placeholder='password'></NumberInput>}
                            
                         </InputDiv>
                         <Text>We'll call or text you to confirm your number Standard message and data rates apply<Privacy> Privacy Policy</Privacy></Text>
