@@ -12,27 +12,28 @@ const Login = ({loginClose, authenticated}) => {
     
 
     //import user data from user
-    const userName = useRef()
+    const username1 = useRef()
     const email = useRef()
     const phone = useRef()
-    const password = useRef()
+    const passoword1 = useRef()
     const confirmPassword = useRef()
+    const userName = null
 
 
 
     // steyp
-    const [ username1,setusername1] = useState("")
-    const [ passoword1,setpassoword1] = useState("")
+    const [ username,setusername1] = useState("")
+    const [ password,setpassoword1] = useState("")
 
     const handleClick = (e) =>{
         e.preventDefault();
         axios
-            .post(`${BASE_URL}/auth/token`,{username1,passoword1})
+            .post(`${BASE_URL}/auth/token/`,{username,password})
             .then((response) => {
                 console.log(response)
             })
             .catch((error)=>{
-                console.error(error)
+                console.log(error)
             })
     }
 
@@ -45,81 +46,6 @@ const Login = ({loginClose, authenticated}) => {
     const [login, setLogin] = useState(true)
 
 
-
-    //on login and signup submit
-    function submit() {
-
-
-        // its just a trail for autheticated working
-        authenticated(true)
-
-        
-
-
-        //if user click on create an account this if statement will work
-        if(login===false){
-
-
-            // assign user data to variables
-
-            const getUserName = "asd"
-            const getMail = "sadf"
-            const getPhone = "sadf"
-            const getPassword = "asdf"
-            const getConfirmPassword = "asdf"
-
-            // create an list with user details object
-
-            // const userDetails = [{name:getUserName,mail:getMail,password: getPassword,number: getPhone}]
-
-
-
-            // checking uset entered password and confirm password is same
-            if(getPassword===getConfirmPassword){
-                if(userName){
-                    console.log("asdf")
-                }
-            }
-            // password and confirm password is wrong then show this message
-            else{
-                setLogReply("password didn't match")
-
-            }
-
-
-
-            // add userDetails into localstorage
-            // localStorage.setItem("user1",JSON.stringify(userDetails))
-
-
-            // just a trail 
-            if(getUserName && getMail && getPassword && getPhone && getConfirmPassword){
-                console.log(getUserName, getMail, getPassword, getPhone, getConfirmPassword)
-            }
-
-
-            
-            // setLogin(true)
-        }
-
-
-        //else user want to login, this else statement will work
-        // else if(phone.current.value && password.current.value ){
-
-        //     const user = localStorage.getItem("user")
-        //     let jsonData;
-        //     if (user) {
-        //     try {
-        //         jsonData = JSON.parse(user);
-        //         console.log()
-        //     } catch (error) {
-        //         console.error('Error parsing JSON data:', error);
-        //     }
-        //     }
-        // }
-
-
-    }
 
     //when open this modal, then window scroll is stop
     useEffect(()=>{
@@ -150,9 +76,10 @@ const Login = ({loginClose, authenticated}) => {
                         <UserReply>{logReply}</UserReply>
                         <InputDiv>
                             {/* if signup page is true */}
-                            <CountryInput onChange={(e)=>{setusername1(e.target.value)
+                            <CountryInput onChange={(e)=>{
+                                setusername1(e.target.value)
                                 console.log(username1)
-                            }} type='email' placeholder='email' value={username1}></CountryInput>
+                            }} type='email' placeholder='email' value={username}></CountryInput>
                             {login===false && 
                             <>
                                 <NumberInput ref={userName} type='text' placeholder='Username'></NumberInput>
@@ -163,7 +90,7 @@ const Login = ({loginClose, authenticated}) => {
                             }
                             {login &&  <NumberInput onChange={(e)=>{setpassoword1(e.target.value)
                                 console.log(passoword1)
-                            }} type='password' placeholder='password' value={passoword1}></NumberInput>}
+                            }} type='password' placeholder='password' value={password}></NumberInput>}
                            
                         </InputDiv>
                         <Text>We'll call or text you to confirm your number Standard message and data rates apply<Privacy> Privacy Policy</Privacy></Text>
