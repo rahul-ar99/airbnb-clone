@@ -1,5 +1,8 @@
 import React ,{useEffect, useState, useRef} from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+import { BASE_URL } from '../../../../axiosConfig';
+
 
 
 const Login = ({loginClose, authenticated}) => {
@@ -20,6 +23,21 @@ const Login = ({loginClose, authenticated}) => {
     // steyp
     const [ username1,setusername1] = useState("")
     const [ passoword1,setpassoword1] = useState("")
+
+    const handleClick = (e) =>{
+        e.preventDefault();
+        axios
+            .post(`${BASE_URL}/auth/token`,{username1,passoword1})
+            .then((response) => {
+                console.log(response)
+            })
+            .catch((error)=>{
+                console.error(error)
+            })
+    }
+
+
+
 
 
 
@@ -128,13 +146,13 @@ const Login = ({loginClose, authenticated}) => {
                 <LoginContent>
 
                     <ContentHead>Welcome to Airbnb</ContentHead>
-                    <LoginForm>
+                    <LoginForm onSubmit={handleClick}>
                         <UserReply>{logReply}</UserReply>
                         <InputDiv>
                             {/* if signup page is true */}
                             <CountryInput onChange={(e)=>{setusername1(e.target.value)
                                 console.log(username1)
-                            }} type='email' placeholder='email'></CountryInput>
+                            }} type='email' placeholder='email' value={username1}></CountryInput>
                             {login===false && 
                             <>
                                 <NumberInput ref={userName} type='text' placeholder='Username'></NumberInput>
@@ -145,11 +163,11 @@ const Login = ({loginClose, authenticated}) => {
                             }
                             {login &&  <NumberInput onChange={(e)=>{setpassoword1(e.target.value)
                                 console.log(passoword1)
-                            }} type='password' placeholder='password'></NumberInput>}
+                            }} type='password' placeholder='password' value={passoword1}></NumberInput>}
                            
                         </InputDiv>
                         <Text>We'll call or text you to confirm your number Standard message and data rates apply<Privacy> Privacy Policy</Privacy></Text>
-                        <ContinueBtn onClick={submit}>Countinue</ContinueBtn>
+                        <ContinueBtn type='submit'></ContinueBtn>
                         <ChangeSentence>{login=== true? "if you're new, then ":"you already a member, then ."}
                             <ChangeLogin onClick={()=>{
                                 const loginhead = login ===true?false:true
@@ -283,7 +301,7 @@ const Btn = styled.button`
     font-weight: 500;
 
 `;
-const ContinueBtn = styled.div`
+const ContinueBtn = styled.input`
     padding: 12px 0;
     display: flex;
     justify-content: center;
