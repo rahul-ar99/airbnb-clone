@@ -17,6 +17,11 @@ const Login = ({loginClose, authenticated}) => {
 
 
 
+    // steyp
+    const [ username1,setusername1] = useState("")
+    const [ passoword1,setpassoword1] = useState("")
+
+
 
     // change login and signup with using of hooks
     const [login, setLogin] = useState(true)

@@ -82,8 +82,6 @@ const Screen = styled.div`
     top: 0;
     left: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: #00000092;
 `;
 
@@ -94,10 +92,12 @@ const Modal = styled.div`
     flex-direction: column;
     width: 56rem;
     height: 34rem;
-    position: relative;
+    position: fixed;
     border-radius: 13px;
     overflow: hidden;
     padding: 0 20px;
+    left: 30%;
+    top: 150px;
 
 `;
 
