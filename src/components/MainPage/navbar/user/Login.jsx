@@ -22,18 +22,20 @@ const Login = ({loginClose, authenticated}) => {
 
 
     // steyp
-    const [ username,setusername1] = useState("")
-    const [ password,setpassoword1] = useState("")
+    const [ username,setusername] = useState("")
+    const [ password,setpassoword] = useState("")
+    const [ errorMsg,setErrorMsg] = useState("")
 
     const handleClick = (e) =>{
+        setErrorMsg("")
         e.preventDefault();
         axios
             .post(`${BASE_URL}/auth/token/`,{username,password})
             .then((response) => {
-                console.log(response)
+                console.log(response.data.refresh)
             })
             .catch((error)=>{
-                console.log(error)
+                setErrorMsg(error.response.data.detail)
             })
     }
 
@@ -73,22 +75,22 @@ const Login = ({loginClose, authenticated}) => {
 
                     <ContentHead>Welcome to Airbnb</ContentHead>
                     <LoginForm onSubmit={handleClick}>
-                        <UserReply>{logReply}</UserReply>
+                        <UserReply>{errorMsg}</UserReply>
                         <InputDiv>
                             {/* if signup page is true */}
                             <CountryInput onChange={(e)=>{
-                                setusername1(e.target.value)
+                                setusername(e.target.value)
                                 console.log(username1)
                             }} type='email' placeholder='email' value={username}></CountryInput>
                             {login===false && 
                             <>
-                                <NumberInput ref={userName} type='text' placeholder='Username'></NumberInput>
-                                <NumberInput ref={email} type='email' placeholder='Email'></NumberInput>
-                                <NumberInput ref={password} type='password' placeholder='password'></NumberInput>
-                                <NumberInput ref={confirmPassword} type='password' placeholder='password'></NumberInput>
+                                <NumberInput type='text' placeholder='Username'></NumberInput>
+                                <NumberInput type='email' placeholder='Email'></NumberInput>
+                                <NumberInput type='password' placeholder='password'></NumberInput>
+                                <NumberInput type='password' placeholder='password'></NumberInput>
                             </>
                             }
-                            {login &&  <NumberInput onChange={(e)=>{setpassoword1(e.target.value)
+                            {login &&  <NumberInput onChange={(e)=>{setpassoword(e.target.value)
                                 console.log(passoword1)
                             }} type='password' placeholder='password' value={password}></NumberInput>}
                            
