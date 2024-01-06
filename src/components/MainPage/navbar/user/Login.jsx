@@ -37,6 +37,7 @@ const Login = ({loginClose, authenticated}) => {
             .catch((error)=>{
                 setErrorMsg(error.response.data.detail)
             })
+        window.location.reload(false)
     }
 
 
