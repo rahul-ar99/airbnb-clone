@@ -5,7 +5,7 @@ export const MyAuthenticated = createContext();
 
 
 const Authentication = ({children}) => {
-    const [authenticated, setAuthenticated] = useState(false)
+    const [authenticated, setAuthenticated] = useState(true)
 
     const updateState = (newState) => {
         setAuthenticated(newState);

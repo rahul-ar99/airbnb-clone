@@ -3,12 +3,21 @@ import styled from 'styled-components';
 import Data from "../../../assets/json/mainContent.json"
 import Login from '../navbar/user/Login';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {addFav, deleteFav} from '../../../redux/action'
 import { MyAuthenticated } from '../../Authentication';
 
 
 
+
+
 const Cards = () => {
+
+    const dispatch = useDispatch();
+    const allFav = useSelector(state=>state.favorites)
+
+
+
 
     // import user login authentication import for like button 
     // user is signup then like button will work otherwise login modal will show
@@ -28,12 +37,13 @@ const Cards = () => {
     // },[authenticated])
 
 
-    function likeFunction(){
+    function likeFunction(item){
         if(authenticated==true){
             setLoginLike(true)
         }else{
             setLoginLike(false)
         }
+        console.log(item)
         console.log(authenticated,loginLike)
         
     }
@@ -114,7 +124,7 @@ const Cards = () => {
                         <LikeIcon onClick={(event)=>{
                                 event.stopPropagation()
                                 // setLoginModal(true)
-                                likeFunction()
+                                likeFunction(each.id)
                             }
                         }>
                             <HeartInput type="checkbox" className='heart-checkbox' id={`checkbox${index}`} disabled={()=>authenticated?true:false}/>
