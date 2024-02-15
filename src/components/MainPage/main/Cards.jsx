@@ -15,6 +15,34 @@ const Cards = () => {
 
     const dispatch = useDispatch();
     const allFav = useSelector(state=>state.favorites)
+    const [newFav, setNewFav] = useState('')
+
+
+    useEffect(()=>{
+        const savedFav = JSON.parse(localStorage.getItem('fav'));
+        if(savedFav){
+            dispatch({type:'ADD_FAV', payload:savedFav})
+        }
+    },[dispatch])
+
+
+    function likeFunction(item){
+        if(authenticated==true){
+            setLoginLike(true)
+            let newFavItem = {
+                id:newFav
+            }
+            dispatch(addFav(newFavItem))
+            // localStorage.setItem("fav",JSON.stringify([...allFav,newFavItem]));
+            setNewFav('')
+            console.log()
+        }else{
+            setLoginLike(false)
+        }
+        console.log(item)
+        console.log(authenticated,loginLike)
+        
+    }
 
 
 
@@ -37,16 +65,6 @@ const Cards = () => {
     // },[authenticated])
 
 
-    function likeFunction(item){
-        if(authenticated==true){
-            setLoginLike(true)
-        }else{
-            setLoginLike(false)
-        }
-        console.log(item)
-        console.log(authenticated,loginLike)
-        
-    }
 
 
     // if click on fav or booking then show the login page

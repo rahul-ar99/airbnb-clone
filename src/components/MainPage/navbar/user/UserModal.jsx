@@ -25,7 +25,7 @@ const UserModal = ({userClose}) => {
     
     // firstly authenticated by state then import from usecontext
     // const [authenticated , setAuthenticated] = useState(false)
-
+    
 
     // import from authenticated page with usecontext
     const {authenticated , updateState} = useContext(MyAuthenticated);
