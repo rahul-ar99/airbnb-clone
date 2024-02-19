@@ -14,6 +14,5 @@ const rootReducer = (state = initialState, action) =>{
                 ...state,
                 favorites:state.favorites.filter((_,index)=>index != action.payload)
             }
-        case
     }
 }
