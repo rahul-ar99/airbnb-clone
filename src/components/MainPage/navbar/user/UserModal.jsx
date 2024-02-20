@@ -7,12 +7,6 @@ import { MyAuthenticated } from '../../../Authentication';
 
 
 
-
-
-
-
-
-
 const UserModal = ({userClose}) => {
 
 
@@ -98,7 +92,7 @@ const UserModal = ({userClose}) => {
                     <Items><LoginItem><Link>Messages</Link></LoginItem></Items> 
                     <Items><LoginItem><Link>Notification</Link></LoginItem></Items> 
                     <Items><LoginItem><Link>Trips</Link></LoginItem></Items> 
-                    <Items><LoginItem><Link>Wishlist</Link></LoginItem></Items> 
+                    <Items><LoginItem><Link to="favorites">Wishlist</Link></LoginItem></Items> 
                     <hr />
                 </>
                 }

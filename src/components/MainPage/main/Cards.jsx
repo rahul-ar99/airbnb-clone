@@ -6,6 +6,11 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {addFav, deleteFav} from '../../../redux/action'
 import { MyAuthenticated } from '../../Authentication';
+import { Connect } from 'react-redux';
+import { addToFAvorites } from '../../../redux/action';
+
+
+
 
 
 
@@ -14,16 +19,23 @@ import { MyAuthenticated } from '../../Authentication';
 const Cards = () => {
 
     const dispatch = useDispatch();
-    const allFav = useSelector(state=>state.favorites)
+
+    const handleAddToFavorites = (item) => {
+        dispatch(addToFAvorites(item))
+    }
+    
+
+
+    const allFav = useSelector(state => state.favorites);
     const [newFav, setNewFav] = useState('')
 
 
-    useEffect(()=>{
-        const savedFav = JSON.parse(localStorage.getItem('fav'));
-        if(savedFav){
-            dispatch({type:'ADD_FAV', payload:savedFav})
-        }
-    },[dispatch])
+    // useEffect(()=>{
+    //     const savedFav = JSON.parse(localStorage.getItem('fav'));
+    //     if(savedFav){
+    //         dispatch({type:'ADD_FAV', payload:savedFav})
+    //     }
+    // },[dispatch])
 
 
     function likeFunction(item){
@@ -32,87 +44,93 @@ const Cards = () => {
             let newFavItem = {
                 id:newFav
             }
-            dispatch(addFav(newFavItem))
+            // dispatch(addFav(newFavItem))
             // localStorage.setItem("fav",JSON.stringify([...allFav,newFavItem]));
             setNewFav('')
-            console.log()
         }else{
             setLoginLike(false)
         }
-        console.log(item)
-        console.log(authenticated,loginLike)
+        // console.log(item)
+        // console.log(authenticated,loginLike)
         
     }
-
-
-
-
+    
+    
+    
+    
     // import user login authentication import for like button 
     // user is signup then like button will work otherwise login modal will show
     const {authenticated} = useContext(MyAuthenticated) ;
-
-
-
-
+    
+    
+    
+    
     const [loginLike, setLoginLike] = useState(true )
     
     // useEffect(()=>{
-    //     if(authenticated){
+        //     if(authenticated){
     //         setLoginLike(true)
     //     }else{
-    //         setLoginLike(false)
-    //     }
-    // },[authenticated])
+        //         setLoginLike(false)
+        //     }
+        // },[authenticated])
+        
+        
+        
+        
+        // if click on fav or booking then show the login page
+        // create state variables    
+        const [loginModal, setLoginModal] = useState(false);
 
+        
+        // create all data into array cards
+        const [cards, setCards] = useState([])
+        
+        
+        // import data to cards state with useEffect method
+        useEffect(()=>{
+            setCards(Data,cards)
+            
+        },[])
+        
+        
+        useEffect(()=>{
+            console.log(allFav,1)
+        },[allFav])
+        
+        // for scroll
+        const ref1 = useRef(null);
+        
+        
+        //scroll image inside the card
+        // but it's doesn't work, you need to edit this code
+        const scroll = (scrollOffset) =>{
+            
+            
+            // scroll with ref elements
+            ref1.current.scrollLeft += scrollOffset;
+            
+            console.log(ref1.current.scrollLeft)
+            // stop the parent onclick function
+            // e.stopPropagation()
+            
+        }
+        
+        
+        
+        // navigate to other 
+        const navigate = useNavigate()
+        
+        
+        
+        // navigate to open each card when click that modal
+        const handleClick = (cardId) =>{
+            navigate(`/singleitem`, {state:{id:cardId}})
+        }
+        
+        return (
+            <div className='wrapper'>
 
-
-
-    // if click on fav or booking then show the login page
-    // create state variables    
-    const [loginModal, setLoginModal] = useState(false);
-
-
-    // create all data into array cards
-    const [cards, setCards] = useState([])
-
-    
-    // import data to cards state with useEffect method
-    useEffect(()=>{
-        setCards(Data,cards)
-    },[])
-
-    // for scroll
-    const ref1 = useRef(null);
-
-
-    //scroll image inside the card
-    // but it's doesn't work, you need to edit this code
-    const scroll = (scrollOffset) =>{
-
-
-        // scroll with ref elements
-        ref1.current.scrollLeft += scrollOffset;
-
-        console.log(ref1.current.scrollLeft)
-        // stop the parent onclick function
-        // e.stopPropagation()
-
-    }
-
-
-
-    // navigate to other 
-    const navigate = useNavigate()
-
-
-
-    // navigate to open each card when click that modal
-    const handleClick = (cardId) =>{
-        navigate(`/singleitem`, {state:{id:cardId}})
-    }
-
-    return (
-        <div className='wrapper'>
             <AllCards>
 
 
@@ -141,8 +159,9 @@ const Cards = () => {
                         </ImageBorder>  
                         <LikeIcon onClick={(event)=>{
                                 event.stopPropagation()
-                                // setLoginModal(true)
+                                // // setLoginModal(true)
                                 likeFunction(each.id)
+                                handleAddToFavorites(each.id)
                             }
                         }>
                             <HeartInput type="checkbox" className='heart-checkbox' id={`checkbox${index}`} disabled={()=>authenticated?true:false}/>

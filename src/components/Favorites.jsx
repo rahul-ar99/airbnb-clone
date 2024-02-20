@@ -1,17 +1,21 @@
-import React from 'react';
-import { createSlice } from '@reduxjs/toolkit';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
-const Favorites = ({todo, dispatch}) => {
+const Favorites = () => {
 
+    const Fav = useSelector(state=>state.favorites)
 
-
-
-
+    useEffect(()=>{
+        console.log(Fav)
+    })
 
 
     return (
         <div>
-            <h1 style={{color: todo.complete ? "white":"red"}}>wertjgwg</h1>
+            {Fav.map(()=>{
+                <h1>aasdf</h1>
+            })}
+            <h1>wertjgwg</h1>
         </div>
     );
 };

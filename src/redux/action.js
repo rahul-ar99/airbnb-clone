@@ -1,12 +1,11 @@
-export const addFav = (fav) =>({
-    type:'ADD_fAV',
-    payload:fav
+export const ADD_TO_FAVORITES = 'ADD_TO_FAVORITES';
+export const REMOVE_FROM_FAVORITES = 'REMOVE_FROM_FAVORITES';
+
+export const addToFAvorites = (item) => ({
+    type:ADD_TO_FAVORITES,
+    payload:item,
 })
-
-export const deleteFav = (index) =>{
-    return{
-        type:'DELETE_TODO',
-        payload:index
-    };
-}
-
+export const removeFromFAvorites = (item) => ({
+    type:removeFromFAvorites,
+    payload:item,
+})
