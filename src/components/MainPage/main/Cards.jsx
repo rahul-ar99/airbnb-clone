@@ -18,10 +18,36 @@ import { addToFAvorites } from '../../../redux/action';
 
 const Cards = () => {
 
+
+    const favLocal = localStorage.getItem("fav")
+    if(favLocal.length > 1 ){
+        const splitFav = favLocal.split(",")
+
+    }
+    
+
+
     const dispatch = useDispatch();
+
+    // const allFavArr = []
+    // splitFav.forEach((item)=>{
+    //     console.log(item)
+    //     if(!allFavArr.includes(item)){
+    //         allFavArr.push(item)
+    //     }
+    // })
+
+    useEffect(()=>{
+        allFav.map((item)=>{
+            dispatch(addToFAvorites(item))
+        })
+        console.log(favLocal.length)
+
+    },[])
 
     const handleAddToFavorites = (item) => {
         dispatch(addToFAvorites(item))
+        localStorage.setItem("fav",allFav)
     }
     
 
