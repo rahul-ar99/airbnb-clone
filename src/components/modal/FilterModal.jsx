@@ -64,6 +64,13 @@ const FilterModal = ({close}) => {   //close is props function
                 </TypeofPlace>
                 <PriceRange>
                     <MainHead>Price range</MainHead>
+                    <select name="price" id="price">
+                        <option value="6000">below 5000</option>
+                        <option value="7000">below 7000</option>
+                        <option value="8000">below 8000</option>
+                        <option value="9000">below 9000</option>
+                        <option value="more">morethan 10000</option>
+                    </select>
                     <HeadTag>Nightly prices before fees and taxes</HeadTag>
 
                 </PriceRange>

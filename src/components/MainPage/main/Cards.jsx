@@ -111,6 +111,13 @@ const Cards = () => {
         
         // create all data into array cards
         const [cards, setCards] = useState([])
+
+
+
+        // change price range for filter
+        const [price, setPrice] = useState()
+
+
         
         
         // import data to cards state with useEffect method
@@ -142,6 +149,9 @@ const Cards = () => {
             
         }
         
+        useEffect(()=>{
+            console.log(price)
+        },[price])
         
         
         // navigate to other 
@@ -156,12 +166,18 @@ const Cards = () => {
         
         return (
             <div className='wrapper'>
+                <PriceDiv>
+                    <PriceP onClick={()=>setPrice(6000)}>below 6000</PriceP>
+                    <PriceP onClick={()=>setPrice(7000)}>below 7000</PriceP>
+                    <PriceP onClick={()=>setPrice(8000)}>below 8000</PriceP>
+                    <PriceP onClick={()=>setPrice(9000)}>below 9000</PriceP>
+                </PriceDiv>
 
             <AllCards>
 
 
                 {/* map for each card */}
-                {cards.map((each, index)=>(
+                {cards.map((each, index)).filter(()=>(
                     <SingleCard key={each.id} onClick={()=>{
                         // console.log(each.id)
                         handleClick(each.id)
@@ -238,6 +254,15 @@ const Images = styled.div`
     height: 255px;
     display: flex;
 `;
+
+const PriceDiv = styled.div`
+    display: flex;
+    margin: 20px 0;
+`
+const PriceP = styled.p`
+    padding: 10px 20px;
+    cursor: pointer;
+`
 
 const ImgDiv = styled.div`
     width: 632px;
