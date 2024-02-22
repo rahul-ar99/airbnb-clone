@@ -111,6 +111,7 @@ const Cards = () => {
         
         // create all data into array cards
         const [cards, setCards] = useState([])
+        const [cards1, setCards1] = useState([])
 
 
 
@@ -151,7 +152,12 @@ const Cards = () => {
         
         useEffect(()=>{
             console.log(price)
+
+            setCards1(cards.filter(filterData => filterData.price <= price))
+            console.log(cards1,1234)
+
         },[price])
+
         
         
         // navigate to other 
@@ -177,7 +183,7 @@ const Cards = () => {
 
 
                 {/* map for each card */}
-                {cards.map((each, index)).filter(()=>(
+                {cards1.map((each, index)=>(
                     <SingleCard key={each.id} onClick={()=>{
                         // console.log(each.id)
                         handleClick(each.id)
