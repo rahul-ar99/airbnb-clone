@@ -132,7 +132,12 @@ const CloseImg = styled.img`
 
 const TypeofPlace = styled.div``;
 
-const MainHead = styled.h5``;
+const MainHead = styled.h5`
+    font-size: 20px;
+    font-weight: 600;
+    padding: 7px 0;
+    
+`;
 
 const HeadTag = styled.p``;
 
@@ -163,6 +168,8 @@ const Button = styled.button`
     }
 `
 
-const PriceRange = styled.div``
+const PriceRange = styled.div`
+    margin-top:50px;
+`
 
 export default FilterModal;

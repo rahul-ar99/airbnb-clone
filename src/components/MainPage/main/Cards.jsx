@@ -125,6 +125,7 @@ const Cards = () => {
         useEffect(()=>{
             setCards(Data,cards)
             
+            setPrice(9000)
         },[])
         
         
@@ -152,12 +153,12 @@ const Cards = () => {
         
         useEffect(()=>{
             console.log(price)
-
+            
             setCards1(cards.filter(filterData => filterData.price <= price))
             console.log(cards1,1234)
-
+            
         },[price])
-
+        
         
         
         // navigate to other 
