@@ -14,34 +14,31 @@ export const PriceFilterContext = createContext();
 
 function MainPage() {
 
+  // create state for scroll
   const [scroll, setScroll] = useState(true)
 
-  const updateFilterData = (action) =>{
-    switch(action.type){
-      case 9000:
-        localStorage.setItem("filter",9000)
-        return
-      case 8000:
-        localStorage.setItem("filter",8000)
-        return
-      case 7000:
-        localStorage.setItem("filter",7000)
-        return
-      case 6000:
-        localStorage.setItem("filter",6000)
-        return
-      
-    }
-  }
+
+  // create state for price for filter
+  const [filterPrice, setFilterPrice] = useState()
+
 
   useEffect(()=>{
     const handleScroll = () =>{
       setScroll(window.scrollY <= 0)
     }
+    // setFilterPrice(9000)
 
     window.addEventListener("scroll",handleScroll)
 
   })
+  
+
+
+
+  // setFilterPrice top of the list, otherwise array is null
+  useEffect(()=>{
+    setFilterPrice(9000)
+  },[])
 
 
 
@@ -56,6 +53,9 @@ function MainPage() {
   // })
 
   return (
+
+    <PriceFilterContext.Provider value={{filterPrice, setFilterPrice}}>
+
     <div className="App">
         {scroll && <ExploreLink />}
         <TopBar>
@@ -67,6 +67,7 @@ function MainPage() {
         <MainContent />
         <Footer />
     </div>
+    </PriceFilterContext.Provider>
   );
 }
 const TopBar = styled.div`

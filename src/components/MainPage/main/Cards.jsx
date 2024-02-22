@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useReducer, useContext } from 'react';
 import styled from 'styled-components';
 import Data from "../../../assets/json/mainContent.json"
+import Data1 from '../../../assets/json/mainContent copy.json'
 import Login from '../navbar/user/Login';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,6 +9,7 @@ import {addFav, deleteFav} from '../../../redux/action'
 import { MyAuthenticated } from '../../Authentication';
 import { Connect } from 'react-redux';
 import { addToFAvorites } from '../../../redux/action';
+import { PriceFilterContext } from '../../MainPage';
 
 
 
@@ -17,6 +19,12 @@ import { addToFAvorites } from '../../../redux/action';
 
 
 const Cards = () => {
+
+
+    console.log(Data1.assets.map((i)=>{
+        console.log(i)
+    }))
+    const {filterPrice} = useContext(PriceFilterContext)
 
 
     const favLocal = localStorage.getItem("fav")
@@ -41,7 +49,7 @@ const Cards = () => {
         allFav.map((item)=>{
             dispatch(addToFAvorites(item))
         })
-        console.log(favLocal.length)
+        // console.log(favLocal.length)
 
     },[])
 
@@ -112,26 +120,17 @@ const Cards = () => {
         // create all data into array cards
         const [cards, setCards] = useState([])
         const [cards1, setCards1] = useState([])
-
-
-
-        // change price range for filter
-        const [price, setPrice] = useState()
-
-
         
         
         // import data to cards state with useEffect method
         useEffect(()=>{
             setCards(Data,cards)
-            
-            setPrice(9000)
         },[])
         
         
-        useEffect(()=>{
-            console.log(allFav,1)
-        },[allFav])
+        // useEffect(()=>{
+        //     console.log(allFav,1)
+        // },[allFav])
         
         // for scroll
         const ref1 = useRef(null);
@@ -152,12 +151,11 @@ const Cards = () => {
         }
         
         useEffect(()=>{
-            console.log(price)
             
-            setCards1(cards.filter(filterData => filterData.price <= price))
-            console.log(cards1,1234)
+            setCards1(cards.filter(filterData => filterData.price <= filterPrice))
+            // console.log(cards1,1234)
             
-        },[price])
+        },[filterPrice])
         
         
         
@@ -173,12 +171,6 @@ const Cards = () => {
         
         return (
             <div className='wrapper'>
-                <PriceDiv>
-                    <PriceP onClick={()=>setPrice(6000)}>below 6000</PriceP>
-                    <PriceP onClick={()=>setPrice(7000)}>below 7000</PriceP>
-                    <PriceP onClick={()=>setPrice(8000)}>below 8000</PriceP>
-                    <PriceP onClick={()=>setPrice(9000)}>below 9000</PriceP>
-                </PriceDiv>
 
             <AllCards>
 

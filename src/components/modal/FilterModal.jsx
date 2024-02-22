@@ -1,8 +1,13 @@
-import React ,{useEffect, useState} from 'react';
+import React ,{useContext, useEffect, useState} from 'react';
 import styled from 'styled-components';
+import { PriceFilterContext } from '../MainPage';
 
 
 const FilterModal = ({close}) => {   //close is props function
+
+
+    // import context for price filter
+    const {setFilterPrice} = useContext(PriceFilterContext)
 
 
     // when this modal is open 
@@ -19,6 +24,12 @@ const FilterModal = ({close}) => {   //close is props function
     const [typePlace, setTypePlace] = useState("any")
     const [placeContent, setPlaceContent] = useState("A room in a home, plus access to shared spaces.")
 
+
+
+    // change price filter onchange with context value
+    const handleChange = (e) =>{
+        setFilterPrice(e.target.value)
+    }
 
 
     // if any changes in typePlace state, then this useEffect will work
@@ -64,16 +75,16 @@ const FilterModal = ({close}) => {   //close is props function
                 </TypeofPlace>
                 <PriceRange>
                     <MainHead>Price range</MainHead>
-                    <select name="price" id="price">
-                        <option value="6000">below 5000</option>
+                    
+                    <select name="price" id="price" onChange={handleChange}>
+                        <option value="6000">below 6000</option>
                         <option value="7000">below 7000</option>
                         <option value="8000">below 8000</option>
                         <option value="9000">below 9000</option>
-                        <option value="more">morethan 10000</option>
                     </select>
-                    <HeadTag>Nightly prices before fees and taxes</HeadTag>
 
                 </PriceRange>
+                    <HeadTag>Nightly prices before fees and taxes</HeadTag>
             </Modal>
         </Screen>
     );
@@ -170,6 +181,8 @@ const Button = styled.button`
 
 const PriceRange = styled.div`
     margin-top:50px;
+    display: flex;
+    gap: 20px;
 `
 
 export default FilterModal;
