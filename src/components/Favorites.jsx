@@ -13,11 +13,12 @@ const Favorites = () => {
 
     // const Fav = useSelector(state=>state.favorites)
     const importFav = localStorage.getItem("fav")
+    
     const splitFav = importFav.split(",")
  
     const allFav = []
     splitFav.forEach((item)=>{
-        console.log(item)
+        // console.log(item)
         if(!allFav.includes(item)){
             allFav.push(item)
         }
@@ -27,11 +28,13 @@ const Favorites = () => {
     
     useEffect(()=>{
         setFavCards(Data)
-        console.log(allFav.length)
+        
+        console.log(splitFav)
         if(allFav.length > 1){
             setFavState(true)
             console.log('asdfdsf')
         }
+        // console.log(Array.from(importFav))
         // favCards.filter(item => item.)
     },[])
 

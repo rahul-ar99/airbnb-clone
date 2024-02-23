@@ -21,9 +21,9 @@ import { PriceFilterContext } from '../../MainPage';
 const Cards = () => {
 
 
-    console.log(Data1.assets.map((i)=>{
-        console.log(i)
-    }))
+    // console.log(Data1.assets.map((i)=>{
+    //     console.log(i)
+    // }))
     const {filterPrice} = useContext(PriceFilterContext)
 
 
@@ -52,24 +52,35 @@ const Cards = () => {
         // console.log(favLocal.length)
 
     },[])
+    const splitFav1 =[]
 
     const handleAddToFavorites = (item) => {
+        // console.log(splitFav.includes(item))
+
+
         dispatch(addToFAvorites(item))
         localStorage.setItem("fav",allFav)
     }
-    
 
+    const checkLiked = () =>{
+
+    }
+    
+    useEffect(()=>{
+        const importFav = localStorage.getItem("fav")
+    
+        const splitFav = importFav.split(",")
+        splitFav1 =
+
+        console.log(splitFav)
+
+    },[])
 
     const allFav = useSelector(state => state.favorites);
     const [newFav, setNewFav] = useState('')
 
 
-    // useEffect(()=>{
-    //     const savedFav = JSON.parse(localStorage.getItem('fav'));
-    //     if(savedFav){
-    //         dispatch({type:'ADD_FAV', payload:savedFav})
-    //     }
-    // },[dispatch])
+
 
 
     function likeFunction(item){
@@ -101,13 +112,7 @@ const Cards = () => {
     
     const [loginLike, setLoginLike] = useState(true )
     
-    // useEffect(()=>{
-        //     if(authenticated){
-    //         setLoginLike(true)
-    //     }else{
-        //         setLoginLike(false)
-        //     }
-        // },[authenticated])
+
         
         
         
@@ -128,14 +133,14 @@ const Cards = () => {
         },[])
         
         
-        // useEffect(()=>{
-        //     console.log(allFav,1)
-        // },[allFav])
+
         
         // for scroll
         const ref1 = useRef(null);
         
         
+
+
         //scroll image inside the card
         // but it's doesn't work, you need to edit this code
         const scroll = (scrollOffset) =>{
@@ -144,6 +149,7 @@ const Cards = () => {
             // scroll with ref elements
             ref1.current.scrollLeft += scrollOffset;
             
+
             console.log(ref1.current.scrollLeft)
             // stop the parent onclick function
             // e.stopPropagation()
@@ -174,27 +180,27 @@ const Cards = () => {
 
             <AllCards>
 
-
+            
                 {/* map for each card */}
+
                 {cards1.map((each, index)=>(
                     <SingleCard key={each.id} onClick={()=>{
                         // console.log(each.id)
                         handleClick(each.id)
                         // handleLove()
-                        
                     }}>
                         <ImageBorder ref={ref1}>
                             <Images> 
-                                    <Img1 src={require(`../../../assets/images/${each.image}.webp`)} alt="" />
-                                    <Img1 src={require("../../../assets/images/photos2.webp")} alt="" />
-                                    <Img1 src={require("../../../assets/images/photos3.webp")} alt="" />
-                                    <Img1 src={require("../../../assets/images/photos4.webp")} alt="" />
-                                    <Img1 src={require("../../../assets/images/photos5.webp")} alt="" />
-                                    <Img1 src={require("../../../assets/images/photos6.webp")} alt="" />
-                                    <Img1 src={require("../../../assets/images/photos7.webp")} alt="" />
-                                    <Img1 src={require("../../../assets/images/photos8.webp")} alt="" />
-                                    <Img1 src={require("../../../assets/images/photos9.webp")} alt="" />
-                                    <Img1 src={require("../../../assets/images/photos10.webp")} alt="" />
+                                <Img1 src={require(`../../../assets/images/${each.image}.webp`)} alt="" />
+                                <Img1 src={require("../../../assets/images/photos2.webp")} alt="" />
+                                <Img1 src={require("../../../assets/images/photos3.webp")} alt="" />
+                                <Img1 src={require("../../../assets/images/photos4.webp")} alt="" />
+                                <Img1 src={require("../../../assets/images/photos5.webp")} alt="" />
+                                <Img1 src={require("../../../assets/images/photos6.webp")} alt="" />
+                                <Img1 src={require("../../../assets/images/photos7.webp")} alt="" />
+                                <Img1 src={require("../../../assets/images/photos8.webp")} alt="" />
+                                <Img1 src={require("../../../assets/images/photos9.webp")} alt="" />
+                                <Img1 src={require("../../../assets/images/photos10.webp")} alt="" />
                                 <Img1 src={require("../../../assets/images/photos11.webp")} alt="" />
                             </Images>
                         </ImageBorder>  
@@ -206,7 +212,7 @@ const Cards = () => {
                             }
                         }>
                             <HeartInput type="checkbox" className='heart-checkbox' id={`checkbox${index}`} disabled={()=>authenticated?true:false}/>
-                            <HeartLabel className='heart active' htmlFor={`checkbox${index}`}></HeartLabel>
+                            <HeartLabel className='heart active liked' htmlFor={`checkbox${index}`}></HeartLabel>
                             {/* <HeartIcon src={require("../../../assets/icons/heart.png")} alt="" /> */}
                         </LikeIcon>
                         <Details>
@@ -296,7 +302,7 @@ const HeartLabel = styled.label`
     position: relative;
     display: block;
     background-color: red;
-
+    
     &:before, &:after{
         position: absolute;
         left: 30px;
@@ -319,7 +325,10 @@ const HeartLabel = styled.label`
     &.active{
         background-color: red;
     }
-
+    &.liked{
+        background-color: red;
+    }
+    
 `
 
 
