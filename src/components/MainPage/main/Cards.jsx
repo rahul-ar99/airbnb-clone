@@ -9,7 +9,7 @@ import {addFav, deleteFav} from '../../../redux/action'
 import { MyAuthenticated } from '../../Authentication';
 import { Connect } from 'react-redux';
 import { addToFAvorites } from '../../../redux/action';
-import { PriceFilterContext } from '../../MainPage';
+import { PriceFilterContext, SortContext } from '../../MainPage';
 
 
 
@@ -26,25 +26,36 @@ const Cards = () => {
     // }))
     const {filterPrice} = useContext(PriceFilterContext)
 
+    const {sort} = useContext(SortContext)
 
+
+    
+    
     const favLocal = localStorage.getItem("fav")
     if(favLocal.length > 1 ){
         const splitFav = favLocal.split(",")
+        
+    }
+    
+    if(sort){
 
     }
     
-
-
+    
     const dispatch = useDispatch();
-
+    
     // const allFavArr = []
     // splitFav.forEach((item)=>{
-    //     console.log(item)
-    //     if(!allFavArr.includes(item)){
-    //         allFavArr.push(item)
-    //     }
-    // })
+        //     console.log(item)
+        //     if(!allFavArr.includes(item)){
+            //         allFavArr.push(item)
+            //     }
+            // })
 
+    useEffect(()=>{
+        console.log(sort)
+    },[sort])
+            
     useEffect(()=>{
         allFav.map((item)=>{
             dispatch(addToFAvorites(item))
@@ -56,12 +67,9 @@ const Cards = () => {
 
     const handleAddToFavorites = (item) => {
         // console.log(splitFav.includes(item))
-
-
         dispatch(addToFAvorites(item))
         localStorage.setItem("fav",allFav)
     }
-
     const checkLiked = () =>{
 
     }
@@ -70,7 +78,7 @@ const Cards = () => {
         const importFav = localStorage.getItem("fav")
     
         const splitFav = importFav.split(",")
-        splitFav1 =
+        // splitFav1 =
 
         console.log(splitFav)
 
@@ -121,16 +129,18 @@ const Cards = () => {
         // create state variables    
         const [loginModal, setLoginModal] = useState(false);
 
-        
+
         // create all data into array cards
         const [cards, setCards] = useState([])
         const [cards1, setCards1] = useState([])
+        const [card2, setCards2] = useState([])
         
         
         // import data to cards state with useEffect method
         useEffect(()=>{
             setCards(Data,cards)
         },[])
+        
         
         
 
@@ -162,6 +172,20 @@ const Cards = () => {
             // console.log(cards1,1234)
             
         },[filterPrice])
+
+
+        useEffect(()=>{
+            const sortArr = []
+
+            cards1.sort(function(a,b){
+                if(sort){
+                    return a.price - b.price
+                }
+                else{
+                    return a.price + b.price
+                }
+            })
+        },[sort])
         
         
         

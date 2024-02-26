@@ -1,6 +1,6 @@
 import React ,{useContext, useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { PriceFilterContext } from '../MainPage';
+import { PriceFilterContext, SortContext } from '../MainPage';
 
 
 const FilterModal = ({close}) => {   //close is props function
@@ -8,6 +8,27 @@ const FilterModal = ({close}) => {   //close is props function
 
     // import context for price filter
     const {setFilterPrice} = useContext(PriceFilterContext)
+
+    
+    // change price filter onchange with context value
+    const handleChangePrice = (e) =>{
+        setFilterPrice(e.target.value)
+    }
+
+    
+    // import setState context for exporting true or false value
+    const {setSort} = useContext(SortContext)
+
+
+    // change the sort value with true or false
+    const handleChangeSort = (e) =>{
+        if(e.target.value==="low"){
+            setSort(true)
+        }else{
+            setSort(false)
+        } 
+    }
+
 
 
     // when this modal is open 
@@ -26,10 +47,8 @@ const FilterModal = ({close}) => {   //close is props function
 
 
 
-    // change price filter onchange with context value
-    const handleChange = (e) =>{
-        setFilterPrice(e.target.value)
-    }
+
+
 
 
     // if any changes in typePlace state, then this useEffect will work
@@ -76,14 +95,21 @@ const FilterModal = ({close}) => {   //close is props function
                 <PriceRange>
                     <MainHead>Price range</MainHead>
                     
-                    <select name="price" id="price" onChange={handleChange}>
-                        <option value="6000">below 6000</option>
-                        <option value="7000">below 7000</option>
-                        <option value="8000">below 8000</option>
+                    <select name="price" id="price" onChange={handleChangePrice}>
                         <option value="9000">below 9000</option>
+                        <option value="8000">below 8000</option>
+                        <option value="7000">below 7000</option>
+                        <option value="6000">below 6000</option>
                     </select>
 
                 </PriceRange>
+                <SortDiv>
+                    <MainHead>Sort</MainHead>
+                    <select name="sort" id="price" onChange={handleChangeSort}>
+                        <option value="high">Price low to high</option>
+                        <option value="low">Price high to low</option>
+                    </select>
+                </SortDiv>
                     <HeadTag>Nightly prices before fees and taxes</HeadTag>
             </Modal>
         </Screen>
@@ -102,6 +128,13 @@ const Screen = styled.div`
     display: flex;
     background-color: #00000092;
 `;
+
+const SortDiv = styled.div`
+    display:flex;
+    gap: 10px;
+
+`
+
 
 const Modal = styled.div`
     z-index: 4;

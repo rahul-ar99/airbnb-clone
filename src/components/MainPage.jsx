@@ -6,6 +6,8 @@ import Catogories from './MainPage/Catogories'
 import MainContent from './MainPage/MainContent';
 import Footer from './MainPage/Footer';
 export const PriceFilterContext = createContext();
+export const SortContext = createContext();
+export const CatogaryContext = createContext()
 
 
 
@@ -20,9 +22,16 @@ function MainPage() {
   const [scroll, setScroll] = useState(true)
 
 
-
   // create state for price for filter
   const [filterPrice, setFilterPrice] = useState()
+
+
+  // create a state for sort value to true or false
+  const [sort, setSort] = useState(false)
+
+
+  // create a state for which catogary selected
+  const [cotogary, setCatogary] = useState("")
 
 
 
@@ -45,6 +54,7 @@ function MainPage() {
 
 
   return (
+    <SortContext.Provider value={{sort, setSort}}>
 
     <PriceFilterContext.Provider value={{filterPrice, setFilterPrice}}>
       <div className="App">
@@ -59,6 +69,7 @@ function MainPage() {
           <Footer />
       </div>
     </PriceFilterContext.Provider>
+    </SortContext.Provider>
   );
 }
 const TopBar = styled.div`

@@ -16,7 +16,7 @@ for(let i in existingJson){
 // Add a new key-value pair
 // existingJson.newKey = "some value";
 
-// // Write the modified JSON back to the file
+// Write the modified JSON back to the file
 // fs.writeFileSync(filePath, JSON.stringify(existingJson, null, 2), 'utf-8');
 
 // console.log('Key and value added to the JSON file.');
