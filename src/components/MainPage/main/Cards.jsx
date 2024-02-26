@@ -176,64 +176,64 @@ const Cards = () => {
         }
         
         return (
+
             <div className='wrapper'>
+                <AllCards>
 
-            <AllCards>
+                
+                    {/* map for each card */}
 
-            
-                {/* map for each card */}
-
-                {cards1.map((each, index)=>(
-                    <SingleCard key={each.id} onClick={()=>{
-                        // console.log(each.id)
-                        handleClick(each.id)
-                        // handleLove()
-                    }}>
-                        <ImageBorder ref={ref1}>
-                            <Images> 
-                                <Img1 src={require(`../../../assets/images/${each.image}.webp`)} alt="" />
-                                <Img1 src={require("../../../assets/images/photos2.webp")} alt="" />
-                                <Img1 src={require("../../../assets/images/photos3.webp")} alt="" />
-                                <Img1 src={require("../../../assets/images/photos4.webp")} alt="" />
-                                <Img1 src={require("../../../assets/images/photos5.webp")} alt="" />
-                                <Img1 src={require("../../../assets/images/photos6.webp")} alt="" />
-                                <Img1 src={require("../../../assets/images/photos7.webp")} alt="" />
-                                <Img1 src={require("../../../assets/images/photos8.webp")} alt="" />
-                                <Img1 src={require("../../../assets/images/photos9.webp")} alt="" />
-                                <Img1 src={require("../../../assets/images/photos10.webp")} alt="" />
-                                <Img1 src={require("../../../assets/images/photos11.webp")} alt="" />
-                            </Images>
-                        </ImageBorder>  
-                        <LikeIcon onClick={(event)=>{
+                    {cards1.map((each, index)=>(
+                        <SingleCard key={each.id} onClick={()=>{
+                            // console.log(each.id)
+                            handleClick(each.id)
+                            // handleLove()
+                        }}>
+                            <ImageBorder ref={ref1}>
+                                <Images> 
+                                    <Img1 src={require(`../../../assets/images/${each.image}.webp`)} alt="" />
+                                    <Img1 src={require("../../../assets/images/photos2.webp")} alt="" />
+                                    <Img1 src={require("../../../assets/images/photos3.webp")} alt="" />
+                                    <Img1 src={require("../../../assets/images/photos4.webp")} alt="" />
+                                    <Img1 src={require("../../../assets/images/photos5.webp")} alt="" />
+                                    <Img1 src={require("../../../assets/images/photos6.webp")} alt="" />
+                                    <Img1 src={require("../../../assets/images/photos7.webp")} alt="" />
+                                    <Img1 src={require("../../../assets/images/photos8.webp")} alt="" />
+                                    <Img1 src={require("../../../assets/images/photos9.webp")} alt="" />
+                                    <Img1 src={require("../../../assets/images/photos10.webp")} alt="" />
+                                    <Img1 src={require("../../../assets/images/photos11.webp")} alt="" />
+                                </Images>
+                            </ImageBorder>  
+                            <LikeIcon onClick={(event)=>{
+                                    event.stopPropagation()
+                                    // // setLoginModal(true)
+                                    likeFunction(each.id)
+                                    handleAddToFavorites(each.id)
+                                }
+                            }>
+                                <HeartInput type="checkbox" className='heart-checkbox' id={`checkbox${index}`} disabled={()=>authenticated?true:false}/>
+                                <HeartLabel className='heart active liked' htmlFor={`checkbox${index}`}></HeartLabel>
+                                {/* <HeartIcon src={require("../../../assets/icons/heart.png")} alt="" /> */}
+                            </LikeIcon>
+                            <Details>
+                                <FirstLine>
+                                    <Place>{each.place}</Place>
+                                    <Rating><Ratingicon src={require("../../../assets/icons/star.png")}></Ratingicon>{each.ratings}</Rating>
+                                </FirstLine>
+                                <Distance>{each.distance}</Distance>
+                                <Date>{each.dates}</Date>
+                                <Money><Price>${each.price} night</Price></Money>
+                            </Details>
+                            <LeftBtn onClick={(event)=>{
+                                event.stopPropagation();
+                                scroll(-100)}
+                            }><ArrowIcon  src={require("../../../assets/icons/angle-left.png")}/></LeftBtn>
+                            <RightBtn onClick={(event)=>{
                                 event.stopPropagation()
-                                // // setLoginModal(true)
-                                likeFunction(each.id)
-                                handleAddToFavorites(each.id)
-                            }
-                        }>
-                            <HeartInput type="checkbox" className='heart-checkbox' id={`checkbox${index}`} disabled={()=>authenticated?true:false}/>
-                            <HeartLabel className='heart active liked' htmlFor={`checkbox${index}`}></HeartLabel>
-                            {/* <HeartIcon src={require("../../../assets/icons/heart.png")} alt="" /> */}
-                        </LikeIcon>
-                        <Details>
-                            <FirstLine>
-                                <Place>{each.place}</Place>
-                                <Rating><Ratingicon src={require("../../../assets/icons/star.png")}></Ratingicon>{each.ratings}</Rating>
-                            </FirstLine>
-                            <Distance>{each.distance}</Distance>
-                            <Date>{each.dates}</Date>
-                            <Money><Price>${each.price} night</Price></Money>
-                        </Details>
-                        <LeftBtn onClick={(event)=>{
-                            event.stopPropagation();
-                            scroll(-100)}
-                        }><ArrowIcon  src={require("../../../assets/icons/angle-left.png")}/></LeftBtn>
-                        <RightBtn onClick={(event)=>{
-                            event.stopPropagation()
-                            scroll(-100)}}><ArrowIcon  src={require("../../../assets/icons/next.png")}/></RightBtn>
-                    </SingleCard>
-                ))}
-            </AllCards>
+                                scroll(-100)}}><ArrowIcon  src={require("../../../assets/icons/next.png")}/></RightBtn>
+                        </SingleCard>
+                    ))}
+                </AllCards>
             {loginModal && <Login loginClose={setLoginModal} />}
             </div>
     );
