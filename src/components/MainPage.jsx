@@ -31,7 +31,7 @@ function MainPage() {
 
 
   // create a state for which catogary selected
-  const [cotogary, setCatogary] = useState("")
+  const [catogary, setCatogary] = useState("amazing_pools")
 
 
 
@@ -54,22 +54,23 @@ function MainPage() {
 
 
   return (
-    <SortContext.Provider value={{sort, setSort}}>
+    <CatogaryContext.Provider value={{catogary,setCatogary}}>
+        <SortContext.Provider value={{sort, setSort}}>
+            <PriceFilterContext.Provider value={{filterPrice, setFilterPrice}}>
+            <div className="App">
+                {scroll && <ExploreLink />}
+                <TopBar>
+                {scroll && <Navbar />}
 
-    <PriceFilterContext.Provider value={{filterPrice, setFilterPrice}}>
-      <div className="App">
-          {scroll && <ExploreLink />}
-          <TopBar>
-          {scroll && <Navbar />}
-
-            
-            <Catogories />
-          </TopBar>
-          <MainContent />
-          <Footer />
-      </div>
-    </PriceFilterContext.Provider>
-    </SortContext.Provider>
+                    
+                    <Catogories />
+                </TopBar>
+                <MainContent />
+                <Footer />
+            </div>
+            </PriceFilterContext.Provider>
+        </SortContext.Provider>
+    </CatogaryContext.Provider>
   );
 }
 const TopBar = styled.div`

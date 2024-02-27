@@ -9,7 +9,7 @@ import {addFav, deleteFav} from '../../../redux/action'
 import { MyAuthenticated } from '../../Authentication';
 import { Connect } from 'react-redux';
 import { addToFAvorites } from '../../../redux/action';
-import { PriceFilterContext, SortContext } from '../../MainPage';
+import { PriceFilterContext, SortContext, CatogaryContext } from '../../MainPage';
 
 
 
@@ -19,6 +19,11 @@ import { PriceFilterContext, SortContext } from '../../MainPage';
 
 
 const Cards = () => {
+
+    const {catogary} = useContext(CatogaryContext)
+    useEffect(()=>{
+        console.log(catogary)
+    })
 
 
     // console.log(Data1.assets.map((i)=>{

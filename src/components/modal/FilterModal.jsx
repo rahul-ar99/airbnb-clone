@@ -7,7 +7,7 @@ const FilterModal = ({close}) => {   //close is props function
 
 
     // import context for price filter
-    const {setFilterPrice} = useContext(PriceFilterContext)
+    const {filterPrice, setFilterPrice} = useContext(PriceFilterContext)
 
     
     // change price filter onchange with context value
@@ -17,7 +17,7 @@ const FilterModal = ({close}) => {   //close is props function
 
     
     // import setState context for exporting true or false value
-    const {setSort} = useContext(SortContext)
+    const {sort,setSort} = useContext(SortContext)
 
 
     // change the sort value with true or false
@@ -94,23 +94,28 @@ const FilterModal = ({close}) => {   //close is props function
                 </TypeofPlace>
                 <PriceRange>
                     <MainHead>Price range</MainHead>
-                    
-                    <select name="price" id="price" onChange={handleChangePrice}>
-                        <option value="9000">below 9000</option>
-                        <option value="8000">below 8000</option>
-                        <option value="7000">below 7000</option>
-                        <option value="6000">below 6000</option>
-                    </select>
-
+                    <ButtonDiv>
+                        <Button value="9000" className={filterPrice=="9000"?"active":""} onClick={handleChangePrice}>below 9000</Button>
+                        <Button value="8000" className={filterPrice=="8000"?"active":""} onClick={handleChangePrice}>below 8000</Button>
+                        <Button value="7000" className={filterPrice=="7000"?"active":""} onClick={handleChangePrice}>below 7000</Button>
+                        <Button value="6000" className={filterPrice=="6000"?"active":""} onClick={handleChangePrice}>below 6000</Button>
+                    </ButtonDiv>
                 </PriceRange>
                 <SortDiv>
                     <MainHead>Sort</MainHead>
-                    <select name="sort" id="price" onChange={handleChangeSort}>
-                        <option value="high">Price low to high</option>
-                        <option value="low">Price high to low</option>
-                    </select>
+                    {/* <ButtonDiv>
+                        <Button value="9000" className={filterPrice=="9000"?"active":""} onClick={handleChangePrice}>below 9000</Button>
+                        <Button value="8000" className={filterPrice=="8000"?"active":""} onClick={handleChangePrice}>below 8000</Button>
+                        <Button value="7000" className={filterPrice=="7000"?"active":""} onClick={handleChangePrice}>below 7000</Button>
+                        <Button value="6000" className={filterPrice=="6000"?"active":""} onClick={handleChangePrice}>below 6000</Button>
+                    </ButtonDiv> */}
+                    <SelectSort name="sort" id="price" onChange={handleChangeSort}>
+                        <SortOption value="high">Price low to high</SortOption>
+                        <SortOption value="low">Price high to low</SortOption>
+                        <p>asdfsdf</p>
+                    </SelectSort>
                 </SortDiv>
-                    <HeadTag>Nightly prices before fees and taxes</HeadTag>
+                <HeadTag>Nightly prices before fees and taxes</HeadTag>
             </Modal>
         </Screen>
     );
@@ -131,10 +136,17 @@ const Screen = styled.div`
 
 const SortDiv = styled.div`
     display:flex;
-    gap: 10px;
+    gap: 40px;
+    margin-top: 30px;
 
 `
+const SelectSort = styled.select`
+    padding: 10px;
+    margin-top:10px;
+    background-color: #b5b5b5;
 
+`
+const SortOption = styled.option``
 
 const Modal = styled.div`
     z-index: 4;
@@ -213,8 +225,8 @@ const Button = styled.button`
 `
 
 const PriceRange = styled.div`
-    margin-top:50px;
-    display: flex;
+    margin-top:30px;
+    /* display: flex; */
     gap: 20px;
 `
 

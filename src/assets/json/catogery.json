@@ -1,10 +1,10 @@
 [
   {
-    "name": "Cabins",
+    "name": "lakefront",
     "image": "catogary1"
   },
   {
-    "name": "Historical homes",
+    "name": "Earth_homes",
     "image": "catogary2"
   },
   {
@@ -16,7 +16,7 @@
     "image": "catogary4"
   },
   {
-    "name": "Amazing pools",
+    "name": "amazing_pools",
     "image": "catogary5"
   },
   {
@@ -44,7 +44,7 @@
     "image": "catogary11"
   },
   {
-    "name": "Bed & breakfasts",
+    "name": "bed_breakfasts",
     "image": "catogary12"
   },
   {

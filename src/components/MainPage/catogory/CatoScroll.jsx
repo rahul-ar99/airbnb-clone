@@ -1,6 +1,8 @@
-import React, {useEffect,useState , useRef}from 'react';
+import React, {useEffect,useState , useRef, useContext}from 'react';
 import CatoData from '../../../assets/json/catogery.json'
+import AllData from '../../../assets/json/data.json'
 import styled from 'styled-components';
+import { CatogaryContext } from '../../MainPage';
 
 
 const CatoScroll = () => {
@@ -10,6 +12,8 @@ const CatoScroll = () => {
     useEffect(()=>{
         setCategeryOption(CatoData,categoryOption)
     },[])
+
+    const {catogary, setCatogary} = useContext(CatogaryContext)
     
 
     // const [resourse, setResouse] = useState()
@@ -26,6 +30,26 @@ const CatoScroll = () => {
         ref.current.scrollLeft += scrollOffset;
     }
 
+    const  handleChangeCatogary = (item) =>{
+        setCatogary(item)
+        // console.log(catogary)
+        // console.log(item)
+    }
+
+    const catoMaping = (data)=>{
+        data.map((item)=>{
+            console.log(item.place)
+        })
+    }
+
+    useEffect(()=>{
+        AllData[catogary]["assets"][0].map((item,index)=>{
+            console.log(item.place,index)
+        })
+        // catoMaping(AllData[catogary]["assets"][0])
+        // console.log(AllData[catogary]["assets"][0])
+    },[handleChangeCatogary])
+
 
 
 
@@ -34,7 +58,7 @@ const CatoScroll = () => {
             <LeftBtn onClick={()=>scroll(-1000)}><BtnImg src={require("../../../assets/icons/angle-left.png")}></BtnImg></LeftBtn>
             <ListItem ref={ref}>
                 {categoryOption.map((items,index) => (
-                    <SingleItems key={items.name}>
+                    <SingleItems key={items.name} onClick={()=>handleChangeCatogary(items.name)}>
                         <Img1 key={items.image} src={require(`../../../assets/icons/${items.image}.jpg`)} alt="Icon" />
                         <ItemName key={index}>{items.name}</ItemName>
                     </SingleItems>
