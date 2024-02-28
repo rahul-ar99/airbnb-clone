@@ -8,6 +8,7 @@ import Footer from './MainPage/Footer';
 export const PriceFilterContext = createContext();
 export const SortContext = createContext();
 export const CatogaryContext = createContext()
+export const beforeTax = createContext()
 
 
 
@@ -33,6 +34,9 @@ function MainPage() {
   // create a state for which catogary selected
   const [catogary, setCatogary] = useState("amazing_pools")
 
+  // create a state for tax button = true or false
+  const [tax,setTax] = useState(false)
+
 
 
 
@@ -57,17 +61,19 @@ function MainPage() {
     <CatogaryContext.Provider value={{catogary,setCatogary}}>
         <SortContext.Provider value={{sort, setSort}}>
             <PriceFilterContext.Provider value={{filterPrice, setFilterPrice}}>
-            <div className="App">
-                {scroll && <ExploreLink />}
-                <TopBar>
-                {scroll && <Navbar />}
+                <beforeTax.Provider value={{tax,setTax}} >
+                    <div className="App">
+                        {scroll && <ExploreLink />}
+                        <TopBar>
+                        {scroll && <Navbar />}
 
-                    
-                    <Catogories />
-                </TopBar>
-                <MainContent />
-                <Footer />
-            </div>
+                            
+                            <Catogories />
+                        </TopBar>
+                        <MainContent />
+                        <Footer />
+                    </div>
+                </beforeTax.Provider>
             </PriceFilterContext.Provider>
         </SortContext.Provider>
     </CatogaryContext.Provider>

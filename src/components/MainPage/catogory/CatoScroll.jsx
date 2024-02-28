@@ -36,20 +36,11 @@ const CatoScroll = () => {
         // console.log(item)
     }
 
-    const catoMaping = (data)=>{
-        data.map((item)=>{
-            console.log(item.place)
-        })
-    }
-
-    useEffect(()=>{
-        AllData[catogary]["assets"][0].map((item,index)=>{
-            console.log(item.place,index)
-        })
-        // catoMaping(AllData[catogary]["assets"][0])
-        // console.log(AllData[catogary]["assets"][0])
-    },[handleChangeCatogary])
-
+    // const catoMaping = (data)=>{
+    //     data.map((item)=>{
+    //         console.log(item.place)
+    //     })
+    // }
 
 
 

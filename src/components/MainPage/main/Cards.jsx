@@ -10,7 +10,7 @@ import {addFav, deleteFav} from '../../../redux/action'
 import { MyAuthenticated } from '../../Authentication';
 import { Connect } from 'react-redux';
 import { addToFAvorites } from '../../../redux/action';
-import { PriceFilterContext, SortContext, CatogaryContext } from '../../MainPage';
+import { PriceFilterContext, SortContext, CatogaryContext, beforeTax } from '../../MainPage';
 
 
 
@@ -20,7 +20,10 @@ import { PriceFilterContext, SortContext, CatogaryContext } from '../../MainPage
 
 
 const Cards = () => {
+
     
+
+    // import context for edit in main page
     const {catogary} = useContext(CatogaryContext)
 
     
@@ -33,61 +36,14 @@ const Cards = () => {
     const {sort} = useContext(SortContext)
 
 
-    
-    
-    const favLocal = localStorage.getItem("fav")
-    if(favLocal.length > 1 ){
-        const splitFav = favLocal.split(",")   
-    }
-    
-
-    const dispatch = useDispatch();
-    
-            
-    useEffect(()=>{
-        allFav.map((item)=>{
-            dispatch(addToFAvorites(item))
-        })
-
-    },[])
+    const {tax} = useContext(beforeTax)
 
 
-    const handleAddToFavorites = (item) => {
-        dispatch(addToFAvorites(item))
-        localStorage.setItem("fav",allFav)
-    }
 
-    
-    useEffect(()=>{
 
-        const importFav = localStorage.getItem("fav")
-    
-        const splitFav = importFav.split(",")
 
-        setImgLocation(importData[catogary]["images_location"])
-
-    },[catogary])
-
-    
-    const allFav = useSelector(state => state.favorites);
-
+    // create state
     const [newFav, setNewFav] = useState('')
-
-
-
-
-    function likeFunction(item){
-        if(authenticated==true){
-            setLoginLike(true)
-            let newFavItem = {
-                id:newFav
-            }
-            setNewFav('')
-        }else{
-            setLoginLike(false)
-        }
-       
-    }
     
     
     // import user login authentication import for like button 
@@ -104,22 +60,63 @@ const Cards = () => {
 
 
     // create all data into array cards
-    const [cards, setCards] = useState([])
     const [cards1, setCards1] = useState([])
+
+
+    // create a state for tax true or false statement
+    const [taxValue, setTaxValue] = useState([])
+
+
+    
+    const favLocal = localStorage.getItem("fav")
+    if(favLocal.length > 1 ){
+        const splitFav = favLocal.split(",")   
+    }
+    
+
+    const dispatch = useDispatch();
+    
+            
+
+
+    const handleAddToFavorites = (item) => {
+        dispatch(addToFAvorites(item))
+        localStorage.setItem("fav",allFav)
+    }
+
     
     
-    // import data to cards state with useEffect method
-    useEffect(()=>{
-        setCards(Data,cards)
-    },[])
+    
+    const allFav = useSelector(state => state.favorites);
+    
+    
+    
+    
+    
+    function likeFunction(item){
+        if(authenticated==true){
+            setLoginLike(true)
+            let newFavItem = {
+                id:newFav
+            }
+            setNewFav('')
+        }else{
+            setLoginLike(false)
+        }
+        
+    }
+    
+    
+    
+    
     
     
     // for scroll
     const ref1 = useRef(null);
     
     
-
-
+    
+    
     //scroll image inside the card
     // but it's doesn't work, you need to edit this code
     const scroll = (scrollOffset) =>{
@@ -127,15 +124,49 @@ const Cards = () => {
         // scroll with ref elements
         ref1.current.scrollLeft += scrollOffset;
     }
-    
+
 
     useEffect(()=>{
+        allFav.map((item)=>{
+            dispatch(addToFAvorites(item))
+        })
+
+    },[])
+
+
+    useEffect(()=>{
+        console.log(tax)
+        if(tax){
+            setTaxValue(1.18)
+        }
+        else{
+            setTaxValue(1)
+        }
+    },[tax])
+
+
+    useEffect(()=>{
+
+        const importFav = localStorage.getItem("fav")
+    
+        const splitFav = importFav.split(",")
+
+        setImgLocation(importData[catogary]["images_location"])
+
+    },[catogary])
+    
+
+
+
+    useEffect(()=>{
+
         setCards1(importData[catogary]["assets"][0])
+
     },[filterPrice,catogary])
 
 
+
     useEffect(()=>{
-        const sortArr = []
 
         cards1.sort(function(a,b){
             if(sort){
@@ -143,7 +174,7 @@ const Cards = () => {
             }
             else{
                 return a.price + b.price
-            }
+            } 
         })
     },[sort])
     
@@ -174,7 +205,7 @@ const Cards = () => {
                             <Images>
                                 <Img1 src={require(`../../../assets/images/${imgLocation}/${each.image}.webp`)} alt="" />
                                 {/* <Img1 src={require(`${imgLocation}images_1.webp`)} alt="" /> */}
-                                <Img1 src={require("../../../assets/images/photos2.webp")} alt="" />
+                                {/* <Img1 src={require("../../../assets/images/photos2.webp")} alt="" />
                                 <Img1 src={require("../../../assets/images/photos3.webp")} alt="" />
                                 <Img1 src={require("../../../assets/images/photos4.webp")} alt="" />
                                 <Img1 src={require("../../../assets/images/photos5.webp")} alt="" />
@@ -183,7 +214,7 @@ const Cards = () => {
                                 <Img1 src={require("../../../assets/images/photos8.webp")} alt="" />
                                 <Img1 src={require("../../../assets/images/photos9.webp")} alt="" />
                                 <Img1 src={require("../../../assets/images/photos10.webp")} alt="" />
-                                <Img1 src={require("../../../assets/images/photos11.webp")} alt="" />
+                                <Img1 src={require("../../../assets/images/photos11.webp")} alt="" /> */}
                             </Images>
                         </ImageBorder>  
                         <LikeIcon onClick={(event)=>{
@@ -203,7 +234,7 @@ const Cards = () => {
                             </FirstLine>
                             <Distance>{each.distance}</Distance>
                             <Date>{each.dates}</Date>
-                            <Money><Price>${each.price} night</Price></Money>
+                            <Money><Price>${(each.price * taxValue) } night</Price></Money>
                         </Details>
                         <LeftBtn onClick={(event)=>{
                             event.stopPropagation();

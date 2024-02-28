@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { beforeTax } from '../../MainPage';
 
 const TaxBtn = () => {
+
+
+
+    const {setTax} = useContext(beforeTax)
+
+
+    const handleChange = (e) =>{
+        setTax(e.target.checked)
+    }
+
+
     return (
         <TaxDiv>
             <TaxP>Display total before taxes</TaxP>
             <ToggleLabel>
-                <ToggleInput></ToggleInput>
+                <ToggleInput type='checkbox' onClick={handleChange}/>
                 <ToggleSpan></ToggleSpan>
             </ToggleLabel>
         </TaxDiv>
@@ -55,6 +67,12 @@ const ToggleSpan = styled.span`
     transition: .4s;
     border-radius: 34px;
 
+
+    :checked{
+        background-color: #767676;
+
+    }
+
     &:before{
         position: absolute;
         content: "";
@@ -68,14 +86,14 @@ const ToggleSpan = styled.span`
         border-radius: 50%;
     }
     &:hover::before{
-        -webkit-transform: translateX(21px);
-        -ms-transform: translateX(21px);
-        transform: translateX(21px);
     }
     ${ToggleInput}:checked + & {
-        background-color: red;
+        background-color: #ff0000;
         &:before{
-            background-color: blue;
+            -webkit-transform: translateX(21px);
+            -ms-transform: translateX(21px);
+            transform: translateX(21px);
+            background-color: #f5f5f5;
         }
     }
 
