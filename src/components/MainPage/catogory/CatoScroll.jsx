@@ -36,12 +36,6 @@ const CatoScroll = () => {
         // console.log(item)
     }
 
-    // const catoMaping = (data)=>{
-    //     data.map((item)=>{
-    //         console.log(item.place)
-    //     })
-    // }
-
 
 
     return (
