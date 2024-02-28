@@ -58,7 +58,7 @@ const CatoScroll = () => {
             <LeftBtn onClick={()=>scroll(-1000)}><BtnImg src={require("../../../assets/icons/angle-left.png")}></BtnImg></LeftBtn>
             <ListItem ref={ref}>
                 {categoryOption.map((items,index) => (
-                    <SingleItems key={items.name} onClick={()=>handleChangeCatogary(items.name)}>
+                    <SingleItems key={items.name} onClick={()=>handleChangeCatogary(items.id_name)}>
                         <Img1 key={items.image} src={require(`../../../assets/icons/${items.image}.jpg`)} alt="Icon" />
                         <ItemName key={index}>{items.name}</ItemName>
                     </SingleItems>

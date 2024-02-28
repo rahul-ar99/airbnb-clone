@@ -1,166 +1,207 @@
 [
   {
     "name": "lakefront",
-    "image": "catogary1"
+    "image": "catogary1",
+    "id_name":"amazing_pools"
   },
   {
-    "name": "Earth_homes",
-    "image": "catogary2"
+    "name": "earthhomes",
+    "image": "catogary2",
+    "id_name":"farms"
   },
   {
     "name": "Beachfront",
-    "image": "catogary3"
+    "image": "catogary3",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Iconic cities",
-    "image": "catogary4"
+    "image": "catogary4",
+    "id_name":"amazing_pools"
   },
   {
     "name": "amazing_pools",
-    "image": "catogary5"
+    "image": "catogary5",
+    "id_name":"amazing_pools"
   },
   {
-    "name": "Farms",
-    "image": "catogary6"
+    "name": "farms",
+    "image": "catogary6",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Amazing views",
-    "image": "catogary7"
+    "image": "catogary7",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Riads",
-    "image": "catogary8"
+    "image": "catogary8",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Rooms",
-    "image": "catogary9"
+    "image": "catogary9",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Ski-in/out",
-    "image": "catogary10"
+    "image": "catogary10",
+    "id_name":"amazing_pools"
   },
   {
     "name": "OMG!",
-    "image": "catogary11"
+    "image": "catogary11",
+    "id_name":"amazing_pools"
   },
   {
     "name": "bed_breakfasts",
-    "image": "catogary12"
+    "image": "catogary12",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Tiny homes",
-    "image": "catogary13"
+    "image": "catogary13",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Chef's kitchens",
-    "image": "catogary14"
+    "image": "catogary14",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Vineyards",
-    "image": "catogary15"
+    "image": "catogary15",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Off-the-grid",
-    "image": "catogary16"
+    "image": "catogary16",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Lake",
-    "image": "catogary17"
+    "image": "catogary17",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Islands",
-    "image": "catogary18"
+    "image": "catogary18",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Camping",
-    "image": "catogary19"
+    "image": "catogary19",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Countryside",
-    "image": "catogary20"
+    "image": "catogary20",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Tropical",
-    "image": "catogary21"
+    "image": "catogary21",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Top of the world",
-    "image": "catogary22"
+    "image": "catogary22",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Lakefront",
-    "image": "catogary23"
+    "image": "catogary23",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Earth homes",
-    "image": "catogary24"
+    "image": "catogary24",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Trending",
-    "image": "catogary25"
+    "image": "catogary25",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Castles",
-    "image": "catogary26"
+    "image": "catogary26",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Desert",
-    "image": "catogary27"
+    "image": "catogary27",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Treehouses",
-    "image": "catogary28"
+    "image": "catogary28",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Windmills",
-    "image": "catogary29"
+    "image": "catogary29",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Golfing",
-    "image": "catogary30"
+    "image": "catogary30",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Design",
-    "image": "catogary31"
+    "image": "catogary31",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Containers",
-    "image": "catogary32"
+    "image": "catogary32",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Play",
-    "image": "catogary33"
+    "image": "catogary33",
+    "id_name":"amazing_pools"
   },
   {
     "name": "New",
-    "image": "catogary34"
+    "image": "catogary34",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Surfing",
-    "image": "catogary35"
+    "image": "catogary35",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Arctic",
-    "image": "catogary36"
+    "image": "catogary36",
+    "id_name":"amazing_pools"
   },
   {
     "name": "A-frames",
-    "image": "catogary37"
+    "image": "catogary37",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Caves",
-    "image": "catogary38"
+    "image": "catogary38",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Camper vans",
-    "image": "catogary39"
+    "image": "catogary39",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Mansions",
-    "image": "catogary40"
+    "image": "catogary40",
+    "id_name":"amazing_pools"
   },
   {
     "name": "Hanoks",
-    "image": "catogary41"
+    "image": "catogary41",
+    "id_name":"amazing_pools"
   }
 ]

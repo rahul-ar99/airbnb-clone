@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useReducer, useContext } from 'react';
 import styled from 'styled-components';
 import Data from "../../../assets/json/mainContent.json"
+import importData from "../../../assets/json/data.json"
 import Data1 from '../../../assets/json/mainContent copy.json'
 import Login from '../navbar/user/Login';
 import { useNavigate } from 'react-router-dom';
@@ -86,12 +87,13 @@ const Cards = () => {
         // splitFav1 =
 
         console.log(splitFav)
+        console.log(importData[catogary]["assets"][0].map((i)=>console.log(i)))
 
     },[])
 
     const allFav = useSelector(state => state.favorites);
     const [newFav, setNewFav] = useState('')
-
+x
 
 
 
@@ -173,10 +175,11 @@ const Cards = () => {
         
         useEffect(()=>{
             
-            setCards1(cards.filter(filterData => filterData.price <= filterPrice))
+            // setCards1(cards.filter(filterData => filterData.price <= filterPrice))
+            setCards1(importData[catogary]["assets"][0])
             // console.log(cards1,1234)
             
-        },[filterPrice])
+        },[filterPrice,catogary])
 
 
         useEffect(()=>{
@@ -209,18 +212,16 @@ const Cards = () => {
             <div className='wrapper'>
                 <AllCards>
 
-                
-                    {/* map for each card */}
 
+                    {/* map for each card */}
                     {cards1.map((each, index)=>(
                         <SingleCard key={each.id} onClick={()=>{
-                            // console.log(each.id)
                             handleClick(each.id)
-                            // handleLove()
                         }}>
                             <ImageBorder ref={ref1}>
                                 <Images> 
-                                    <Img1 src={require(`../../../assets/images/${each.image}.webp`)} alt="" />
+                                    {/* {console.log(importData["amazing_pools"]["images_location"])} */}
+                                    <Img1 src={require(`../../../assets/${importData[catogary]["images_location"]}/${each.image}.webp`)} alt="" />
                                     <Img1 src={require("../../../assets/images/photos2.webp")} alt="" />
                                     <Img1 src={require("../../../assets/images/photos3.webp")} alt="" />
                                     <Img1 src={require("../../../assets/images/photos4.webp")} alt="" />
