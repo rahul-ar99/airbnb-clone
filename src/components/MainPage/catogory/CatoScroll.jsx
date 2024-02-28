@@ -37,7 +37,6 @@ const CatoScroll = () => {
     }
 
 
-
     return (
         <Div1>
             <LeftBtn onClick={()=>scroll(-1000)}><BtnImg src={require("../../../assets/icons/angle-left.png")}></BtnImg></LeftBtn>
@@ -48,7 +47,6 @@ const CatoScroll = () => {
                         <ItemName key={index}>{items.name}</ItemName>
                     </SingleItems>
                 ))}
-
             </ListItem>
             <RightBtn  onClick={()=>scroll(1000)}><BtnImg src={require(`../../../assets/icons/next.png`)}></BtnImg></RightBtn>
         </Div1>

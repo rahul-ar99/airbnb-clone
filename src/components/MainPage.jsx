@@ -65,7 +65,7 @@ function MainPage() {
                     <div className="App">
                         {scroll && <ExploreLink />}
                         <TopBar>
-                        {scroll && <Navbar />}
+                        <Navbar />
 
                             
                             <Catogories />

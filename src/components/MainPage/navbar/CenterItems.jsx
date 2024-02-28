@@ -8,33 +8,54 @@ const CenterNav = () => {
     return (
         <Nav>
             <CenterDiv >
-                <Heads>
+                <TopHeads>
                     <P1>Anywhere</P1>
-                </Heads>
+                </TopHeads>
                 <Line>|</Line>
-                <Heads>
+                <TopHeads>
                     <P1>Any week</P1>
-                </Heads>
+                </TopHeads>
                 <Line>|</Line>
-                <Heads>
+                <TopHeads>
                     <P2>Add guest</P2>
-                </Heads>
+                </TopHeads>
                 <SearchBtn>
                     <img src={require("../../../assets/icons/magnifying-glass.png")} alt="searchIcon" className='invert'/>
                 </SearchBtn>
             </CenterDiv>
             {/* {isModal && <CenterContent />} */}
-            {/* <MainCenter>
+            <MainCenter>
                 <TopSection>
                     <TopBtns>Stays</TopBtns>
                     <TopBtns>Experience</TopBtns>
                     <TopBtns>Online Experience</TopBtns>
                 </TopSection>
                 <BottomSection>
-
+                    <BottomHeads>
+                        <B1>where</B1>
+                        <B0>Search destinations</B0>
+                    </BottomHeads>
+                    <Line>|</Line>
+                    <BottomHeads>
+                        <B1>Check in</B1>
+                        <B0>Search destinations</B0>
+                    </BottomHeads>
+                    <Line>|</Line>
+                    <BottomHeads>
+                        <B2>Add guest</B2>
+                        <B0>Search destinations</B0>
+                    </BottomHeads>
+                    <Line>|</Line>
+                    <BottomHeads>
+                        <B2>Add guest</B2>
+                        <B0>Search destinations</B0>
+                    </BottomHeads>
+                    <SearchBtn>
+                        <img src={require("../../../assets/icons/magnifying-glass.png")} alt="searchIcon" className='invert'/>
+                    </SearchBtn>
 
                 </BottomSection>
-            </MainCenter> */}
+            </MainCenter>
         </Nav>
     );
 }
@@ -60,7 +81,7 @@ const Nav = styled.div`
     justify-content: center;
 `
 
-const Heads = styled.div`
+const TopHeads = styled.div`
     padding: 4px;
 `
 const Line = styled.p`
@@ -87,8 +108,30 @@ const SearchBtn = styled.div`
 
 
 const MainCenter = styled.div``
-const TopSection =styled.div``
+const TopSection =styled.div`
+    display: flex;
+    gap: 10px;
+`
 const TopBtns =styled.button``
-const BottomSection = styled.div``
+const BottomSection = styled.div`
+
+
+   border: 1px solid #d7d7d7;
+    padding: 6px;
+    border-radius: 30px;
+    display: flex;
+    align-items:center;
+    gap: 10px;
+    padding-left: 19px;
+    cursor: pointer;
+`
+const BottomHeads = styled.div`
+font-size: 13px;
+`
+const B1 = styled.h5`
+`
+const B2 = styled.h5`
+
+`
 
 export default CenterNav;
