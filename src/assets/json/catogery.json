@@ -2,7 +2,7 @@
   {
     "name": "lakefront",
     "image": "catogary1",
-    "id_name":"amazing_pools"
+    "id_name":"lakefront"
   },
   {
     "name": "earthhomes",
@@ -12,12 +12,12 @@
   {
     "name": "Beachfront",
     "image": "catogary3",
-    "id_name":"amazing_pools"
+    "id_name":"bed_breakfasts"
   },
   {
     "name": "Iconic cities",
     "image": "catogary4",
-    "id_name":"amazing_pools"
+    "id_name":"tropical"
   },
   {
     "name": "amazing_pools",
@@ -27,27 +27,27 @@
   {
     "name": "farms",
     "image": "catogary6",
-    "id_name":"amazing_pools"
+    "id_name":"farms"
   },
   {
     "name": "Amazing views",
     "image": "catogary7",
-    "id_name":"amazing_pools"
+    "id_name":"treehouse"
   },
   {
     "name": "Riads",
     "image": "catogary8",
-    "id_name":"amazing_pools"
+    "id_name":"camper_vans"
   },
   {
     "name": "Rooms",
     "image": "catogary9",
-    "id_name":"amazing_pools"
+    "id_name":"island"
   },
   {
     "name": "Ski-in/out",
     "image": "catogary10",
-    "id_name":"amazing_pools"
+    "id_name":"national_parks"
   },
   {
     "name": "OMG!",
@@ -137,7 +137,7 @@
   {
     "name": "Treehouses",
     "image": "catogary28",
-    "id_name":"amazing_pools"
+    "id_name":"treehouse"
   },
   {
     "name": "Windmills",

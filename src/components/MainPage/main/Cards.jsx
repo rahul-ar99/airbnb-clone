@@ -20,17 +20,15 @@ import { PriceFilterContext, SortContext, CatogaryContext } from '../../MainPage
 
 
 const Cards = () => {
-
+    
     const {catogary} = useContext(CatogaryContext)
-    useEffect(()=>{
-        console.log(catogary)
-    })
+
+    
+    const [imgLocation, setImgLocation] = useState("")
 
 
-    // console.log(Data1.assets.map((i)=>{
-    //     console.log(i)
-    // }))
     const {filterPrice} = useContext(PriceFilterContext)
+
 
     const {sort} = useContext(SortContext)
 
@@ -39,61 +37,41 @@ const Cards = () => {
     
     const favLocal = localStorage.getItem("fav")
     if(favLocal.length > 1 ){
-        const splitFav = favLocal.split(",")
-        
+        const splitFav = favLocal.split(",")   
     }
     
-    if(sort){
 
-    }
-    
-    
     const dispatch = useDispatch();
     
-    // const allFavArr = []
-    // splitFav.forEach((item)=>{
-        //     console.log(item)
-        //     if(!allFavArr.includes(item)){
-            //         allFavArr.push(item)
-            //     }
-            // })
-
-    useEffect(()=>{
-        console.log(sort)
-    },[sort])
             
     useEffect(()=>{
         allFav.map((item)=>{
             dispatch(addToFAvorites(item))
         })
-        // console.log(favLocal.length)
 
     },[])
-    const splitFav1 =[]
+
 
     const handleAddToFavorites = (item) => {
-        // console.log(splitFav.includes(item))
         dispatch(addToFAvorites(item))
         localStorage.setItem("fav",allFav)
     }
-    const checkLiked = () =>{
 
-    }
     
     useEffect(()=>{
+
         const importFav = localStorage.getItem("fav")
     
         const splitFav = importFav.split(",")
-        // splitFav1 =
 
-        console.log(splitFav)
-        console.log(importData[catogary]["assets"][0].map((i)=>console.log(i)))
+        setImgLocation(importData[catogary]["images_location"])
 
-    },[])
+    },[catogary])
 
+    
     const allFav = useSelector(state => state.favorites);
+
     const [newFav, setNewFav] = useState('')
-x
 
 
 
@@ -104,168 +82,141 @@ x
             let newFavItem = {
                 id:newFav
             }
-            // dispatch(addFav(newFavItem))
-            // localStorage.setItem("fav",JSON.stringify([...allFav,newFavItem]));
             setNewFav('')
         }else{
             setLoginLike(false)
         }
-        // console.log(item)
-        // console.log(authenticated,loginLike)
-        
+       
     }
-    
-    
     
     
     // import user login authentication import for like button 
     // user is signup then like button will work otherwise login modal will show
     const {authenticated} = useContext(MyAuthenticated) ;
     
-    
-    
-    
+
     const [loginLike, setLoginLike] = useState(true )
+        
+    
+    // if click on fav or booking then show the login page
+    // create state variables    
+    const [loginModal, setLoginModal] = useState(false);
+
+
+    // create all data into array cards
+    const [cards, setCards] = useState([])
+    const [cards1, setCards1] = useState([])
+    
+    
+    // import data to cards state with useEffect method
+    useEffect(()=>{
+        setCards(Data,cards)
+    },[])
+    
+    
+    // for scroll
+    const ref1 = useRef(null);
+    
     
 
+
+    //scroll image inside the card
+    // but it's doesn't work, you need to edit this code
+    const scroll = (scrollOffset) =>{
         
-        
-        
-        
-        // if click on fav or booking then show the login page
-        // create state variables    
-        const [loginModal, setLoginModal] = useState(false);
+        // scroll with ref elements
+        ref1.current.scrollLeft += scrollOffset;
+    }
+    
+
+    useEffect(()=>{
+        setCards1(importData[catogary]["assets"][0])
+    },[filterPrice,catogary])
 
 
-        // create all data into array cards
-        const [cards, setCards] = useState([])
-        const [cards1, setCards1] = useState([])
-        const [card2, setCards2] = useState([])
-        
-        
-        // import data to cards state with useEffect method
-        useEffect(()=>{
-            setCards(Data,cards)
-        },[])
-        
-        
-        
+    useEffect(()=>{
+        const sortArr = []
 
-        
-        // for scroll
-        const ref1 = useRef(null);
-        
-        
+        cards1.sort(function(a,b){
+            if(sort){
+                return a.price - b.price
+            }
+            else{
+                return a.price + b.price
+            }
+        })
+    },[sort])
+    
+    
+    
+    // navigate to other 
+    const navigate = useNavigate()
+    
+    
+    
+    // navigate to open each card when click that modal
+    const handleClick = (cardId) =>{
+        navigate(`/singleitem`, {state:{id:cardId}})
+    }
+    
+    return (
 
-
-        //scroll image inside the card
-        // but it's doesn't work, you need to edit this code
-        const scroll = (scrollOffset) =>{
-            
-            
-            // scroll with ref elements
-            ref1.current.scrollLeft += scrollOffset;
-            
-
-            console.log(ref1.current.scrollLeft)
-            // stop the parent onclick function
-            // e.stopPropagation()
-            
-        }
-        
-        useEffect(()=>{
-            
-            // setCards1(cards.filter(filterData => filterData.price <= filterPrice))
-            setCards1(importData[catogary]["assets"][0])
-            // console.log(cards1,1234)
-            
-        },[filterPrice,catogary])
+        <div className='wrapper'>
+            <AllCards>
 
 
-        useEffect(()=>{
-            const sortArr = []
-
-            cards1.sort(function(a,b){
-                if(sort){
-                    return a.price - b.price
-                }
-                else{
-                    return a.price + b.price
-                }
-            })
-        },[sort])
-        
-        
-        
-        // navigate to other 
-        const navigate = useNavigate()
-        
-        
-        
-        // navigate to open each card when click that modal
-        const handleClick = (cardId) =>{
-            navigate(`/singleitem`, {state:{id:cardId}})
-        }
-        
-        return (
-
-            <div className='wrapper'>
-                <AllCards>
-
-
-                    {/* map for each card */}
-                    {cards1.map((each, index)=>(
-                        <SingleCard key={each.id} onClick={()=>{
-                            handleClick(each.id)
-                        }}>
-                            <ImageBorder ref={ref1}>
-                                <Images> 
-                                    {/* {console.log(importData["amazing_pools"]["images_location"])} */}
-                                    <Img1 src={require(`../../../assets/${importData[catogary]["images_location"]}/${each.image}.webp`)} alt="" />
-                                    <Img1 src={require("../../../assets/images/photos2.webp")} alt="" />
-                                    <Img1 src={require("../../../assets/images/photos3.webp")} alt="" />
-                                    <Img1 src={require("../../../assets/images/photos4.webp")} alt="" />
-                                    <Img1 src={require("../../../assets/images/photos5.webp")} alt="" />
-                                    <Img1 src={require("../../../assets/images/photos6.webp")} alt="" />
-                                    <Img1 src={require("../../../assets/images/photos7.webp")} alt="" />
-                                    <Img1 src={require("../../../assets/images/photos8.webp")} alt="" />
-                                    <Img1 src={require("../../../assets/images/photos9.webp")} alt="" />
-                                    <Img1 src={require("../../../assets/images/photos10.webp")} alt="" />
-                                    <Img1 src={require("../../../assets/images/photos11.webp")} alt="" />
-                                </Images>
-                            </ImageBorder>  
-                            <LikeIcon onClick={(event)=>{
-                                    event.stopPropagation()
-                                    // // setLoginModal(true)
-                                    likeFunction(each.id)
-                                    handleAddToFavorites(each.id)
-                                }
-                            }>
-                                <HeartInput type="checkbox" className='heart-checkbox' id={`checkbox${index}`} disabled={()=>authenticated?true:false}/>
-                                <HeartLabel className='heart active liked' htmlFor={`checkbox${index}`}></HeartLabel>
-                                {/* <HeartIcon src={require("../../../assets/icons/heart.png")} alt="" /> */}
-                            </LikeIcon>
-                            <Details>
-                                <FirstLine>
-                                    <Place>{each.place}</Place>
-                                    <Rating><Ratingicon src={require("../../../assets/icons/star.png")}></Ratingicon>{each.ratings}</Rating>
-                                </FirstLine>
-                                <Distance>{each.distance}</Distance>
-                                <Date>{each.dates}</Date>
-                                <Money><Price>${each.price} night</Price></Money>
-                            </Details>
-                            <LeftBtn onClick={(event)=>{
-                                event.stopPropagation();
-                                scroll(-100)}
-                            }><ArrowIcon  src={require("../../../assets/icons/angle-left.png")}/></LeftBtn>
-                            <RightBtn onClick={(event)=>{
+                {/* map for each card */}
+                {cards1.map((each, index)=>(
+                    <SingleCard key={each.id} onClick={()=>{
+                        handleClick(each.id)
+                    }}>
+                        <ImageBorder ref={ref1}>
+                            <Images>
+                                <Img1 src={require(`../../../assets/images/${imgLocation}/${each.image}.webp`)} alt="" />
+                                {/* <Img1 src={require(`${imgLocation}images_1.webp`)} alt="" /> */}
+                                <Img1 src={require("../../../assets/images/photos2.webp")} alt="" />
+                                <Img1 src={require("../../../assets/images/photos3.webp")} alt="" />
+                                <Img1 src={require("../../../assets/images/photos4.webp")} alt="" />
+                                <Img1 src={require("../../../assets/images/photos5.webp")} alt="" />
+                                <Img1 src={require("../../../assets/images/photos6.webp")} alt="" />
+                                <Img1 src={require("../../../assets/images/photos7.webp")} alt="" />
+                                <Img1 src={require("../../../assets/images/photos8.webp")} alt="" />
+                                <Img1 src={require("../../../assets/images/photos9.webp")} alt="" />
+                                <Img1 src={require("../../../assets/images/photos10.webp")} alt="" />
+                                <Img1 src={require("../../../assets/images/photos11.webp")} alt="" />
+                            </Images>
+                        </ImageBorder>  
+                        <LikeIcon onClick={(event)=>{
                                 event.stopPropagation()
-                                scroll(-100)}}><ArrowIcon  src={require("../../../assets/icons/next.png")}/></RightBtn>
-                        </SingleCard>
-                    ))}
-                </AllCards>
-            {loginModal && <Login loginClose={setLoginModal} />}
-            </div>
+                                // setLoginModal(true)
+                                likeFunction(each.id)
+                                handleAddToFavorites(each.id)
+                            }
+                        }>
+                            <HeartInput type="checkbox" className='heart-checkbox' id={`checkbox${index}`} disabled={()=>authenticated?true:false}/>
+                            <HeartLabel className='heart active liked' htmlFor={`checkbox${index}`}></HeartLabel>
+                        </LikeIcon>
+                        <Details>
+                            <FirstLine>
+                                <Place>{each.place}</Place>
+                                <Rating><Ratingicon src={require("../../../assets/icons/star.png")}></Ratingicon>{each.ratings}</Rating>
+                            </FirstLine>
+                            <Distance>{each.distance}</Distance>
+                            <Date>{each.dates}</Date>
+                            <Money><Price>${each.price} night</Price></Money>
+                        </Details>
+                        <LeftBtn onClick={(event)=>{
+                            event.stopPropagation();
+                            scroll(-100)}
+                        }><ArrowIcon  src={require("../../../assets/icons/angle-left.png")}/></LeftBtn>
+                        <RightBtn onClick={(event)=>{
+                            event.stopPropagation()
+                            scroll(-100)}}><ArrowIcon  src={require("../../../assets/icons/next.png")}/></RightBtn>
+                    </SingleCard>
+                ))}
+            </AllCards>
+        {loginModal && <Login loginClose={setLoginModal} />}
+        </div>
     );
 };
 

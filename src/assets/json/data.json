@@ -1,7 +1,7 @@
 {
   "amazing_pools": {
     "head": "amazing pools",
-    "images_location": "images/pools",
+    "images_location": "pool",
     "assets": [
       [
         {
@@ -549,7 +549,7 @@
   },
   "farms": {
     "head": "amazing pools",
-    "images_location": "images/pools",
+    "images_location": "farms",
     "assets": [
       [
         {
@@ -1097,7 +1097,7 @@
   },
   "bed_breakfasts": {
     "head": "amazing pools",
-    "images_location": "images/pools",
+    "images_location": "bed&breakfast",
     "assets": [
       [
         {
@@ -1645,7 +1645,7 @@
   },
   "lakefront": {
     "head": "amazing pools",
-    "images_location": "images/pools",
+    "images_location": "pool",
     "assets": [
       [
         {
@@ -2193,7 +2193,7 @@
   },
   "Earth_homes": {
     "head": "amazing pools",
-    "images_location": "images/pools",
+    "images_location": "earthhomes",
     "assets": [
       [
         {
@@ -2741,7 +2741,7 @@
   },
   "tropical": {
     "head": "amazing pools",
-    "images_location": "images/pools",
+    "images_location": "tropical",
     "assets": [
       [
         {
@@ -3289,7 +3289,7 @@
   },
   "treehouse": {
     "head": "amazing pools",
-    "images_location": "images/pools",
+    "images_location": "treehouse",
     "assets": [
       [
         {
@@ -3837,7 +3837,7 @@
   },
   "camper_vans": {
     "head": "amazing pools",
-    "images_location": "images/pools",
+    "images_location": "camper_vans",
     "assets": [
       [
         {
@@ -4385,7 +4385,7 @@
   },
   "island": {
     "head": "amazing pools",
-    "images_location": "images/pools",
+    "images_location": "islands",
     "assets": [
       [
         {
@@ -4933,7 +4933,7 @@
   },
   "national_parks": {
     "head": "amazing pools",
-    "images_location": "images/pools",
+    "images_location": "nationalparks",
     "assets": [
       [
         {
