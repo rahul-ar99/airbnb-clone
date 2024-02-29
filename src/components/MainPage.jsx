@@ -66,9 +66,7 @@ function MainPage() {
                         {scroll && <ExploreLink />}
                         <TopBar>
                         <Navbar />
-
-                            
-                            <Catogories />
+                         <Catogories />
                         </TopBar>
                         <MainContent />
                         <Footer />

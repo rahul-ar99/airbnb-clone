@@ -38,21 +38,21 @@ const CenterNav = () => {
                     <Line>|</Line>
                     <BottomHeads>
                         <B1>Check in</B1>
-                        <B0>Search destinations</B0>
+                        <B0>Add dates</B0>
                     </BottomHeads>
                     <Line>|</Line>
                     <BottomHeads>
                         <B2>Add guest</B2>
-                        <B0>Search destinations</B0>
+                        <B0>Add dates</B0>
                     </BottomHeads>
                     <Line>|</Line>
                     <BottomHeads>
                         <B2>Add guest</B2>
-                        <B0>Search destinations</B0>
+                        <B0>Add guests</B0>
                     </BottomHeads>
-                    <SearchBtn>
+                    <SearchBtn2>
                         <img src={require("../../../assets/icons/magnifying-glass.png")} alt="searchIcon" className='invert'/>
-                    </SearchBtn>
+                    </SearchBtn2>
 
                 </BottomSection>
             </MainCenter>
@@ -98,10 +98,21 @@ const P2 = styled.p`
     color: #838383;
 `
 
+const B0 = styled.h6``
+
 const SearchBtn = styled.div`
     width: 12px;
     box-sizing: content-box;
     padding: 10px;
+    background-color: #FF385C;
+    border-radius: 50%;
+`
+const SearchBtn2 = styled.div`
+    width: 18px;
+    box-sizing: content-box;
+    padding: 10px;
+    position: absolute;
+    right: 10px;
     background-color: #FF385C;
     border-radius: 50%;
 `
@@ -117,16 +128,21 @@ const BottomSection = styled.div`
 
 
    border: 1px solid #d7d7d7;
-    padding: 6px;
+    /* padding: 6px; */
     border-radius: 30px;
     display: flex;
     align-items:center;
-    gap: 10px;
-    padding-left: 19px;
+    /* gap: 10px; */
+    /* padding-left: 19px; */
+    position: relative;
     cursor: pointer;
 `
 const BottomHeads = styled.div`
-font-size: 13px;
+    font-size: 13px;
+    padding:5px 20px;
+    background-color: red;
+    border-radius: 30px;
+
 `
 const B1 = styled.h5`
 `
