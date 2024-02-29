@@ -9,6 +9,7 @@ export const PriceFilterContext = createContext();
 export const SortContext = createContext();
 export const CatogaryContext = createContext()
 export const beforeTax = createContext()
+export const ScrollValue = createContext()
 
 
 
@@ -19,69 +20,74 @@ function MainPage() {
 
 
 
-  // create state for scroll
-  const [scroll, setScroll] = useState(true)
+    // create state for scroll
+    const [scroll, setScroll] = useState(true)
 
 
-  // create state for price for filter
-  const [filterPrice, setFilterPrice] = useState()
+    // create state for price for filter
+    const [filterPrice, setFilterPrice] = useState()
 
 
-  // create a state for sort value to true or false
-  const [sort, setSort] = useState(false)
+    // create a state for sort value to true or false
+    const [sort, setSort] = useState(false)
 
 
-  // create a state for which catogary selected
-  const [catogary, setCatogary] = useState("amazing_pools")
-
-  // create a state for tax button = true or false
-  const [tax,setTax] = useState(false)
+    // create a state for which catogary selected
+    const [catogary, setCatogary] = useState("amazing_pools")
 
 
+    // create a state for tax button = true or false
+    const [tax,setTax] = useState(false)
 
 
 
-  useEffect(()=>{
-    const handleScroll = () =>{
-      setScroll(window.scrollY <= 0)
+
+
+
+
+    useEffect(()=>{
+        const handleScroll = () =>{
+        setScroll(window.scrollY <= 0)
+        }
+        window.addEventListener("scroll",handleScroll)
+    })
+    
+
+
+
+    // setFilterPrice top of the list, otherwise array is null
+    useEffect(()=>{
+        setFilterPrice(9000)
+    },[])
+
+
+    return (
+        <ScrollValue.Provider value={{scroll}}>
+            <CatogaryContext.Provider value={{catogary,setCatogary}}>
+                <SortContext.Provider value={{sort, setSort}}>
+                    <PriceFilterContext.Provider value={{filterPrice, setFilterPrice}}>
+                        <beforeTax.Provider value={{tax,setTax}} >
+                            <div className="App">
+                                {scroll && <ExploreLink />}
+                                <TopBar>
+                                <Navbar />
+                                <Catogories />
+                                </TopBar>
+                                <MainContent />
+                                <Footer />
+                            </div>
+                        </beforeTax.Provider>
+                    </PriceFilterContext.Provider>
+                </SortContext.Provider>
+            </CatogaryContext.Provider>
+        </ScrollValue.Provider>
+    );
     }
-    window.addEventListener("scroll",handleScroll)
-  })
-  
+    const TopBar = styled.div`
+        position: sticky;
+        top: 0px;
+        z-index: 2;
+        background-color: white;
+    `
 
-
-
-  // setFilterPrice top of the list, otherwise array is null
-  useEffect(()=>{
-    setFilterPrice(9000)
-  },[])
-
-
-  return (
-    <CatogaryContext.Provider value={{catogary,setCatogary}}>
-        <SortContext.Provider value={{sort, setSort}}>
-            <PriceFilterContext.Provider value={{filterPrice, setFilterPrice}}>
-                <beforeTax.Provider value={{tax,setTax}} >
-                    <div className="App">
-                        {scroll && <ExploreLink />}
-                        <TopBar>
-                        <Navbar />
-                         <Catogories />
-                        </TopBar>
-                        <MainContent />
-                        <Footer />
-                    </div>
-                </beforeTax.Provider>
-            </PriceFilterContext.Provider>
-        </SortContext.Provider>
-    </CatogaryContext.Provider>
-  );
-}
-const TopBar = styled.div`
-      position: sticky;
-      top: 0px;
-      z-index: 2;
-      background-color: white;
-`
-
-export default MainPage;
+    export default MainPage;
