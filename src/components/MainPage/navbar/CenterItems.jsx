@@ -1,9 +1,13 @@
 import React, {useContext, useEffect, useState} from 'react';
 import styled from 'styled-components';
 import { ScrollValue } from '../../MainPage';
+import Destination from "../../modal/Destination"
+
 
 
 const CenterNav = () => {
+
+    const [destinationState, setDestinationState] = useState(false)
 
     const {scroll} = useContext(ScrollValue)
 
@@ -17,65 +21,69 @@ const CenterNav = () => {
     useEffect(()=>{
         const handleScroll = () =>{
             setCenterItem(scroll)
-            console.log(scroll)
         }
         window.addEventListener("scroll",handleScroll)
     })
 
 
     return (
-        <Nav>
-            {!scroll?
-            <CenterDiv >
-                <TopHeads>
-                    <P1>Anywhere</P1>
-                </TopHeads>
-                <Line>|</Line>
-                <TopHeads>
-                    <P1>Any week</P1>
-                </TopHeads>
-                <Line>|</Line>
-                <TopHeads>
-                    <P2>Add guest</P2>
-                </TopHeads>
-                <SearchBtn>
-                    <img src={require("../../../assets/icons/magnifying-glass.png")} alt="searchIcon" className='invert'/>
-                </SearchBtn>
-            </CenterDiv>:
-            <MainCenter>
-                <TopSection>
-                    <TopBtns>Stays</TopBtns>
-                    <TopBtns>Experience</TopBtns>
-                    <TopBtns>Online Experience</TopBtns>
-                </TopSection>
-                <BottomSection>
-                    <BottomHeads>
-                        <B1>where</B1>
-                        <B0>Search destinations</B0>
-                    </BottomHeads>
+        <>
+            <Nav>
+                {!scroll?
+                <CenterDiv onClick={()=>{
+                    setDestinationState(destinationState?false:true)
+                    }}>
+                    <TopHeads>
+                        <P1>Anywhere</P1>
+                    </TopHeads>
                     <Line>|</Line>
-                    <BottomHeads>
-                        <B1>Check in</B1>
-                        <B0>Add dates</B0>
-                    </BottomHeads>
+                    <TopHeads>
+                        <P1>Any week</P1>
+                    </TopHeads>
                     <Line>|</Line>
-                    <BottomHeads>
-                        <B2>Add guest</B2>
-                        <B0>Add dates</B0>
-                    </BottomHeads>
-                    <Line>|</Line>
-                    <BottomHeads2>
-                        <B2>Add guest</B2>
-                        <B0>Add guests</B0>
-                    </BottomHeads2>
-                    <SearchBtn2>
+                    <TopHeads>
+                        <P2>Add guest</P2>
+                    </TopHeads>
+                    <SearchBtn>
                         <img src={require("../../../assets/icons/magnifying-glass.png")} alt="searchIcon" className='invert'/>
-                    </SearchBtn2>
+                    </SearchBtn>
+                </CenterDiv>:
+                <MainCenter>
+                    <TopSection>
+                        <TopBtns>Stays</TopBtns>
+                        <TopBtns>Experience</TopBtns>
+                        <TopBtns>Online Experience</TopBtns>
+                    </TopSection>
+                    <BottomSection>
+                        <BottomHeads onClick={()=>setDestinationState(destinationState?false:true)}>
+                            <B1>where</B1>
+                            <B0>Search destinations</B0>
+                        </BottomHeads>
+                        <Line>|</Line>
+                        <BottomHeads>
+                            <B1>Check in</B1>
+                            <B0>Add dates</B0>
+                        </BottomHeads>
+                        <Line>|</Line>
+                        <BottomHeads>
+                            <B2>Add guest</B2>
+                            <B0>Add dates</B0>
+                        </BottomHeads>
+                        <Line>|</Line>
+                        <BottomHeads2>
+                            <B2>Add guest</B2>
+                            <B0>Add guests</B0>
+                        </BottomHeads2>
+                        <SearchBtn2>
+                            <img src={require("../../../assets/icons/magnifying-glass.png")} alt="searchIcon" className='invert'/>
+                        </SearchBtn2>
 
-                </BottomSection>
-            </MainCenter>
-            }
-        </Nav>
+                    </BottomSection>
+                </MainCenter>
+                }
+            </Nav>
+            {destinationState && <Destination />}
+       </>
     );
 }
 
