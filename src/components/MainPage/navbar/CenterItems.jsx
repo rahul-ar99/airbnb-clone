@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { ScrollValue } from '../../MainPage';
+import { ScrollValue } from '../../../App';
 import Destination from "../../modal/Destination"
 
 
@@ -16,11 +16,29 @@ const CenterNav = () => {
 
     
     const [centerItem, setCenterItem] = useState(true)
+    useEffect(()=>{
+        setModal(scroll)
+    },[scroll])
+    
+
+    const changingNavbar = () =>{
+        document.getElementById("navbarbottom").style.display="flex"
+        document.getElementById("navbartop").style.display="none"
+    }
 
 
     useEffect(()=>{
         const handleScroll = () =>{
-            setCenterItem(scroll)
+            // setCenterItem(scroll)
+            if(scroll>=0){
+                setTimeout(() => {
+                    document.getElementById("navbarbottom").style.display="none"
+                    document.getElementById("navbartop").style.display="flex"
+                    setCenterItem(isModal)                
+                }, 500);
+            }else{
+                document.getElementById("navbarbottom").style.display="none"
+            }
         }
         window.addEventListener("scroll",handleScroll)
     })
@@ -29,10 +47,14 @@ const CenterNav = () => {
     return (
         <>
             <Nav>
-                {!scroll?
-                <CenterDiv onClick={()=>{
-                    setDestinationState(destinationState?false:true)
-                    }}>
+                {/* {!scroll && */}
+                <CenterDiv id='navbartop' onClick={()=>{
+                    // setDestinationState(destinationState?false:true)
+                        changingNavbar()
+                        setDestinationState(true)
+                    }}
+                    className={scroll?"":"ntactive"}
+                    >
                     <TopHeads>
                         <P1>Anywhere</P1>
                     </TopHeads>
@@ -47,17 +69,17 @@ const CenterNav = () => {
                     <SearchBtn>
                         <img src={require("../../../assets/icons/magnifying-glass.png")} alt="searchIcon" className='invert'/>
                     </SearchBtn>
-                </CenterDiv>:
-                <MainCenter>
-                    <TopSection>
+                </CenterDiv> 
+                <MainCenter id='navbarbottom' className='relative'>
+                    <TopSection className={scroll?"":"notactive"}>
                         <TopBtns>Stays</TopBtns>
                         <TopBtns>Experience</TopBtns>
                         <TopBtns>Online Experience</TopBtns>
                     </TopSection>
-                    <BottomSection>
+                    <BottomSection className={scroll?"":"notactive"}>
                         <BottomHeads onClick={()=>setDestinationState(destinationState?false:true)}>
                             <B1>where</B1>
-                            <B0>Search destinations</B0>
+                            <SearchInput type="text" placeholder='Search destinations' />
                         </BottomHeads>
                         <Line>|</Line>
                         <BottomHeads>
@@ -79,23 +101,23 @@ const CenterNav = () => {
                         </SearchBtn2>
 
                     </BottomSection>
+                    {destinationState && <Destination />}
                 </MainCenter>
-                }
             </Nav>
-            {destinationState && <Destination />}
        </>
     );
 }
 
 const CenterDiv = styled.div`
+    display: none;
     border: 1px solid #d7d7d7;
     padding: 6px;
     border-radius: 30px;
-    display: flex;
     align-items:center;
     gap: 10px;
     padding-left: 19px;
     cursor: pointer;
+
     /* background-color: blue; */
 `
 
@@ -106,6 +128,9 @@ const Nav = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+`
+
+const SearchInput = styled.input`
 `
 
 const TopHeads = styled.div`
@@ -159,9 +184,18 @@ const TopSection =styled.div`
     display: flex;
     gap: 40px;
     color: grey;
+    transition: 1s;
+    font-size: medium;
+    &.notactive{
+        gap:10px;
+        font-size: smaller;
+        /* display: none; */
+    }
 
 `
-const TopBtns =styled.button``
+const TopBtns =styled.button`
+    font-size: inherit;
+`
 const BottomSection = styled.div`
 
 
@@ -170,21 +204,34 @@ const BottomSection = styled.div`
     border-radius: 30px;
     display: flex;
     align-items:center;
+    font-size: 13px;
     /* gap: 10px; */
+    padding:8px 50px 8px 30px;
     /* padding-left: 19px; */
     position: relative;
     cursor: pointer;
+
+    &.notactive{
+        font-size: 8px;
+        gap:0px;
+        padding: 0px 20px 0px 10px;
+    }
+    transition: .5s ;
+
 `
 const BottomHeads = styled.div`
-    font-size: 13px;
-    padding:8px 50px 8px 30px;
+    font-size: inherit;
+    padding:inherit;
     border-radius: 30px;
     &:hover{
         background-color: #d7d7d7;
     }
+    &:hover ${SearchInput}{
+        background-color: #d7d7d7;
+    }
     `
 const BottomHeads2 = styled.div`
-    font-size: 13px;
+    font-size: inherit;
     padding:8px 80px 8px 30px;
     border-radius: 30px;
     &:hover{

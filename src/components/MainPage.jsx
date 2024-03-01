@@ -1,15 +1,16 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ExploreLink from './MainPage/ExploreLink';
 import Navbar from './MainPage/Navbar';
 import Catogories from './MainPage/Catogories'
 import MainContent from './MainPage/MainContent';
 import Footer from './MainPage/Footer';
+import {ScrollValue} from '../App'
+import { CatogaryContext } from '../App';
+
 export const PriceFilterContext = createContext();
 export const SortContext = createContext();
-export const CatogaryContext = createContext()
 export const beforeTax = createContext()
-export const ScrollValue = createContext()
 
 
 
@@ -18,10 +19,8 @@ export const ScrollValue = createContext()
 
 function MainPage() {
 
-
-
-    // create state for scroll
-    const [scroll, setScroll] = useState(true)
+    const {caogary,setCatogary} = useContext(CatogaryContext)
+    const {setScroll} = useContext(ScrollValue)
 
 
     // create state for price for filter
@@ -32,8 +31,6 @@ function MainPage() {
     const [sort, setSort] = useState(false)
 
 
-    // create a state for which catogary selected
-    const [catogary, setCatogary] = useState("amazing_pools")
 
 
     // create a state for tax button = true or false
@@ -47,7 +44,7 @@ function MainPage() {
 
     useEffect(()=>{
         const handleScroll = () =>{
-        setScroll(window.scrollY <= 0)
+            setScroll(window.scrollY <= 0)
         }
         window.addEventListener("scroll",handleScroll)
     })
@@ -62,13 +59,11 @@ function MainPage() {
 
 
     return (
-        <ScrollValue.Provider value={{scroll}}>
-            <CatogaryContext.Provider value={{catogary,setCatogary}}>
                 <SortContext.Provider value={{sort, setSort}}>
                     <PriceFilterContext.Provider value={{filterPrice, setFilterPrice}}>
                         <beforeTax.Provider value={{tax,setTax}} >
                             <div className="App">
-                                {scroll && <ExploreLink />}
+                                {/* {scroll && <ExploreLink />} */}
                                 <TopBar>
                                 <Navbar />
                                 <Catogories />
@@ -79,8 +74,6 @@ function MainPage() {
                         </beforeTax.Provider>
                     </PriceFilterContext.Provider>
                 </SortContext.Provider>
-            </CatogaryContext.Provider>
-        </ScrollValue.Provider>
     );
     }
     const TopBar = styled.div`

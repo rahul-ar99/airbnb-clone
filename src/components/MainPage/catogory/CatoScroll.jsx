@@ -2,7 +2,7 @@ import React, {useEffect,useState , useRef, useContext}from 'react';
 import CatoData from '../../../assets/json/catogery.json'
 import AllData from '../../../assets/json/data.json'
 import styled from 'styled-components';
-import { CatogaryContext } from '../../MainPage';
+import { CatogaryContext } from '../../../App';
 
 
 const CatoScroll = () => {

@@ -10,7 +10,8 @@ import {addFav, deleteFav} from '../../../redux/action'
 import { MyAuthenticated } from '../../Authentication';
 import { Connect } from 'react-redux';
 import { addToFAvorites } from '../../../redux/action';
-import { PriceFilterContext, SortContext, CatogaryContext, beforeTax } from '../../MainPage';
+import { PriceFilterContext, SortContext, beforeTax } from '../../MainPage';
+import { CatogaryContext } from '../../../App';
 
 
 
@@ -232,7 +233,7 @@ const Cards = () => {
                                 <Place>{each.place}</Place>
                                 <Rating><Ratingicon src={require("../../../assets/icons/star.png")}></Ratingicon>{each.ratings}</Rating>
                             </FirstLine>
-                            <Distance>{each.distance}</Distance>
+                            <Distance>{each.distance.slice(0,35)}...</Distance>
                             <Date>{each.dates}</Date>
                             <Money><Price>${(each.price * taxValue) } night</Price></Money>
                         </Details>

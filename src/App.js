@@ -8,24 +8,44 @@ import Favorites from './components/Favorites';
 import Authentication from './components/Authentication';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import { createContext, useState } from 'react';
+export const ScrollValue = createContext()
+export const CatogaryContext = createContext()
+
+
 
 function App() {
-  return (
+// create state for scroll
+const [scroll, setScroll] = useState(true)
+
+// create a state for which catogary selected
+const [catogary, setCatogary] = useState("amazing_pools")
+
+
+return (
     <Authentication>
 
-      <div className="App">
+    <div className="App">
+    <ScrollValue.Provider value={{scroll,setScroll}}>
+    <CatogaryContext.Provider value={{catogary,setCatogary}}>
+
+
         <Provider store={store}>
 
-          <Routes>
+        <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="help" element={<HelpPage />} />
             <Route path="singleitem" element={<SingleItem />} />
             <Route path="favorites" element={<Favorites />} />
-          </Routes>
+        </Routes>
         </Provider>
-      </div>
+        </CatogaryContext.Provider>
+
+        </ScrollValue.Provider>
+
+    </div>
     </Authentication>
-  );
+);
 }
 
 export default App;

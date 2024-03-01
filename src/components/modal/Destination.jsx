@@ -5,7 +5,7 @@
 const Destination = () =>{
     return(
         <>
-            <div className="absolute left-1/4 top-32 bg-gray-100 z-10 p-10 w-[60rem] border-2 rounded-3xl">
+            <div className="absolute left-[-2rem] top-28 bg-gray-100 z-10 p-10 w-[60rem] border-2 rounded-3xl">
                 <div className="flex w-full justify-between ">
                     <div className="flex flex-col w-[35%]">
                         <h6 className="text-lg font-medium mb-4">Recent searches</h6>
