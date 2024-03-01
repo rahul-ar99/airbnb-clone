@@ -1,48 +1,77 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Data from "../assets/json/data.json"
 import { useLocation, useParams} from 'react-router-dom';
 import Navbar from './MainPage/Navbar'
 import styled from 'styled-components';
 import { CatogaryContext } from '../App';
+import importData from "../assets/json/data.json"
+
 // import {MyContext} from './Authentication'
 
 
 const SingleItem = () => {
 
-    const [catogary, setCatogory] = useState("pool")
+    const {catogary} = useContext(CatogaryContext)
+
+
+    // const [catogary, setCatogory1] = useState("amazing_pools")
+
+
+    const [imgLocation, setImageLocation] = useState("pool")
     // const { count, increment } = useContext(MyContext);
     // import id from parent folder in navigate format
     const location = useLocation();
     const {id} = location.state || {};
+    const [isLoading, setLoading] = useState(false)
 
 
     // this array for add details with the id recieve from parent component
-    const dataCard = []
+    const [dataCard,setDataCard] = useState([])
+
+
+    useEffect(()=>{
+        console.log(importData[catogary])
+        setImageLocation(importData[catogary]["images_location"])
+    },[catogary])
+    useEffect(()=>{
+        
+    },[])
 
       
     
 
     // find item with id & add add to dataCard array
-    for(let key in Data){
-        Data[key]["assets"][0].map((item)=>{
-            console.log(item.id,id)
-            if(item.id===id){
-                dataCard.push(item)
-                setCatogory(key)
+    useEffect(()=>{
+        for (let key in Data) {
+            for (let i = 0; i < Data[key]["assets"][0].length; i++) {
+                let item = Data[key]["assets"][0][i];
+                // console.log(item.id, id);
+                if (item.id === id) {
+                    setDataCard(item);
+                    // setCatogory(key);
+                    // console.log(item);
+                    break;
+                }
             }
-            // console.log(item.id)
-        })
-    }
-    // testing
-    console.log(dataCard[0].place)
+        }
+
+    })
+    setTimeout(()=>{
+        // console.log(dataCard)
+        // console.log(catogary)
+        console.log(dataCard)
+        setLoading(true)
+    },1000)
 
     return (
+        <>
+        {!isLoading ?<h1>Loading...</h1>:
         <>
         <Navbar />
         <Wrapper>
             <SpotLIght>
                 <TopBar>
-                    <Heading>Camp  Footprint ,{dataCard[0].place}</Heading>
+                    <Heading>Camp  Footprint ,{dataCard.place}</Heading>
                     <TopRight>
                         <TopShare>Share</TopShare>
                         <TopSave>Save</TopSave>
@@ -50,15 +79,15 @@ const SingleItem = () => {
                 </TopBar>
                 <ImgDiv>
                     <ImgLeft>
-                       <Img1 src={require(`../../assets/images/${dataCard[0].image}.webp`)} alt="" />
+                       <Img1 src={require(`../assets/images/${imgLocation}/${dataCard.image}.webp`)} alt="" />
+                        {/* <Img src={require(`../assets/images/${catogary}/${dataCard[0].image}.webp`)} alt="" /> */}
 
-                        <Img src={require(`../assets/images/${catogary}/${dataCard[0].image}.webp`)} alt="" />
                     </ImgLeft>
                     <ImgRight>
-                        {/* <Imgs src={require(`../assets/images/${dataCard[0].image}.webp`)} alt="" />
-                        <Imgs src={require(`../assets/images/${dataCard[0].image}.webp`)} alt="" />
-                        <Imgs src={require(`../assets/images/${dataCard[0].image}.webp`)} alt="" />
-                        <Imgs src={require(`../assets/images/${dataCard[0].image}.webp`)} alt="" /> */}
+                        <Imgs src={require(`../assets/images/${imgLocation}/${dataCard.image}.webp`)} alt="" />
+                        <Imgs src={require(`../assets/images/${imgLocation}/${dataCard.image}.webp`)} alt="" />
+                        <Imgs src={require(`../assets/images/${imgLocation}/${dataCard.image}.webp`)} alt="" />
+                        <Imgs src={require(`../assets/images/${imgLocation}/${dataCard.image}.webp`)} alt="" />
                     </ImgRight>
                 </ImgDiv>
                 <MiddleSec>
@@ -111,11 +140,13 @@ const SingleItem = () => {
                 </MiddleSec>
             </SpotLIght>
 
-            <h1>{dataCard[0].place}</h1>
-            <p>{dataCard[0].distance}</p>
+            {/* <h1>{dataCard[0].place}</h1> */}
+            {/* <p>{dataCard[0].distance}</p> */}
             <h6>{id}</h6>
         </Wrapper>
         </>
+        }
+</>
     );
 };
 

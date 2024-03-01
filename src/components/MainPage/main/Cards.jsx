@@ -14,12 +14,6 @@ import { PriceFilterContext, SortContext, beforeTax } from '../../MainPage';
 import { CatogaryContext } from '../../../App';
 
 
-
-
-
-
-
-
 const Cards = () => {
 
     
