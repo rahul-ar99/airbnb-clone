@@ -190,14 +190,9 @@ const Cards = () => {
     const handleClick = (cardId) =>{
         navigate(`/singleitem`, {state:{id:cardId}})
     }
-    
     return (
-
         <div className='wrapper'>
             <AllCards>
-
-
-                {/* map for each card */}
                 {cards1.map((each, index)=>(
                     <SingleCard key={each.id} onClick={()=>{
                         handleClick(each.id)

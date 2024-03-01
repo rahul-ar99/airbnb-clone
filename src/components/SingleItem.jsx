@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import Data from "../assets/json/data.json"
 import { useLocation, useParams} from 'react-router-dom';
 import Navbar from './MainPage/Navbar'
@@ -9,8 +9,7 @@ import { CatogaryContext } from '../App';
 
 const SingleItem = () => {
 
-    const {catogary} = useContext(CatogaryContext);
-
+    const [catogary, setCatogory] = useState("pool")
     // const { count, increment } = useContext(MyContext);
     // import id from parent folder in navigate format
     const location = useLocation();
@@ -21,18 +20,21 @@ const SingleItem = () => {
     const dataCard = []
 
       
-      console.log(Data[catogary]["assets"][0])
     
 
     // find item with id & add add to dataCard array
-    Data[catogary]["assets"][0].map((item)=>{
-        if(item.id===id){
-            dataCard = item
-        }
-        console.log(item.id)
-    })
+    for(let key in Data){
+        Data[key]["assets"][0].map((item)=>{
+            console.log(item.id,id)
+            if(item.id===id){
+                dataCard.push(item)
+                setCatogory(key)
+            }
+            // console.log(item.id)
+        })
+    }
     // testing
-    console.log(dataCard)
+    console.log(dataCard[0].place)
 
     return (
         <>
@@ -40,7 +42,7 @@ const SingleItem = () => {
         <Wrapper>
             <SpotLIght>
                 <TopBar>
-                    <Heading>Camp  Footprint ,{dataCard.place}</Heading>
+                    <Heading>Camp  Footprint ,{dataCard[0].place}</Heading>
                     <TopRight>
                         <TopShare>Share</TopShare>
                         <TopSave>Save</TopSave>
@@ -48,13 +50,15 @@ const SingleItem = () => {
                 </TopBar>
                 <ImgDiv>
                     <ImgLeft>
-                        {/* <Img src={require(`../assets/images/${dataCard[0].image}.webp`)} alt="" /> */}
+                       <Img1 src={require(`../../assets/images/${dataCard[0].image}.webp`)} alt="" />
+
+                        <Img src={require(`../assets/images/${catogary}/${dataCard[0].image}.webp`)} alt="" />
                     </ImgLeft>
                     <ImgRight>
-                        {/* <Imgs src={require(`../assets/images/${dataCard[0].image}.webp`)} alt="" /> */}
-                        {/* <Imgs src={require(`../assets/images/${dataCard[0].image}.webp`)} alt="" /> */}
-                        {/* <Imgs src={require(`../assets/images/${dataCard[0].image}.webp`)} alt="" /> */}
-                        {/* <Imgs src={require(`../assets/images/${dataCard[0].image}.webp`)} alt="" /> */}
+                        {/* <Imgs src={require(`../assets/images/${dataCard[0].image}.webp`)} alt="" />
+                        <Imgs src={require(`../assets/images/${dataCard[0].image}.webp`)} alt="" />
+                        <Imgs src={require(`../assets/images/${dataCard[0].image}.webp`)} alt="" />
+                        <Imgs src={require(`../assets/images/${dataCard[0].image}.webp`)} alt="" /> */}
                     </ImgRight>
                 </ImgDiv>
                 <MiddleSec>
@@ -107,8 +111,8 @@ const SingleItem = () => {
                 </MiddleSec>
             </SpotLIght>
 
-            <h1>{dataCard.place}</h1>
-            <p>{dataCard.distance}</p>
+            <h1>{dataCard[0].place}</h1>
+            <p>{dataCard[0].distance}</p>
             <h6>{id}</h6>
         </Wrapper>
         </>
@@ -159,6 +163,7 @@ const ImgRight = styled.div`
 `
 const Img = styled.img`
     height: 100%;
+    width: auto;
 `
 const Imgs = styled.img`
     justify-content: space-between;
@@ -169,7 +174,8 @@ const MiddleLeft = styled.div``
 const MiddleRight = styled.div``
 const Hosting = styled.div``
 const HostImg = styled.div``
-const Img1 = styled.img``
+const Img1 = styled.img`
+`
 const HostName = styled.p``
 const HostDuration = styled.p``
 const MiddleHeadDiv = styled.div``
