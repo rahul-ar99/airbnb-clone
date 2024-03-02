@@ -19,6 +19,10 @@ export const beforeTax = createContext()
 
 function MainPage() {
 
+
+    const [isLoading, setIsLoading] = useState(true)
+
+
     const {caogary,setCatogary} = useContext(CatogaryContext)
     const {setScroll} = useContext(ScrollValue)
 
@@ -57,23 +61,37 @@ function MainPage() {
         setFilterPrice(9000)
     },[])
 
+    setTimeout(()=>{
+        setIsLoading(false)
+    },1000)
+
 
     return (
-                <SortContext.Provider value={{sort, setSort}}>
-                    <PriceFilterContext.Provider value={{filterPrice, setFilterPrice}}>
-                        <beforeTax.Provider value={{tax,setTax}} >
-                            <div className="App">
-                                {/* {scroll && <ExploreLink />} */}
-                                <TopBar>
-                                <Navbar />
-                                <Catogories />
-                                </TopBar>
-                                <MainContent />
-                                <Footer />
-                            </div>
-                        </beforeTax.Provider>
-                    </PriceFilterContext.Provider>
-                </SortContext.Provider>
+        <>
+        {isLoading ?
+            <>
+                <div className='flex w-screen h-screen items-center justify-center'>
+                    <h1>Loading...</h1>
+                </div>
+            </>
+        :
+            <SortContext.Provider value={{sort, setSort}}>
+                <PriceFilterContext.Provider value={{filterPrice, setFilterPrice}}>
+                    <beforeTax.Provider value={{tax,setTax}} >
+                        <div className="App">
+                            {/* {scroll && <ExploreLink />} */}
+                            <TopBar>
+                            <Navbar />
+                            <Catogories />
+                            </TopBar>
+                            <MainContent />
+                            <Footer />
+                        </div>
+                    </beforeTax.Provider>
+                </PriceFilterContext.Provider>
+            </SortContext.Provider>
+        }
+        </>
     );
     }
     const TopBar = styled.div`

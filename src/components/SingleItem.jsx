@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Data from "../assets/json/data.json"
-import { useLocation, useParams} from 'react-router-dom';
+import { Link, useLocation, useParams} from 'react-router-dom';
 import Navbar from './MainPage/Navbar'
 import styled from 'styled-components';
 import { CatogaryContext } from '../App';
@@ -65,7 +65,11 @@ const SingleItem = () => {
 
     return (
         <>
-        {!isLoading ?<h1>Loading...</h1>:
+        {!isLoading ?<>
+            <div className='flex w-screen h-screen justify-center items-center'>
+                <h1>Loading..</h1>
+            </div>
+        </>:
         <>
         <Navbar />
         <Wrapper>
@@ -73,8 +77,8 @@ const SingleItem = () => {
                 <TopBar>
                     <Heading>Camp  Footprint ,{dataCard.place}</Heading>
                     <TopRight>
-                        <TopShare>Share</TopShare>
-                        <TopSave>Save</TopSave>
+                        <TopShare className="cursor-pointer">Share</TopShare>
+                        <TopSave className="cursor-pointer">Save</TopSave>
                     </TopRight>
                 </TopBar>
                 <ImgDiv>
@@ -97,42 +101,53 @@ const SingleItem = () => {
                             <MainDetails>15 guests4 bedrooms8 beds4 bathrooms</MainDetails>
                             <Reviews>No reviews yet</Reviews>
                         </MiddleHeadDiv>
-                        <Hosting>
-                            <HostImg><Img1 /></HostImg>
-                            <HostName>Hosted by Vignesh</HostName>
-                            <HostDuration>10 months hosting</HostDuration>
+                        <Hr/>
+                        <Hosting className='ml-3 flex'>
+                            <HostImg className='w-[50px] h-[50px]   rounded-full overflow-hidden'><Img1 src={require("../assets/images/profile.webp")} className='w-full h-auto' /></HostImg>
+                            <div className='pl-5 h-full flex-col flex justify-center'>
+                                <HostName className='text-xl'>Hosted by Vignesh</HostName>
+                                <HostDuration className='text-slate-500'>10 months hosting</HostDuration>
+                            </div>
                         </Hosting>
+                        <Hr/>
                         <RoomDetails>
                             <p>Situated approximately 25 km away from the Munnar Town, located high on the eastern slopes of Western Ghats with the verdant forests on one side & the stunning views of the valley below, Camp Footprint is indeed a unique property in the hills above Munnar. Camp Footprint offers you a perfect chance to spot and photograph wildlife. A good destination for bird watchers & landscape photographers, and for adventure enthusiasts. There are a few soft treks available to nearby peaks from the campsite...</p>
                             <SeeMore>See more</SeeMore>
                         </RoomDetails>
+                        <Hr />
                     </MiddleLeft>
-                    <MiddleRight>
-                        <RightMain>
-                            <RightTopPrice>
-                                <Price>$182343</Price>
+                    <MiddleRight className='flex flex-col items-center '>
+                        <RightMain className=' p-10 border rounded-xl mb-4'>
+                            <RightTopPrice className='pb-5'>
+                                <Price className='text-2xl'>$182343</Price>
                                 <Tax>Total before taxes</Tax>
                             </RightTopPrice>
-                            <Input>
-                                <DateInput>
-                                    <LeftDate>
-                                        <p>CHECK-IN</p>
-                                        <p>12/29/2023</p>
+                            <Input className="border">
+                                <DateInput className='flex w-[300px]'>
+                                    <LeftDate className="border-r p-2 w-[50%]">
+                                        <p className="text-sm">CHECK-IN</p>
+                                        <input type="date" value="2024-03-03"/>
                                     </LeftDate>
-                                    <RightDate>
-                                        <p>CHECK-IN</p>
-                                        <p>12/29/2023</p>
+                                    <RightDate className="border-r p-2  w-[50%]">
+                                        <p className="text-sm">CHECK-IN</p>
+                                        <input type="date" value="2024-03-07"/>
                                     </RightDate>
                                 </DateInput>
                                 <Guest>
-                                    <GuestLeft>
-                                        <p>GUEST</p>
-                                        <p>1 guest</p>
+                                    <GuestLeft className='p-2'>
+                                        <p className="text-sm">GUEST</p>
+                                        <select className='w-full bg-white'>
+                                            <option>1 Guest</option>
+                                            <option>2 Guest</option>
+                                            <option>3 Guest</option>
+                                            <option>4 Guest</option>
+                                        </select>
                                     </GuestLeft>
                                     <ArrowIcon />
                                 </Guest>
                                 <Reserve />
                             </Input>
+                            <Link to={"/payment"} className='py-5 w-full bg-red-600 rounded-xl mt-4'>Reserve</Link>
                             <p>you won't be charged yet</p>
                         </RightMain>
                         <RightBottom>Report this listing</RightBottom>
@@ -200,22 +215,39 @@ const Imgs = styled.img`
     justify-content: space-between;
     width: 48%;
 `
-const MiddleSec = styled.div``
-const MiddleLeft = styled.div``
-const MiddleRight = styled.div``
+const MiddleSec = styled.div`
+    padding-top:50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+`
+const MiddleLeft = styled.div`
+    width: 60%;
+`
+const MiddleRight = styled.div`
+    width: fit-content;
+`
 const Hosting = styled.div``
 const HostImg = styled.div``
 const Img1 = styled.img`
 `
 const HostName = styled.p``
 const HostDuration = styled.p``
-const MiddleHeadDiv = styled.div``
-const PlaceHead = styled.p``
+const MiddleHeadDiv = styled.div`
+`
+const PlaceHead = styled.p`
+    font-size: 30px;
+`
+const Hr = styled.hr`
+    margin:1rem 0;
+`
 const MainDetails = styled.p``
 const Reviews = styled.p``
 const RoomDetails = styled.div``
 const SeeMore = styled.button``
-const RightMain = styled.div``
+const RightMain = styled.div`
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+`
 const RightTopPrice = styled.div``
 const Price = styled.p``
 const Tax = styled.p``
@@ -225,6 +257,11 @@ const LeftDate = styled.div``
 const RightDate = styled.div``
 const Guest = styled.div``
 const GuestLeft = styled.div``
+const SubmitButton = styled.button`
+    &:hover{
+        background-color: red;
+    }
+`
 const ArrowIcon = styled.img``
 const Reserve = styled.div``
 const RightBottom = styled.div``

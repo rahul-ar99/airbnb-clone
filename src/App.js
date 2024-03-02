@@ -9,6 +9,7 @@ import Authentication from './components/Authentication';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import { createContext, useState } from 'react';
+import PaymentPage from './components/ReservePage/PaymetPage';
 export const ScrollValue = createContext()
 export const CatogaryContext = createContext()
 
@@ -36,6 +37,7 @@ return (
             <Route path="/" element={<MainPage />} />
             <Route path="help" element={<HelpPage />} />
             <Route path="singleitem" element={<SingleItem />} />
+            <Route path="payment" element={<PaymentPage />} />
             <Route path="favorites" element={<Favorites />} />
         </Routes>
         </Provider>
