@@ -163,6 +163,7 @@ const SingleItem = () => {
                                     <GuestLeft className='p-2'>
                                         <p className="text-sm">GUEST</p>
                                         <select className='w-full bg-white'>
+                                      
                                             <option>1 Guest</option>
                                             <option>2 Guest</option>
                                             <option>3 Guest</option>
