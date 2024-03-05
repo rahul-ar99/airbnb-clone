@@ -5,6 +5,7 @@ import Navbar from './MainPage/Navbar'
 import styled from 'styled-components';
 import { CatogaryContext } from '../App';
 import importData from "../assets/json/data.json"
+import  {loadStripe} from "@stripe/stripe-js"
 
 // import {MyContext} from './Authentication'
 
@@ -36,6 +37,31 @@ const SingleItem = () => {
     useEffect(()=>{
         
     },[])
+
+
+    const paymentStrip = async () =>{
+        const stripe = await loadStripe("pk_test_51OqVawSGbsTSG9dSfHE75zOZATFheUoOKFMFIWoZoy3IxqyX6SD8ITFpDuby7lHbQSu8LLfikha7jXrseWUL0jue00Bupbp8k9")
+        const body ={
+            products:[dataCard]
+        }
+        const headers = {
+            "Content-Type":"application/json"
+        }
+        const response = await fetch("http://localhost:7000/api/create-checkout-session",{
+            method:"POST",
+            headers:headers,
+            body:JSON.stringify(body)
+        })
+
+        const session = await response.json();
+        const result = stripe.redirectToCheckout({
+            sessionId:session.id
+        })
+
+        if(result.error){
+            console.log(result.error)
+        }
+    }
 
       
     
@@ -147,7 +173,7 @@ const SingleItem = () => {
                                 </Guest>
                                 <Reserve />
                             </Input>
-                            <Link to={"/payment"} className='py-5 w-full bg-red-600 rounded-xl mt-4'>Reserve</Link>
+                            <button onClick={paymentStrip} className='py-5 w-full bg-red-600 rounded-xl mt-4'>Reserve</button>
                             <p>you won't be charged yet</p>
                         </RightMain>
                         <RightBottom>Report this listing</RightBottom>

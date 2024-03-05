@@ -61,6 +61,7 @@ const Cards = () => {
     // create a state for tax true or false statement
     const [taxValue, setTaxValue] = useState([])
 
+    localStorage.setItem("fav",[])
 
     
     const favLocal = localStorage.getItem("fav")
