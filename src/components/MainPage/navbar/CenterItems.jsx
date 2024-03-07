@@ -1,13 +1,21 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {createContext, useContext, useEffect, useState} from 'react';
 import styled from 'styled-components';
 import { ScrollValue } from '../../../App';
 import Destination from "../../modal/Destination"
 
+export const destination = createContext()
+
+
 
 
 const CenterNav = () => {
+    
+
+    const [searchDestination, setSearchDestination] = useState("")
 
     const [destinationState, setDestinationState] = useState(false)
+
+    const [navChanging, setNavChanging] = useState(false)
 
     const {scroll} = useContext(ScrollValue)
 
@@ -32,29 +40,38 @@ const CenterNav = () => {
             // setCenterItem(scroll)
             if(scroll>=0){
                 setTimeout(() => {
-                    document.getElementById("navbarbottom").style.display="none"
-                    document.getElementById("navbartop").style.display="flex"
+                    // document.getElementById("navbarbottom").style.display="none"
+                    // document.getElementById("navbartop").style.display="flex"
                     setCenterItem(isModal)                
                 }, 500);
             }else{
-                document.getElementById("navbarbottom").style.display="none"
+                // document.getElementById("navbarbottom").style.display="none"
             }
         }
+        window.addEventListener("click",(e)=>{
+            if(e !== BottomHeads){
+                console.log(e)
+                console.log(BottomHeads)
+                console.log("asdfsd")
+            }
+        })
         window.addEventListener("scroll",handleScroll)
     })
 
 
     return (
         <>
+        <destination.Provider value={{searchDestination, setSearchDestination}}>
+
             <Nav>
                 {/* {!scroll && */}
                 <CenterDiv id='navbartop' onClick={()=>{
                     // setDestinationState(destinationState?false:true)
-                        changingNavbar()
-                        setDestinationState(true)
-                    }}
-                    className={scroll?"":"ntactive"}
-                    >
+                    changingNavbar()
+                    setDestinationState(true)
+                }}
+                className={scroll?"":"noetactive"}
+                >
                     <TopHeads>
                         <P1>Anywhere</P1>
                     </TopHeads>
@@ -72,25 +89,33 @@ const CenterNav = () => {
                 </CenterDiv> 
                 <MainCenter id='navbarbottom' className='relative'>
                     <TopSection className={scroll?"":"notactive"}>
-                        <TopBtns>Stays</TopBtns>
-                        <TopBtns>Experience</TopBtns>
+                        <TopBtns onClick={()=>setNavChanging(false)} className={navChanging?"active":""}>Stays</TopBtns>
+                        <TopBtns onClick={()=>setNavChanging(true)}  className={navChanging?"active":""}>Experience</TopBtns>
                         <TopBtns>Online Experience</TopBtns>
                     </TopSection>
                     <BottomSection className={scroll?"":"notactive"}>
-                        <BottomHeads onClick={()=>setDestinationState(destinationState?false:true)}>
-                            <B1>where</B1>
-                            <SearchInput type="text" placeholder='Search destinations' />
+                        <BottomHeads onClick={()=>setDestinationState(destination?false:true)}>
+                            <B1 onClick={()=>setDestinationState("asdfsdf")}>where</B1>
+                            <SearchInput type="text" placeholder='Search destinations' className="text-lg font-semibold" value={searchDestination} onChange={(e)=>setSearchDestination(e.target.value)} />
                         </BottomHeads>
                         <Line>|</Line>
-                        <BottomHeads>
-                            <B1>Check in</B1>
-                            <B0>Add dates</B0>
-                        </BottomHeads>
-                        <Line>|</Line>
-                        <BottomHeads>
-                            <B2>Add guest</B2>
-                            <B0>Add dates</B0>
-                        </BottomHeads>
+                        {navChanging ?
+                            <>
+                            <BottomHeads>
+                                <B1>Check in</B1>
+                                <B0>Add dates</B0>
+                            </BottomHeads>
+                            <Line>|</Line>
+                            <BottomHeads>
+                                <B2>Add guest</B2>
+                                <B0>Add dates</B0>
+                            </BottomHeads>
+                            </>:
+                            <BottomHeads className=''>
+                                <B2>Add guest</B2>
+                                <B0>Add dates</B0>
+                            </BottomHeads>
+                        }
                         <Line>|</Line>
                         <BottomHeads2>
                             <B2>Add guest</B2>
@@ -99,11 +124,11 @@ const CenterNav = () => {
                         <SearchBtn2>
                             <img src={require("../../../assets/icons/magnifying-glass.png")} alt="searchIcon" className='invert'/>
                         </SearchBtn2>
-
                     </BottomSection>
                     {destinationState && <Destination />}
                 </MainCenter>
             </Nav>
+        </destination.Provider>
        </>
     );
 }
@@ -190,6 +215,9 @@ const TopSection =styled.div`
         gap:10px;
         font-size: smaller;
         /* display: none; */
+    }
+    &.active{
+        font-size: 18px;
     }
 
 `
