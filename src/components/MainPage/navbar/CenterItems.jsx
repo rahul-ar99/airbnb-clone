@@ -13,14 +13,23 @@ const CenterNav = () => {
 
     const [searchDestination, setSearchDestination] = useState("")
 
+
+
     const [destinationState, setDestinationState] = useState(false)
 
+
+
     const [navChanging, setNavChanging] = useState(false)
+
+
 
     const {scroll} = useContext(ScrollValue)
 
 
+
     const [isModal,setModal] = useState(true)
+
+    
 
     
     const [centerItem, setCenterItem] = useState(true)
